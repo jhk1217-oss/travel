@@ -1,0 +1,43 @@
+{
+  "site": {
+    "title": "여행 루트 라이브러리",
+    "subtitle": "가이드 영상 기반 · 정류장 단위 도보 루트 · 구간별 구글 길찾기"
+  },
+  "countries": [
+    {
+      "code": "fr",
+      "name": "프랑스",
+      "flag": "🇫🇷",
+      "routes": [
+        {
+          "id": "paris-core",
+          "file": "/routes/fr-paris-core.html",
+          "city": "파리",
+          "title": "파리 핵심 동선 가이드",
+          "subtitle": "3개 루트 완전판 — 시테섬→에펠탑 · 마레→바스티유 · 피카소 로드",
+          "tags": ["도보", "역사", "먹거리"],
+          "days": "1루트 = 1일 × 3",
+          "source": "게으른 완벽주의자 · 파리 여행루트 1~3탄 몰아보기",
+          "updated": "2026-07"
+        },
+        {
+          "id": "paris-family-4d",
+          "file": "/routes/fr-paris-family-4d.html",
+          "city": "파리",
+          "title": "파리 가족 4일 루트",
+          "subtitle": "어른 2(40대 중후반) + 16세 + 12세 · 몽토르게이유 숙소 · 11월 말",
+          "tags": ["가족", "4일", "겨울"],
+          "days": "4일",
+          "source": "핵심 동선 가이드 가족 재구성",
+          "updated": "2026-07"
+        }
+      ]
+    },
+    {
+      "code": "be",
+      "name": "벨기에",
+      "flag": "🇧🇪",
+      "routes": []
+    }
+  ]
+}

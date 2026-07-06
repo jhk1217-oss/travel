@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>파리 가족 4일 루트 — 어른 2 + 16세 + 12세</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@600;800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F6EFE2; --paper:#FFFDF7; --ink:#242B3A; --navy:#1B2A4A; --gold:#C6A02B; --line:#E4D9C2; --mut:#8A7F68;
+  --d1:#2C6E9B; --d1bg:#EBF2F7; --d2:#B07A1F; --d2bg:#F8F1E2; --d3:#B3403A; --d3bg:#F9ECEA; --d4:#7D4A75; --d4bg:#F5EDF4;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--cream);color:var(--ink);line-height:1.78;font-size:15.5px}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px}
+b,strong{font-weight:700}
+nav{position:sticky;top:0;z-index:60;background:rgba(27,42,74,.97);backdrop-filter:blur(4px)}
+nav .wrap{display:flex;gap:2px;overflow-x:auto;white-space:nowrap}
+nav a{color:#EFE6D0;text-decoration:none;font-size:13.5px;font-weight:700;padding:12px 11px;display:inline-flex;align-items:center;gap:6px}
+nav a .dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+nav a:hover{background:rgba(255,255,255,.08)}
+.hero{background:var(--navy);color:#F4EDDC;padding:56px 0 44px;text-align:center}
+.hero .lines{display:flex;justify-content:center;gap:8px;margin-bottom:22px}
+.hero .lines span{width:48px;height:6px;border-radius:3px}
+.hero h1{font-family:'Hahmlet',serif;font-weight:800;font-size:38px;letter-spacing:-1px;line-height:1.25}
+.hero p.sub{margin-top:14px;color:#CBBE9E;font-size:15px}
+.hero .chips{margin-top:18px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+.hero .chips span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:99px;padding:4px 14px;font-size:13px}
+section{padding:34px 0;scroll-margin-top:58px}
+h2.sec{font-family:'Hahmlet',serif;font-weight:800;font-size:26px;letter-spacing:-.5px;margin-bottom:6px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:14px 0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+table{width:100%;border-collapse:collapse;background:var(--paper);font-size:14px;margin:12px 0;border-radius:10px;overflow:hidden}
+th{background:var(--navy);color:#F4EDDC;font-weight:700;text-align:left}
+th,td{padding:10px 12px;border:1px solid var(--line);vertical-align:top}
+tr:nth-child(even) td{background:#FBF7EC}
+.rhead{border-radius:16px;padding:24px 24px;color:#fff;margin-bottom:4px}
+.rhead .no{font-size:12px;letter-spacing:3px;font-weight:900;opacity:.85}
+.rhead h2{font-family:'Hahmlet',serif;font-weight:800;font-size:27px;margin-top:4px;letter-spacing:-.5px}
+.rhead p{margin-top:8px;font-size:14px;opacity:.92}
+.sumline{border-radius:12px;padding:13px 16px;font-size:13.8px;margin:12px 0;border:1px dashed}
+.mapcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:16px 0;box-shadow:0 8px 24px rgba(27,42,74,.08)}
+.mapcard .mtitle{padding:11px 16px;font-weight:900;font-size:14px;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.mapcard iframe{width:100%;height:390px;border:0;display:block}
+.mapcard .mfoot{padding:10px 16px;font-size:12.5px;color:var(--mut);display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.btn{display:inline-block;background:var(--navy);color:#F4EDDC;padding:9px 16px;border-radius:99px;text-decoration:none;font-weight:700;font-size:13px}
+.btn:hover{background:#2A3D66}
+.tl{position:relative;padding-left:40px;margin-top:14px}
+.tl::before{content:"";position:absolute;left:15px;top:10px;bottom:10px;width:6px;border-radius:3px;background:var(--ac,#2C6E9B)}
+.stop{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:13px;padding:15px 18px;margin:12px 0;box-shadow:0 2px 8px rgba(27,42,74,.04)}
+.stop::before{content:attr(data-t);position:absolute;left:-40px;top:14px;width:30px;height:30px;border-radius:50%;background:var(--ac,#2C6E9B);color:#fff;font-weight:900;font-size:10.5px;display:flex;align-items:center;justify-content:center;border:3px solid var(--cream)}
+.stop h3{font-size:17.5px;font-weight:900;letter-spacing:-.3px;line-height:1.4}
+.stop h3 small{font-weight:500;color:var(--mut);font-size:13px}
+.stop ul{margin:8px 0 0 18px}
+.stop li{margin:5px 0}
+.stop .kid{margin-top:10px;background:#EAF3EA;border-left:4px solid #4E8B4E;border-radius:8px;padding:9px 12px;font-size:13.8px}
+.stop .tip{margin-top:10px;background:#FCF6E6;border-left:4px solid var(--gold);border-radius:8px;padding:9px 12px;font-size:13.8px}
+.leg{position:relative;display:flex;align-items:center;flex-wrap:wrap;gap:8px;color:var(--mut);font-size:13px;padding:3px 0 3px 8px}
+.leg::before{content:"▾";position:absolute;left:-30px;color:var(--ac,#2C6E9B);font-size:15px}
+.dir{background:var(--paper);border:1.5px solid var(--ac,#2C6E9B);color:var(--ac,#2C6E9B);border-radius:99px;padding:2px 12px;font-size:12px;font-weight:900;text-decoration:none}
+.dir:hover{background:var(--ac,#2C6E9B);color:#fff}
+.tg{display:inline-block;font-size:11px;font-weight:900;padding:2px 9px;border-radius:99px;margin-left:5px;vertical-align:2px}
+.tg-eat{background:#F4E5CE;color:#8A5A18}
+.tg-photo{background:#E3EDF5;color:#2C6E9B}
+.tg-warn{background:#F7DDD4;color:#A5391D}
+.tg-book{background:#F2E8C8;color:#8A6D0E}
+.tg-view{background:#E8E0EF;color:#6B3E85}
+.tg-kid{background:#E2EFE2;color:#3D7A3D}
+.d1sec{--ac:var(--d1)} .d2sec{--ac:var(--d2)} .d3sec{--ac:var(--d3)} .d4sec{--ac:var(--d4)}
+footer{background:var(--navy);color:#B9AB8B;text-align:center;padding:34px 16px;font-size:13px;margin-top:40px}
+@media(max-width:640px){.hero h1{font-size:27px}.mapcard iframe{height:300px}body{font-size:15px}.stop{padding:14px 14px}.tl{padding-left:36px}.stop::before{left:-36px;width:27px;height:27px}.grid2{grid-template-columns:1fr}}
+@media print{nav,.mapcard iframe{display:none}}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+<a href="/" title="루트 목록">🏠 홈</a>
+<a href="#prep">준비</a>
+<a href="#d1"><span class="dot" style="background:var(--d1)"></span>Day 1 시테섬·마레</a>
+<a href="#d2"><span class="dot" style="background:var(--d2)"></span>Day 2 루브르·튈르리</a>
+<a href="#d3"><span class="dot" style="background:var(--d3)"></span>Day 3 개선문·에펠탑</a>
+<a href="#d4"><span class="dot" style="background:var(--d4)"></span>Day 4 생제르맹·몽마르트르</a>
+<a href="#rules">가족 수칙</a>
+</div></nav>
+
+<header class="hero">
+<div class="wrap">
+<div class="lines"><span style="background:var(--d1)"></span><span style="background:var(--d2)"></span><span style="background:var(--d3)"></span><span style="background:var(--d4)"></span></div>
+<h1>파리 가족 4일 루트</h1>
+<p class="sub">몽토르게이유 숙소 출발 · 2026년 11월 말 기준</p>
+<div class="chips"><span>👨‍👩 어른 2 (40대 중후반)</span><span>🧑 16세</span><span>🧒 12세</span><span>🌇 일출 8:20 · 일몰 17:00경</span></div>
+</div>
+</header>
+
+<main class="wrap">
+
+<section id="prep">
+<h2 class="sec">출발 전 준비</h2>
+<div class="grid2">
+<div class="card" style="border-left:6px solid var(--gold)">
+<h3 style="font-size:16px;font-weight:900">🎟 예약 체크리스트 (한국에서 미리)</h3>
+<ul style="margin:8px 0 0 18px">
+<li><b>노트르담:</b> 입장 무료지만 공식 앱/사이트 <b>시간대 예약</b> — Day 1 오후 시간대</li>
+<li><b>루브르:</b> Day 2 <b>오전 9시 입장권</b>(시간지정)</li>
+<li><b>오랑주리:</b> Day 2 오후 (오르세 콤보는 오르세 갈 경우만)</li>
+<li><b>개선문 전망대:</b> Day 3 오후 4시경</li>
+<li><b>가르니에 발레(선택):</b> 일정 맞는 저녁 — 언어 몰라도 온 가족이 즐기는 파리 공연 1순위</li>
+</ul>
+</div>
+<div class="card" style="border-left:6px solid var(--gold)">
+<h3 style="font-size:16px;font-weight:900">🎒 준비물 (11월 말 파리)</h3>
+<ul style="margin:8px 0 0 18px">
+<li>보온 내의·장갑·목도리 — 관람 대기줄이 춥다</li>
+<li>접이식 우산(비 잦음), 방수 신발</li>
+<li><b>앞으로 매는 크로스백</b>(전원), 뒷주머니 사용 금지</li>
+<li>보조배터리 2개 — 길찾기 버튼을 계속 쓰게 된다</li>
+<li>교통권: 나비고 이지 또는 모바일 티켓(버스·지하철·푸니쿨라 공용)</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<b>하루 구조 공식:</b> 오전 1개 메인(예약) → 점심 → 오후 걷기 코스 → <b>16:30~17:00 노을 포인트</b>(11월 일몰이 17시라 저녁 일정이 짧고 진하다) → 야경 1개 → 19시대 저녁 → 귀가. 하루 도보 4~6km, 12세 기준 <b>오후 카페 휴식 1회 고정.</b>
+</div>
+</section>
+
+<section id="d1" class="d1sec">
+<div class="rhead" style="background:var(--d1)">
+<div class="no">DAY 1 · 도보 약 6km</div>
+<h2>마레 → 시테섬 → 노을 → 시청 야경</h2>
+<p>숙소에서 전부 도보권. 첫날은 지하철 없이 파리 옛 중심부에 적응하는 날</p>
+</div>
+<div class="sumline" style="background:var(--d1bg);border-color:var(--d1)"><b>예약:</b> 노트르담 14:00 시간대. <b>노을 포인트:</b> 16:40 퐁뇌프 꼭짓점.</div>
+
+<div class="mapcard">
+<div class="mtitle" style="background:var(--d1)">🗺 Day 1 지도 — 숙소 → 마레 → 시테섬 → 시청</div>
+<iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?saddr=Rue+Montorgueil,+Paris&daddr=Place+des+Vosges+to:Notre-Dame+de+Paris+to:Sainte-Chapelle+to:Pont+Neuf,+Paris+to:Hotel+de+Ville,+Paris&dirflg=w&hl=ko&output=embed"></iframe>
+<div class="mfoot"><span>전 구간 도보</span><a class="btn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Rue+Montorgueil+Paris&destination=Hotel+de+Ville+Paris&waypoints=Place+des+Vosges%7CNotre-Dame+de+Paris%7CSainte-Chapelle+Paris%7CPont+Neuf+Paris&travelmode=walking">구글맵에서 전체 동선 열기 →</a></div>
+</div>
+
+<div class="tl">
+<div class="leg" style="padding-top:0">숙소(몽토르게이유) → 도보 약 15분 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Rue+Montorgueil+Paris&destination=Place+des+Vosges&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-t="10:00">
+<h3>보주 광장 · 빅토르 위고의 집 · 쉴리 저택 <span class="tg tg-kid">🧒</span></h3>
+<ul>
+<li>왕(앙리 4세)이 친한 이들과 모여 살려고 지은 광장 — 36채가 광장을 둘러싼다.</li>
+<li><b>빅토르 위고의 집(무료):</b> 레미제라블의 작가가 16년 산 집. 아이들에게 "장발장 쓴 사람 집"으로 소개하면 통한다.</li>
+<li><b>쉴리 저택 기념품점:</b> 국립기념물센터 굿즈샵 — 가벼운 선물 미리 조달.</li>
+</ul>
+<div class="kid">🧒 마레는 파리의 성수동 — 낙후 지역이 보존을 택해 최고 핫플이 된 이야기를 16세에게. 골목 구경하며 이동.</div>
+</div>
+<div class="leg">도보 약 5분 · 로지에 거리로 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Place+des+Vosges&destination=Rue+des+Rosiers+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-t="12:00">
+<h3>점심 — 마레 유대인 지구 팔라펠 <span class="tg tg-eat">🥙</span></h3>
+<ul>
+<li>줄이 길어도 회전이 빠르다. 포장해서 먹으며 걷기 좋은 메뉴.</li>
+<li>디저트는 골목 과일가게 — <b>마트의 2~3배 가격, 맛은 10배. 납작복숭아류는 무조건 이런 가게에서.</b></li>
+</ul>
+</div>
+<div class="leg">도보 약 12분 · 센강 건너 시테섬 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Rue+des+Rosiers+Paris&destination=Notre-Dame+de+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-t="14:00">
+<h3>노트르담 대성당 <span class="tg tg-book">🎟 14:00 예약</span></h3>
+<ul>
+<li>노트르(우리의)+담(여인) = 성모 마리아. 정식 명칭 카테드랄 노트르담 드 파리.</li>
+<li>화재 복구 후 재개장 — 내부 무료, 예약 시간 10분 전 도착.</li>
+</ul>
+</div>
+<div class="leg">도보 약 4분 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Notre-Dame+de+Paris&destination=Shakespeare+and+Company+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-t="14:50">
+<h3>셰익스피어 앤 컴퍼니 서점 <span class="tg tg-photo">📸</span><span class="tg tg-kid">🧑</span></h3>
+<ul>
+<li>헤밍웨이의 단골 영문 서점. <b>16세 기념 영문책 한 권</b> — 여기 도장이 찍힌 책은 평생 남는 기념품.</li>
+</ul>
+</div>
+<div class="leg">도보 약 7분 · 다시 시테섬 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Shakespeare+and+Company+Paris&destination=Sainte-Chapelle+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-t="15:20">
+<h3>생트샤펠 <span class="tg tg-book">🎟</span></h3>
+<ul>
+<li>성서 1,300여 장면의 스테인드글라스. 오후 햇살 시간대라 관람 최적.</li>
+</ul>
+</div>
+<div class="leg">도보 약 2분 · 같은 단지 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Sainte-Chapelle+Paris&destination=Conciergerie+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-t="15:50">
+<h3>콩시에르주리 <span class="tg tg-kid">🧒 체험보고서</span></h3>
+<ul>
+<li>프랑스 최초 왕궁 → 혁명재판소·감옥. <b>마리 앙투아네트가 사형 판결을 받고 수감된 곳</b> — 당시 모습 재현.</li>
+</ul>
+<div class="kid">🧒 12세 미션: 사진 3장 + 느낀 점 3줄 = <b>체험학습 보고서 완성.</b> 세계사 수업에서 마리 앙투아네트 나올 때마다 "나 저기 가봤어".</div>
+</div>
+<div class="leg">도보 약 6분 · 센강 따라 서쪽 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Conciergerie+Paris&destination=Pont+Neuf+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-t="16:40">
+<h3>퐁뇌프 &amp; 시테섬 꼭짓점 — 노을 <span class="tg tg-photo">📸</span><span class="tg tg-warn">⚠</span></h3>
+<ul>
+<li>파리에서 가장 오래된 다리(1607). 다리 중앙 <b>앙리 4세 기마상 양옆 계단으로 내려가면</b> 서향 꼭짓점 — 11월 일몰 17:00에 정확히 맞는 노을 명당.</li>
+<li>어른은 와인 <b>딱 1잔</b>, 아이들은 주스.</li>
+</ul>
+<div class="kid">⚠️ <b>울타리가 전혀 없다.</b> 12세는 물가에서 한 걸음 안쪽으로 — 도착하자마자 선 긋기.</div>
+</div>
+<div class="leg">도보 약 10분 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Pont+Neuf+Paris&destination=Hotel+de+Ville+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-t="17:40">
+<h3>시청 야경 &amp; 회전목마 <span class="tg tg-photo">📸</span></h3>
+<ul>
+<li>가로등 불빛의 돌바닥 반사 + 간접조명 + 회전목마. 겨울엔 스케이트장이 열리기도 한다.</li>
+<li>로베르 두아노의 '시청 앞 키스' 촬영지 — 부부 사진 한 컷은 아이들에게 맡길 것.</li>
+</ul>
+</div>
+<div class="leg">저녁 후 도보 약 12분 귀가 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Hotel+de+Ville+Paris&destination=Rue+Montorgueil+Paris&travelmode=walking">길찾기</a></div>
+</div>
+</section>
+
+<section id="d2" class="d2sec">
+<div class="rhead" style="background:var(--d2)">
+<div class="no">DAY 2 · 도보 약 5km</div>
+<h2>루브르 → 튈르리 → 오랑주리 → 크리스마스 마켓</h2>
+<p>미술관은 하루 1.5개가 가족의 한계 — 루브르는 하이라이트만, 오랑주리는 짧고 진하게</p>
+</div>
+<div class="sumline" style="background:var(--d2bg);border-color:var(--d2)"><b>예약:</b> 루브르 09:00 입장. <b>규칙:</b> 루브르 체류 2시간 30분 상한 — 지치기 전에 나온다.</div>
+
+<div class="mapcard">
+<div class="mtitle" style="background:var(--d2)">🗺 Day 2 지도 — 숙소 → 루브르 → 튈르리 → 콩코르드</div>
+<iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?saddr=Rue+Montorgueil,+Paris&daddr=Louvre+Museum,+Paris+to:Angelina+226+Rue+de+Rivoli+to:Orangerie+Museum,+Paris+to:Place+de+la+Concorde&dirflg=w&hl=ko&output=embed"></iframe>
+<div class="mfoot"><span>전 구간 도보 · 정원 안에서 충분히 쉬기</span><a class="btn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Rue+Montorgueil+Paris&destination=Place+de+la+Concorde&waypoints=Louvre+Museum+Paris%7CAngelina+226+Rue+de+Rivoli+Paris%7CJardin+des+Tuileries%7COrangerie+Museum+Paris&travelmode=walking">구글맵에서 전체 동선 열기 →</a></div>
+</div>
+
+<div class="tl">
+<div class="leg" style="padding-top:0">숙소 → 도보 약 12분 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Rue+Montorgueil+Paris&destination=Louvre+Museum+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-t="09:00">
+<h3>루브르 박물관 — 하이라이트 2시간 30분 <span class="tg tg-book">🎟 09:00</span><span class="tg tg-kid">🧒 미션</span></h3>
+<ul>
+<li>동선: 모나리자 → 밀로의 비너스 → 사모트라케의 니케 → 나폴레옹 대관식 → 아폴론 갤러리. 개장 직후가 유일하게 덜 붐비는 시간.</li>
+<li>스토리 요약(아이들 버전): 요새 → 샤를 5세의 왕궁 → 프랑수아 1세가 <b>다빈치를 초빙</b>(모나리자가 여기 있는 이유) → 혁명으로 국민의 박물관.</li>
+</ul>
+<div class="kid">🧒 가족 미션: 천장에서 <b>앙리 2세의 H와 애인 디안의 D 이니셜</b> 찾기 — 왕이 궁 곳곳에 애인 이니셜을 새겨 놓았다. 먼저 찾는 사람이 디저트 선택권.</div>
+</div>
+<div class="leg">도보 약 5분 · 리볼리 거리 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Louvre+Museum+Paris&destination=Angelina+226+Rue+de+Rivoli+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-t="11:45">
+<h3>안젤리나 — 테이크아웃 <span class="tg tg-eat">🍰</span></h3>
+<ul>
+<li>몽블랑·에클레어 + <b>아이들은 명물 핫초코.</b> 내부는 항상 만원 — 포장해서 정원으로.</li>
+</ul>
+</div>
+<div class="leg">도보 약 2분 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Angelina+226+Rue+de+Rivoli+Paris&destination=Jardin+des+Tuileries&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-t="12:00">
+<h3>튈르리 정원 — 초록 의자 + 크리스마스 마켓 <span class="tg tg-eat">🌰</span><span class="tg tg-kid">🧒</span></h3>
+<ul>
+<li>초록 철제 의자에 앉아 루브르 배경으로 디저트 — 가족사진 명당.</li>
+<li>11월 말이면 <b>튈르리 크리스마스 마켓 개장 시즌:</b> 군밤 한 봉지 + 아이들 놀이기구. 상품·음식 수준엔 기대치 낮추고 "예쁜 야시장"으로 즐길 것.</li>
+<li>점심은 마켓 부스 또는 리볼리 거리 카페.</li>
+</ul>
+</div>
+<div class="leg">도보 약 6분 · 정원 서쪽 끝 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Jardin+des+Tuileries&destination=Orangerie+Museum+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-t="14:30">
+<h3>오랑주리 미술관 — 모네 수련 <span class="tg tg-book">🎟</span></h3>
+<ul>
+<li>왕실 오렌지 온실을 개조한 미술관. 타원형 전시실 2곳의 <b>수련 8점</b> — 중앙 의자에 온 가족이 앉아 10분 멍때리기. 소요 40~60분이라 12세도 부담 없다.</li>
+</ul>
+</div>
+<div class="leg">도보 약 3분 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Orangerie+Museum+Paris&destination=Place+de+la+Concorde&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-t="15:45">
+<h3>콩코르드 광장</h3>
+<ul>
+<li>루이 16세·마리 앙투아네트의 처형지 → '화합'의 광장. <b>어제 콩시에르주리에서 본 이야기의 결말</b>을 아이들과 여기서 잇는다.</li>
+<li>정중앙 오벨리스크는 이집트 왕이 프랑스 왕에게 선물한 것.</li>
+</ul>
+<div class="tip">💡 이후 선택: 체력 남으면 다리 건너 <b>오르세(도보 9분)</b> 추가 / 아니면 생토노레 거리 구경 → 저녁 → 귀가. <a target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Place+de+la+Concorde&destination=Orsay+Museum+Paris&travelmode=walking" style="color:var(--ac);font-weight:700">오르세 길찾기</a></div>
+</div>
+<div class="leg">버스/지하철 약 15분 귀가 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Place+de+la+Concorde&destination=Rue+Montorgueil+Paris&travelmode=transit">길찾기</a></div>
+</div>
+</section>
+
+<section id="d3" class="d3sec">
+<div class="rhead" style="background:var(--d3)">
+<div class="no">DAY 3 · 도보 약 4.5km + 계단 284</div>
+<h2>샹젤리제 → 개선문 노을 → 추모식 → 에펠탑 야경</h2>
+<p>오전은 통째로 휴식(3일째 체력 관리) — 오후·밤에 몰아치는 하이라이트 데이</p>
+</div>
+<div class="sumline" style="background:var(--d3bg);border-color:var(--d3)"><b>예약:</b> 개선문 전망대 16:00경. <b>시간 공식:</b> 16시 전망대(노을→야경 전환) → 17:30 하강 → <b>17:50 횃불 앞 → 18:00 추모식.</b></div>
+
+<div class="mapcard">
+<div class="mtitle" style="background:var(--d3)">🗺 Day 3 지도 — 콩코르드 → 개선문 → 트로카데로 → 에펠탑</div>
+<iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?saddr=Place+de+la+Concorde&daddr=Arc+de+Triomphe+to:Place+du+Trocadero,+Paris+to:Eiffel+Tower&dirflg=w&hl=ko&output=embed"></iframe>
+<div class="mfoot"><span>개선문→트로카데로는 30번 버스</span><a class="btn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Place+de+la+Concorde&destination=Eiffel+Tower&waypoints=Arc+de+Triomphe%7CPlace+du+Trocadero+Paris&travelmode=walking">구글맵에서 전체 동선 열기 →</a></div>
+</div>
+
+<div class="tl">
+<div class="leg" style="padding-top:0">숙소 → 지하철/버스 약 20분, 샹젤리제 롱푸앵 하차 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Rue+Montorgueil+Paris&destination=Rond-Point+des+Champs-Elysees+Paris&travelmode=transit">길찾기</a></div>
+
+<div class="stop" data-t="14:00">
+<h3>샹젤리제 거리 — 위쪽 절반만</h3>
+<ul>
+<li>하단 가로수길은 스킵(올해 크리스마스 마켓은 튈르리) — <b>로터리(롱푸앵)부터 개선문까지</b>만 쇼윈도 구경하며 걷는다.</li>
+<li>현실은 명동(프랑스인 5%) — 기대치는 낮게, 인파 속 소지품은 앞으로.</li>
+</ul>
+</div>
+<div class="leg">도보 약 15분 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Rond-Point+des+Champs-Elysees+Paris&destination=Arc+de+Triomphe&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-t="16:00">
+<h3>개선문 전망대 — 노을 <span class="tg tg-book">🎟</span><span class="tg tg-view">🌇</span><span class="tg tg-kid">🧒 계단 284</span></h3>
+<ul>
+<li>나폴레옹이 짓고 완공 전에 실각한 문 — 첫 개선식은 프로이센의 비스마르크가 했다는 역사까지 아이들에게.</li>
+<li><b>파리 최고의 조망:</b> 에펠탑 전망대에선 에펠탑이 안 보이지만 여기선 보인다. 12개 도로의 방사형 + 노을→야경 전환을 위에서.</li>
+<li>엘리베이터 없음 — 계단 284개, 중간중간 쉬며 천천히.</li>
+</ul>
+</div>
+<div class="leg">17:30 하강 · 지하보도로 광장 중앙 이동 (도로 12개 교차 — 절대 지상 횡단 금지)</div>
+
+<div class="stop" data-t="18:00">
+<h3>무명용사 추모식 <span class="tg tg-kid">🧒</span></h3>
+<ul>
+<li><b>매일 18:00, 1차대전 무명용사의 꺼지지 않는 횃불 앞 추모식.</b> 꽃을 든 아이들 → 참전용사 → 군악대. 17:50까지 횃불 앞 도착.</li>
+<li>보다가 우는 어른이 많은 행사 — 아이들에게 오늘의 한 장면으로 남는다.</li>
+</ul>
+</div>
+<div class="leg">30번 버스 약 8분 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Arc+de+Triomphe&destination=Place+du+Trocadero+Paris&travelmode=transit">길찾기</a></div>
+
+<div class="stop" data-t="18:40">
+<h3>트로카데로 + 모노프리 보급 <span class="tg tg-eat">🥪</span><span class="tg tg-photo">📸</span></h3>
+<ul>
+<li>버스에서 내리면 맞은편 <b>모노프리</b> — 간식·음료·핫팩 보급.</li>
+<li>언덕 난간 앞이 에펠탑 전신샷 명당(탑 바로 앞에선 다 안 들어온다).</li>
+</ul>
+</div>
+<div class="leg">도보 약 12분 · 계단으로 내려가 <b>드빌리 다리(차 없는 인도교)</b> 경유 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Place+du+Trocadero+Paris&destination=Eiffel+Tower&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-t="19:00">
+<h3>에펠탑 야경 <span class="tg tg-photo">📸</span><span class="tg tg-warn">⚠</span><span class="tg tg-kid">🧒 정각 반짝임</span></h3>
+<ul>
+<li><b>매시 정각 5분간 반짝이는 조명 쇼</b> — 19:00 타임을 드빌리 다리나 탑 아래에서.</li>
+<li>스토리: "검은 굴뚝"이라 욕먹던 탑이 라디오 송신탑이 되며 살아남아 파리의 상징이 된 이야기.</li>
+<li>⚠️ 탑 아래·대기줄은 소매치기 최다 구역 — 가방 앞으로, 폰은 손에서 놓지 않기.</li>
+</ul>
+</div>
+<div class="leg">에펠탑 앞 정류장에서 <b>72번 버스 · 진행 방향 오른쪽 좌석</b> — 센강변 야경으로 여행 되감기, 약 35분 후 시청 하차 → 도보 10분 귀가 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Eiffel+Tower&destination=Hotel+de+Ville+Paris&travelmode=transit">길찾기</a></div>
+
+<div class="stop" data-t="20:15">
+<h3>저녁 — 몽토르게이유 거리 <span class="tg tg-eat">🍽</span></h3>
+<ul>
+<li>숙소 앞 몽토르게이유는 식당·빵집 거리 — 늦은 저녁도 선택지가 많다.</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section id="d4" class="d4sec">
+<div class="rhead" style="background:var(--d4)">
+<div class="no">DAY 4 · 도보 약 6km</div>
+<h2>생제르맹 카페 → 팔레 루아얄 → 오페라 → 몽마르트르</h2>
+<p>피카소 로드를 가족 버전으로 — 지식인의 카페에서 시작해 예술가의 언덕에서 끝나는 날</p>
+</div>
+<div class="sumline" style="background:var(--d4bg);border-color:var(--d4)"><b>선택 예약:</b> 가르니에 발레(저녁) — 예매했다면 몽마르트르를 서둘러 마치고 복귀. <b>주의:</b> 몽마르트르는 소매치기·팔찌단 구역, 출발 전 아이들 브리핑.</div>
+
+<div class="mapcard">
+<div class="mtitle" style="background:var(--d4)">🗺 Day 4 전반 지도 — 생제르맹 → 팔레 루아얄 → 오페라</div>
+<iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?saddr=Les+Deux+Magots,+Paris&daddr=Palais+Royal,+Paris+to:Palais+Garnier+to:Galeries+Lafayette+Haussmann&dirflg=w&hl=ko&output=embed"></iframe>
+<div class="mfoot"><span>생제르맹→팔레 루아얄은 95번 버스(피라미드 차창 뷰)</span><a class="btn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Les+Deux+Magots+Paris&destination=Galeries+Lafayette+Haussmann&waypoints=Palais+Royal+Paris%7CPalais+Garnier&travelmode=walking">구글맵에서 전체 동선 열기 →</a></div>
+</div>
+
+<div class="tl">
+<div class="leg" style="padding-top:0">숙소 → 지하철 약 20분 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Rue+Montorgueil+Paris&destination=Les+Deux+Magots+Paris&travelmode=transit">길찾기</a></div>
+
+<div class="stop" data-t="09:00">
+<h3>카페 드 플로르 / 레 되 마고 — 파리식 아침 <span class="tg tg-eat">☕</span></h3>
+<ul>
+<li>지식인들의 카페에서 <b>에스프레소+크루아상, 아이들은 핫초코.</b> 비싸지만 현지인 비율이 가장 높은 '관광지'이자 사르트르와 보부아르가 매일 글을 쓰던 자리 — 이 아침이 파리의 정수다.</li>
+<li>맞은편 브라스리 립은 피카소의 아지트였다 — 오늘 하루의 주인공 소개.</li>
+</ul>
+</div>
+<div class="leg">도보 약 1분 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Les+Deux+Magots+Paris&destination=Eglise+Saint-Germain-des-Pres+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-t="09:50">
+<h3>생제르맹 데프레 성당</h3>
+<ul>
+<li><b>현존 파리에서 가장 오래된 성당</b> — 맞은편 초대형 루이비통과의 대비(금욕 vs 사치)가 지극히 파리답다.</li>
+<li>고가품 쇼핑 계획이 있다면 소매치기 없는 이 동네에서 — 단 오늘은 일정이 기니 눈도장만.</li>
+</ul>
+</div>
+<div class="leg">95번 버스 약 12분 — <b>루브르 안뜰 통과, 차창으로 피라미드</b> 왼쪽 창가에 아이들 앉히기 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Eglise+Saint-Germain-des-Pres+Paris&destination=Palais+Royal+Paris&travelmode=transit">길찾기</a></div>
+
+<div class="stop" data-t="10:45">
+<h3>팔레 루아얄 &amp; 갤러리 비비엔 <span class="tg tg-photo">📸</span></h3>
+<ul>
+<li>5살 루이 14세가 살던 '왕의 궁전'. 저택이 둘러싼 정원 산책 + 연결된 파사주 <b>갤러리 비비엔.</b></li>
+</ul>
+</div>
+<div class="leg">도보 약 4분 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Palais+Royal+Paris&destination=Sanukiya+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-t="11:30">
+<h3>점심 — 사누키야 우동 + 한국 마트 <span class="tg tg-eat">🍜</span><span class="tg tg-kid">🧒</span></h3>
+<ul>
+<li>나흘째 프랑스 음식에 물릴 타이밍 — <b>뜨끈한 우동 국물</b>로 온 가족 리셋. 오픈 직전 도착해 줄 최소화.</li>
+<li>근처 <b>한국 마트</b>에서 컵라면·간식 보급(수출용 라면이 더 맛있다).</li>
+</ul>
+</div>
+<div class="leg">버스 5분 / 도보 13분 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Sanukiya+Paris&destination=Palais+Garnier&travelmode=transit">길찾기</a></div>
+
+<div class="stop" data-t="13:00">
+<h3>오페라 가르니에 <span class="tg tg-book">🎟 발레는 저녁 옵션</span></h3>
+<ul>
+<li>파사드에서 <b>N·E 이니셜(나폴레옹 3세·황후 외제니)과 에메랄드 돔(황제의 왕관)</b> 찾기.</li>
+<li>'오페라의 유령'의 실제 무대 — 지하수 배수 8개월 + 1896년 샹들리에 추락이 소설의 모티브. <b>2층 5번 박스석은 유령의 자리로 비워둬 예매 불가.</b></li>
+<li>내부(샤갈 천장화)는 입장 14유로보다 <b>발레 공연으로 보는 게 정답</b> — 예매했다면 저녁에 재방문.</li>
+</ul>
+</div>
+<div class="leg">도보 약 4분 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Palais+Garnier&destination=Galeries+Lafayette+Haussmann&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-t="13:45">
+<h3>갤러리 라파예트 — 크리스마스 장식 + 옥상 <span class="tg tg-view">🌇 무료</span><span class="tg tg-photo">📸</span></h3>
+<ul>
+<li>11월 말 = <b>크리스마스 장식 절정기.</b> 중앙 돔 아래 대형 트리 관람.</li>
+<li><b>옥상 무료 개방 — 파리 전경</b>(가르니에 지붕·에펠탑까지). 30분 컷.</li>
+</ul>
+</div>
+<div class="leg">도보 7분 → <b>생라자르역(⚠️소지품)</b> → 12호선 6분 → 아베스 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Galeries+Lafayette+Haussmann&destination=Abbesses+Paris&travelmode=transit">길찾기</a></div>
+
+<div class="stop" data-t="15:00">
+<h3>아베스역 — 몽마르트르 진입 <span class="tg tg-warn">⚠ 브리핑</span></h3>
+<ul>
+<li>파리에서 가장 깊은 역 — <b>계단 말고 무조건 엘리베이터</b>(초대형 2대).</li>
+<li>지상에서 <b>아르누보 원본 출구</b>(기마르가 직접 작업한 유일한 출구) 한 바퀴.</li>
+<li>여기서부터 소매치기·야바위·팔찌단 구역 — 개찰구 나오기 전 아이들과 3원칙 복창(아래 가족 수칙).</li>
+</ul>
+</div>
+<div class="leg">도보 약 1분 · 출구 맞은편 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Abbesses+Paris&destination=Le+Mur+des+Je+t%27aime+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-t="15:10">
+<h3>사랑해 벽 <span class="tg tg-photo">📸</span><span class="tg tg-kid">🧒</span></h3>
+<ul>
+<li>250개 언어로 '사랑해' 311번 — <b>한글 '사랑해' 찾기 미션.</b> 남색 벽이라 인물 사진이 화사하다.</li>
+</ul>
+</div>
+<div class="leg">도보 약 4분 · <b>출구를 등지고 왼쪽 평지로 직진</b> → 푸니쿨라(교통권으로 탑승, 언덕 4/5 커버) <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Le+Mur+des+Je+t%27aime+Paris&destination=Funiculaire+de+Montmartre&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-t="15:30">
+<h3>사크레쾨르 대성당 <span class="tg tg-view">🌇 파노라마</span><span class="tg tg-kid">🧒</span></h3>
+<ul>
+<li>보불전쟁 패배 후 <b>국민 모금으로</b> 지은 순백의 성당.</li>
+<li>내부 각국 순교자 초상 중 <b>한복 입은 김대건 신부 초상 찾기</b> — 아이들이 가장 기억하는 포인트.</li>
+<li>성당을 등지고 뒤돌면 파리 파노라마. 몽마르트르 = '순교자의 언덕'(생드니 참수 전설).</li>
+</ul>
+</div>
+<div class="leg">도보 약 3분 · 성당에서 왼쪽, 인파를 따라 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Basilique+du+Sacre-Coeur&destination=Place+du+Tertre&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-t="16:10">
+<h3>테르트르 광장 — 가족 초상화 <span class="tg tg-kid">🧒</span></h3>
+<ul>
+<li>시청 오디션을 통과한 초상화가들만 앉는 광장(한국인 화가 1명 활동) — <b>가족 초상 1점</b>이 이번 여행 최고의 기념품. 가격·소요시간은 그리기 전에 확정.</li>
+<li>당시 화가들이 실제 그리던 곳은 아니다 — 진짜는 다음 골목에.</li>
+</ul>
+</div>
+<div class="leg">도보 약 2분 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Place+du+Tertre&destination=La+Bonne+Franquette+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-t="16:45">
+<h3>예술가 골목 미니 코스 <span class="tg tg-photo">📸</span></h3>
+<ul>
+<li><b>라 본 프랑케트:</b> 고흐 그림의 배경 카페 — 몽마르트르가 예술가 성지가 된 이유(음료값만 내면 죽치던 카페 문화)를 여기서.</li>
+<li>카페를 등지고 오른쪽 아래 <b>라 메종 로즈</b>(분홍집, 최초의 아카데미 여성 화가 수잔 발라동의 집) 앞에서 한 컷.</li>
+<li>내려가서 <b>바토 라부아르:</b> 피카소가 '아비뇽의 처녀들'을 처음 공개한 집 — <b>피카소가 사진 찍던 가로등에 기대 같은 구도로.</b></li>
+</ul>
+</div>
+<div class="leg">도보 약 8분 · 아베스 거리(빵집 간식) 지나 아래로 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Bateau-Lavoir+Paris&destination=Moulin+Rouge&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-t="17:30">
+<h3>물랑루즈 — 종료 컷 <span class="tg tg-photo">📸</span></h3>
+<ul>
+<li>불 켜진 <b>빨간 풍차</b> 배경 가족사진 = 4일 루트 완주. 공연은 성인용이라 사진만.</li>
+<li>바로 앞 블랑슈역(2호선)에서 귀가. 발레 예매한 날이면 가르니에로 복귀.</li>
+</ul>
+</div>
+<div class="leg">지하철 약 25분 귀가 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Moulin+Rouge&destination=Rue+Montorgueil+Paris&travelmode=transit">길찾기</a></div>
+</div>
+
+<div class="mapcard">
+<div class="mtitle" style="background:var(--d4)">🗺 Day 4 후반 지도 — 몽마르트르</div>
+<iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?saddr=Abbesses,+Paris&daddr=Basilique+du+Sacre-Coeur+to:Place+du+Tertre+to:La+Maison+Rose,+Paris+to:Bateau-Lavoir,+Paris+to:Moulin+Rouge&dirflg=w&hl=ko&output=embed"></iframe>
+<div class="mfoot"><span>언덕길 — 오르막은 푸니쿨라, 내리막만 걷는 코스</span><a class="btn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Abbesses+Paris&destination=Moulin+Rouge&waypoints=Le+Mur+des+Je+t%27aime%7CBasilique+du+Sacre-Coeur%7CPlace+du+Tertre%7CLa+Maison+Rose+Paris%7CBateau-Lavoir+Paris&travelmode=walking">구글맵에서 전체 동선 열기 →</a></div>
+</div>
+</section>
+
+<section id="rules">
+<h2 class="sec">가족 운영 수칙</h2>
+<div class="card">
+<ul style="margin-left:18px">
+<li><b>① 소매치기 3원칙(전원 복창):</b> 가방은 몸 앞 / 뒷주머니에 아무것도 넣지 않는다 / 팔찌·서명판·야바위를 들이밀면 눈 안 마주치고 통과. 위험 구역: 에펠탑 대기줄·기차역·몽마르트르·샹젤리제 인파.</li>
+<li><b>② 16세 = 내비게이터:</b> 이 파일의 [길찾기] 버튼을 16세가 담당 — 여행의 주도권을 준다.</li>
+<li><b>③ 12세 페이스:</b> 오후 카페 휴식 1회 고정, 계단 명소는 하루 1개(개선문 or 사크레쾨르)까지.</li>
+<li><b>④ 흩어졌을 때:</b> 그 자리에 멈추고 전화 — 안 되면 그날의 집결지로. Day 1 노트르담 정문 / Day 2 루브르 피라미드 / Day 3 개선문 횃불 / Day 4 사크레쾨르 정문 계단.</li>
+<li><b>⑤ 물가·난간:</b> 퐁뇌프 꼭짓점과 트로카데로 난간은 안전장치가 없다 — 사진은 어른 손 닿는 거리에서.</li>
+</ul>
+</div>
+
+<div class="card" style="border-left:6px solid var(--gold)">
+<h3 style="font-size:16px;font-weight:900">🚄 마지막 날 아침 (브뤼셀 이동일)</h3>
+<p style="margin-top:6px">짐 싸기 전 <b>몽토르게이유 거리 빵집 아침</b>으로 마무리. 시간이 남으면 시청까지 아침 산책 한 바퀴. 북역(Gare du Nord)은 소매치기 최다 역 — 탑승 전까지 가방 앞으로.</p>
+</div>
+</section>
+
+</main>
+
+<footer>파리 가족 4일 루트 · 어른 2 + 16세 + 12세 · 2026년 11월</footer>
+</body>
+</html>

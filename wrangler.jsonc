@@ -1,0 +1,8 @@
+{
+  // Cloudflare Workers — 정적 에셋 전용 배포
+  "name": "travel",
+  "compatibility_date": "2026-07-01",
+  "assets": {
+    "directory": "./public"
+  }
+}

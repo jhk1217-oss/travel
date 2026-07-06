@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>파리 핵심 동선 가이드 — 3개 루트 완전판</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@600;800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F6EFE2; --paper:#FFFDF7; --ink:#242B3A; --navy:#1B2A4A; --gold:#C6A02B; --line:#E4D9C2; --mut:#8A7F68;
+  --r1:#2C6E9B; --r1bg:#EBF2F7; --r2:#BC5638; --r2bg:#F9EFEA; --r3:#7D4A75; --r3bg:#F5EDF4;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--cream);color:var(--ink);line-height:1.78;font-size:15.5px}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px}
+b,strong{font-weight:700}
+/* nav */
+nav{position:sticky;top:0;z-index:60;background:rgba(27,42,74,.97);backdrop-filter:blur(4px)}
+nav .wrap{display:flex;gap:2px;overflow-x:auto;white-space:nowrap}
+nav a{color:#EFE6D0;text-decoration:none;font-size:13.5px;font-weight:700;padding:12px 11px;display:inline-flex;align-items:center;gap:6px}
+nav a .dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+nav a:hover{background:rgba(255,255,255,.08)}
+/* hero */
+.hero{background:var(--navy);color:#F4EDDC;padding:58px 0 46px;text-align:center;position:relative;overflow:hidden}
+.hero .lines{display:flex;justify-content:center;gap:8px;margin-bottom:22px}
+.hero .lines span{width:64px;height:6px;border-radius:3px}
+.hero h1{font-family:'Hahmlet',serif;font-weight:800;font-size:40px;letter-spacing:-1px;line-height:1.25}
+.hero p.sub{margin-top:14px;color:#CBBE9E;font-size:15px}
+.hero .meta{margin-top:20px;font-size:12.5px;letter-spacing:2px;color:#9FB0CC;text-transform:uppercase}
+/* sections */
+section{padding:36px 0;scroll-margin-top:58px}
+h2.sec{font-family:'Hahmlet',serif;font-weight:800;font-size:27px;letter-spacing:-.5px;margin-bottom:6px}
+p.lead{color:var(--mut);font-size:14.5px;margin-bottom:16px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:14px 0}
+.warncard{background:#FBEFE7;border:1px solid #E8C9B6;border-left:6px solid var(--r2);border-radius:12px;padding:16px 18px;margin:14px 0}
+table{width:100%;border-collapse:collapse;background:var(--paper);font-size:14px;margin:12px 0;border-radius:10px;overflow:hidden}
+th{background:var(--navy);color:#F4EDDC;font-weight:700;text-align:left}
+th,td{padding:10px 12px;border:1px solid var(--line);vertical-align:top}
+tr:nth-child(even) td{background:#FBF7EC}
+/* route header */
+.rhead{border-radius:16px;padding:26px 24px;color:#fff;margin-bottom:4px}
+.rhead .no{font-size:12px;letter-spacing:3px;font-weight:900;opacity:.85}
+.rhead h2{font-family:'Hahmlet',serif;font-weight:800;font-size:29px;margin-top:4px;letter-spacing:-.5px}
+.rhead p{margin-top:8px;font-size:14px;opacity:.92}
+.sumline{border-radius:12px;padding:13px 16px;font-size:13.8px;margin:12px 0;border:1px dashed}
+/* map card */
+.mapcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:16px 0;box-shadow:0 8px 24px rgba(27,42,74,.08)}
+.mapcard .mtitle{padding:11px 16px;font-weight:900;font-size:14px;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.mapcard iframe{width:100%;height:390px;border:0;display:block}
+.mapcard .mfoot{padding:10px 16px;font-size:12.5px;color:var(--mut);display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.btn{display:inline-block;background:var(--navy);color:#F4EDDC;padding:9px 16px;border-radius:99px;text-decoration:none;font-weight:700;font-size:13px}
+.btn:hover{background:#2A3D66}
+/* metro timeline */
+.tl{position:relative;padding-left:40px;margin-top:14px}
+.tl::before{content:"";position:absolute;left:15px;top:10px;bottom:10px;width:6px;border-radius:3px;background:var(--ac,#2C6E9B)}
+.stop{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:13px;padding:16px 18px;margin:12px 0;box-shadow:0 2px 8px rgba(27,42,74,.04)}
+.stop::before{content:attr(data-n);position:absolute;left:-40px;top:14px;width:30px;height:30px;border-radius:50%;background:var(--ac,#2C6E9B);color:#fff;font-weight:900;font-size:13.5px;display:flex;align-items:center;justify-content:center;border:3px solid var(--cream)}
+.stop h3{font-size:18px;font-weight:900;letter-spacing:-.3px;line-height:1.4}
+.stop h3 small{font-weight:500;color:var(--mut);font-size:13px}
+.stop ul{margin:8px 0 0 18px}
+.stop li{margin:5px 0}
+.stop .tip{margin-top:10px;background:#FCF6E6;border-left:4px solid var(--gold);border-radius:8px;padding:9px 12px;font-size:13.8px}
+.leg{position:relative;display:flex;align-items:center;flex-wrap:wrap;gap:8px;color:var(--mut);font-size:13px;padding:3px 0 3px 8px}
+.leg::before{content:"▾";position:absolute;left:-30px;color:var(--ac,#2C6E9B);font-size:15px}
+.dir{background:var(--paper);border:1.5px solid var(--ac,#2C6E9B);color:var(--ac,#2C6E9B);border-radius:99px;padding:2px 12px;font-size:12px;font-weight:900;text-decoration:none}
+.dir:hover{background:var(--ac,#2C6E9B);color:#fff}
+/* tags */
+.tg{display:inline-block;font-size:11px;font-weight:900;padding:2px 9px;border-radius:99px;margin-left:5px;vertical-align:2px}
+.tg-eat{background:#F4E5CE;color:#8A5A18}
+.tg-photo{background:#E3EDF5;color:#2C6E9B}
+.tg-warn{background:#F7DDD4;color:#A5391D}
+.tg-book{background:#F2E8C8;color:#8A6D0E}
+.tg-view{background:#E8E0EF;color:#6B3E85}
+.r1sec{--ac:var(--r1)} .r2sec{--ac:var(--r2)} .r3sec{--ac:var(--r3)}
+footer{background:var(--navy);color:#B9AB8B;text-align:center;padding:34px 16px;font-size:13px;margin-top:40px}
+@media(max-width:640px){.hero h1{font-size:29px}.mapcard iframe{height:300px}body{font-size:15px}.stop{padding:14px 14px}.tl{padding-left:36px}.stop::before{left:-36px;width:27px;height:27px}}
+@media print{nav,.mapcard iframe{display:none}}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+<a href="/" title="루트 목록">🏠 홈</a>
+<a href="#update">⚠ 업데이트</a>
+<a href="#basics">기본 원칙</a>
+<a href="#r1"><span class="dot" style="background:var(--r1)"></span>루트 1 센강 서쪽</a>
+<a href="#r2"><span class="dot" style="background:var(--r2)"></span>루트 2 마레·바스티유</a>
+<a href="#r3"><span class="dot" style="background:var(--r3)"></span>루트 3 피카소 로드</a>
+<a href="#appendix">부록</a>
+</div></nav>
+
+<header class="hero">
+<div class="wrap">
+<div class="lines"><span style="background:var(--r1)"></span><span style="background:var(--r2)"></span><span style="background:var(--r3)"></span></div>
+<h1>파리 핵심 동선 가이드</h1>
+<p class="sub">전직 파리 투어가이드 강의 전체 정리 — 3개 루트 · 정류장별 구글 길찾기 · 먹거리 · 역사</p>
+<p class="meta">PARIS &nbsp;·&nbsp; 3 ROUTES &nbsp;·&nbsp; STOP BY STOP</p>
+</div>
+</header>
+
+<main class="wrap">
+
+<section id="update">
+<h2 class="sec">⚠️ 먼저: 2026년 현재, 영상과 달라진 것</h2>
+<table>
+<tr><th style="width:22%">항목</th><th>영상 내용</th><th>2026년 현재</th></tr>
+<tr><td><b>노트르담 대성당</b></td><td>화재 공사로 입장 불가</td><td><b>2024년 12월 재개장.</b> 내부 입장 무료, 공식 사이트 시간대 예약 권장</td></tr>
+<tr><td><b>퐁피두 센터</b></td><td>방문 추천</td><td><b>2025년 9월부터 전면 보수 휴관(2030년 재개관 예정).</b> 외관만 감상 가능</td></tr>
+<tr><td><b>그랑팔레 임시관</b></td><td>샹드마르스에서 운영</td><td>올림픽 후 철거. 본관 그랑팔레는 재개장</td></tr>
+<tr><td><b>크리스마스 마켓</b></td><td>샹젤리제 하단 개최</td><td>최근 수년간 메인 마켓은 <b>튈르리 정원</b> 개최. 11월 말 여행과 시즌이 겹치니 출발 전 위치 확인</td></tr>
+</table>
+</section>
+
+<section id="basics">
+<h2 class="sec">기본 원칙 — 파리는 걷는 도시</h2>
+<div class="card">
+<ul style="margin-left:18px">
+<li>주요 명소가 <b>센강을 따라 한 줄(가로축) + 남북 한 줄(세로축, 피카소 로드)</b>로 전부 연결된다.</li>
+<li><b>지하철역 밀집도 세계 1위</b> → 2~3정거장 거리는 무조건 도보. 파리에서 지하철 타는 건 명동역에서 환승해 을지로입구역 가는 것과 같다.</li>
+<li>예시: 노트르담→루브르는 지하철로 환승 3정거장, 도보로는 1.3km. 중간에 생트샤펠·퐁뇌프·부키니스트가 다 있으니 걷는 게 정답.</li>
+<li>일정이 짧으면 아래 루트를 하루 1개씩, 여유 있으면 끊어서.</li>
+</ul>
+</div>
+<h3 style="font-size:17px;font-weight:900;margin-top:18px">버스 3노선 치트시트</h3>
+<table>
+<tr><th style="width:12%">노선</th><th>구간</th><th>활용법</th></tr>
+<tr><td><b>30번</b></td><td>트로카데로 ↔ 개선문 ↔ 몽마르트르(물랑루즈)</td><td>개선문→에펠탑 이동. 몽마르트르·개선문·에펠탑 묶음 여행</td></tr>
+<tr><td><b>72번</b></td><td>에펠탑 → 센강변 → 콩코르드 → 오르세 → 루브르 → 시청 → 노트르담</td><td><b>마지막 날 이별 코스.</b> 진행 방향 오른쪽 좌석 필수</td></tr>
+<tr><td><b>95번</b></td><td>세로축 관통: 몽파르나스 ↔ 생제르맹 ↔ 루브르 안뜰 ↔ 오페라 ↔ 몽마르트르 방면</td><td>루브르 부지 안을 통과 — 차창으로 피라미드 감상</td></tr>
+</table>
+</section>
+
+<section id="r1" class="r1sec">
+<div class="rhead" style="background:var(--r1)">
+<div class="no">ROUTE 1 · 가로축 서쪽</div>
+<h2>시테섬 → 에펠탑</h2>
+<p>노트르담 → 셰익스피어 앤 컴퍼니 → 콩시에르주리 → 생트샤펠 → 퐁뇌프 → 루브르 → 튈르리 → 오르세 → 오랑주리 → 콩코르드 → 샹젤리제 → 개선문 → 트로카데로 → 에펠탑 → 샹드마르스</p>
+</div>
+<div class="sumline" style="background:var(--r1bg);border-color:var(--r1)"><b>이동 원칙:</b> 개선문→트로카데로(30번 버스) 구간만 빼고 전부 도보. 각 정류장 사이의 <b>[길찾기]</b> 버튼을 누르면 구글맵 도보 내비가 열린다.</div>
+
+<div class="mapcard">
+<div class="mtitle" style="background:var(--r1)">🗺 루트 1 전반부 지도 — 노트르담 → 콩코르드 (도보)</div>
+<iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?saddr=Notre-Dame+de+Paris&daddr=Shakespeare+and+Company+Paris+to:Sainte-Chapelle+Paris+to:Pont+Neuf+Paris+to:Louvre+Museum+Paris+to:Orsay+Museum+Paris+to:Orangerie+Museum+Paris+to:Place+de+la+Concorde&dirflg=w&hl=ko&output=embed"></iframe>
+<div class="mfoot"><span>지도가 안 보이면 오른쪽 버튼으로 열기</span><a class="btn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Notre-Dame+de+Paris&destination=Place+de+la+Concorde&waypoints=Shakespeare+and+Company+Paris%7CSainte-Chapelle+Paris%7CPont+Neuf+Paris%7CLouvre+Museum+Paris%7CJardin+des+Tuileries%7COrsay+Museum+Paris%7COrangerie+Museum+Paris&travelmode=walking">구글맵에서 전체 동선 열기 →</a></div>
+</div>
+
+<div class="tl">
+
+<div class="stop" data-n="1">
+<h3>노트르담 대성당 <small>시테섬 · 파리 여행의 중심</small><span class="tg tg-book">🎟 예약</span><span class="tg tg-photo">📸</span></h3>
+<ul>
+<li>센강 가운데 두 섬 중 <b>시테섬</b>에 위치.</li>
+<li>노트르(우리의)+담(여인) = <b>성모 마리아</b>. 성모께 봉헌된 성당은 전부 노트르담이라 파리에만 4개. 정식 명칭은 <b>카테드랄 노트르담 드 파리</b>.</li>
+<li>중세 고딕 양식의 결정체. 화재 복구를 마치고 <b>재개장 — 내부 관람 가능</b>(무료, 시간대 예약 권장).</li>
+</ul>
+</div>
+<div class="leg">도보 약 4분 · 강 건너 좌안 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Notre-Dame+de+Paris&destination=Shakespeare+and+Company+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="2">
+<h3>셰익스피어 앤 컴퍼니 서점 <span class="tg tg-photo">📸</span><span class="tg tg-eat">🍽</span></h3>
+<ul>
+<li><b>헤밍웨이가 즐겨 찾던 영문 서점.</b> 외관이 예쁜 포토 스팟.</li>
+<li>코스: 서점 구경 → 사진 → <b>옆 카페에서 커피 한잔</b> → 노트르담 외부 감상.</li>
+</ul>
+</div>
+<div class="leg">도보 약 7분 · 다시 시테섬으로 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Shakespeare+and+Company+Paris&destination=Conciergerie+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="3">
+<h3>팔레 드 라 시테 &amp; 콩시에르주리 <small>프랑스 최초의 왕궁</small></h3>
+<ul>
+<li><b>이동 팁: 노트르담을 등지고 조금만 걸으면</b> 반짝이는 황금 문이 보인다.</li>
+<li>6세기 메로빙거 왕조가 왕궁을 세우며 <b>프랑스 역사가 시작된 곳.</b></li>
+<li>14세기 샤를 5세가 왕궁을 루브르로 옮기며 사법 기능만 남음 → 이후 쭉 법원. 혁명기엔 혁명재판소 — <b>마리 앙투아네트가 여기서 사형 판결</b>을 받았다.</li>
+<li>옆 <b>콩시에르주리</b>: 당시 감옥 → 현재 역사기념관. 마리 앙투아네트 수감 당시 모습을 스산하게 재현.</li>
+</ul>
+<div class="tip">💡 중학생 자녀 동반 가족 강력 추천 — 세계사 수업 단골 인물의 현장 + <b>체험학습 보고서 한 장 뚝딱.</b></div>
+</div>
+<div class="leg">도보 약 2분 · 같은 단지 안 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Conciergerie+Paris&destination=Sainte-Chapelle+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="4">
+<h3>생트샤펠 <small>옛 왕실 예배당</small><span class="tg tg-book">🎟 예약</span></h3>
+<ul>
+<li>위치: 팔레 드 라 시테 <b>왼편.</b> 노트르담의 몇 분의 일도 안 되는 크기지만 파리 대표 명소.</li>
+<li>이유: <b>성서 속 1,300여 장면이 수놓인 스테인드글라스.</b> 햇살이 쏟아질 때 들어가면 무종교인도 압도되는 경험.</li>
+<li><b>음악회: 주 3~4회, 대부분 저녁 8시 시작.</b> 강론이 맨 뒷사람까지 들리도록 울림을 설계해 음악이 심장에 꽂힌다.</li>
+<li>단, 스테인드글라스+음악 동시 감상은 <b>해가 22시에 지는 여름만 가능.</b> 그 외 계절 음악회는 야간 분위기로.</li>
+</ul>
+</div>
+<div class="leg">도보 약 6분 · 센강 따라 서쪽 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Sainte-Chapelle+Paris&destination=Pont+Neuf+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="5">
+<h3>퐁뇌프 &amp; 시테섬 꼭짓점 <small>"이것만 하고 돌아가도 파리 끝"</small><span class="tg tg-eat">🍷</span><span class="tg tg-warn">⚠</span></h3>
+<ul>
+<li>퐁(다리)+뇌프(새로운) = '새 다리'인데 실제론 <b>파리에서 가장 오래된 다리(1607년 완공).</b> 마차 시대 다리 위로 자동차가 다닌다.</li>
+<li>다리 중앙: 이 다리를 처음 건넌 왕 <b>앙리 4세의 기마상.</b> <b>기마상 양옆 계단으로 내려가면</b> 다리 아래 시테섬 꼭짓점(<a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Square+du+Vert-Galant+Paris">베르갈랑 광장</a>).</li>
+<li>꼭짓점은 <b>서향</b> → 해질녘 여기 앉아 <b>노을 보며 와인 한 잔.</b> 이것만 해도 파리를 온전히 느낀 것.</li>
+<li>⚠️ <b>울타리·안전장치가 전혀 없다. 와인은 딱 한 잔만.</b></li>
+</ul>
+</div>
+<div class="leg">도보 약 13분 · <b>계단 올라와 기마상 기준 오른쪽으로 다리를 건넌 뒤</b> 강변의 부키니스트(초록 가판 고서상, 세계문화유산) 구경하며 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Pont+Neuf+Paris&destination=Louvre+Museum+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="6">
+<h3>루브르 박물관 <small>요새 → 왕궁 → 박물관</small><span class="tg tg-book">🎟 예약</span></h3>
+<ul>
+<li>원래 <b>팔레 드 라 시테를 지키던 요새.</b> 14세기 샤를 5세가 "섬 왕궁은 다리만 끊기면 고립"이라며 왕궁을 이곳으로 이전.</li>
+<li><b>프랑수아 1세:</b> 르네상스 양식으로 재건축. <b>레오나르도 다빈치를 초빙</b> → 모나리자 등 다빈치 최대 컬렉션이 루브르에 있는 이유. 아들을 <b>카트린 드 메디시스</b>(메디치 가문)와 결혼시켰다.</li>
+<li><b>앙리 2세:</b> 공사를 이어받으며 자기 이니셜과 <b>애인 디안 드 푸아티에의 이니셜을 곳곳에 새김</b> — 지금도 천장에 남아 있다.</li>
+<li><b>카트린 드 메디시스:</b> 남편 사후 섭정하러 와서 "튈르리 궁전을 따로 지어라" 명령. <b>앙리 4세</b>가 두 궁을 잇는 복도식 건물 건설.</li>
+<li><b>루이 14세:</b> 돌연 베르사유로 천도, 빈 공간에 <b>왕립 아카데미</b> 설립 — 왕실 수집품을 학생들에게 공개(대중 공개의 씨앗).</li>
+<li><b>프랑스 대혁명:</b> 왕실 재산 국가 귀속 → 전 대중 공개 = <b>박물관 탄생.</b> 나폴레옹 1세·3세가 황궁으로 쓰며 완성.</li>
+<li><b>1871 파리 코뮌:</b> 튈르리 궁 전소 — 현재 궁전은 없고 정원만 남았다.</li>
+</ul>
+</div>
+<div class="leg">도보 약 5분 · 리볼리 거리 방향 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Louvre+Museum+Paris&destination=Angelina+226+Rue+de+Rivoli+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="7">
+<h3>튈르리 정원 + 안젤리나 <span class="tg tg-eat">🍰</span><span class="tg tg-photo">📸</span></h3>
+<ul>
+<li><b>튈르리 = 기와 제조소.</b> 원래 기와 공장 자리였다.</li>
+<li>베르사유 조경가 <b>앙드레 르 노트르</b>의 양식: 태양왕 루이 14세의 "자연도 내 앞에 무릎 꿇어라" — 자연미를 배제한 기하학 조경.</li>
+<li><b>여름엔 놀이동산 변신</b> — 대관람차·롤러코스터·회전 그네(고도 제한 도시 파리를 360도로 조망하는 최고 추천 기구).</li>
+<li><b>초록 철제 의자</b> = 에펠탑 못지않은 파리의 트레이드마크. 나무 그늘 아래 휴식 최적.</li>
+<li>🍰 <b>안젤리나:</b> 몽블랑·에클레어 맛집. 내부는 항상 만원 → <b>테이크아웃해서 정원 초록 의자에서.</b> 뒤로 루브르+분수+나무가 잡히는 각도의 사진이 명당. 장미 모양 아이스크림 가판(있으면)도 추천.</li>
+</ul>
+</div>
+<div class="leg">도보 약 8분 · 센강 다리 건너(폭 300m) <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Jardin+des+Tuileries&destination=Orsay+Museum+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="8">
+<h3>오르세 미술관 <small>기차역에서 미술관으로</small><span class="tg tg-book">🎟 예약</span></h3>
+<ul>
+<li>정체: <b>1900년 만국박람회</b> 방문객 수송용 <b>오르세 기차역.</b> 기차가 길어지고 전기화되자 역이 감당 못 해 방치 → 미술관으로 재탄생.</li>
+<li>인상주의(근대 미술)의 본산.</li>
+</ul>
+</div>
+<div class="leg">도보 약 9분 · 다리 되건너 정원 끝으로 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Orsay+Museum+Paris&destination=Orangerie+Museum+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="9">
+<h3>오랑주리 미술관 <small>모네 수련의 집</small><span class="tg tg-book">🎟 예약</span></h3>
+<ul>
+<li><b>오랑주리 = 오렌지 온실:</b> 과거 왕족·귀족이 오렌지에 열광 — 나무를 통째로 들여와 온실에서 길러 먹었다. 그 온실을 전시관으로 개조.</li>
+<li><b>모네 '수련' 대작:</b> 타원형 전시실 2곳에 4점+4점. 오직 이 작품에 몰입하도록 설계된 공간 — <b>중앙 의자에 앉으면 하염없이 시간이 간다.</b></li>
+<li>지하: 인상주의~현대 미술 과도기 화가들. <b>오르세+오랑주리 콤보 티켓</b>이 더 저렴.</li>
+</ul>
+<div class="tip">💡 <b>추천 하루 코스:</b> 아침 오르세 → 근처 점심 → 튈르리 휴식 → 오랑주리 → 핑크빛 하늘 → 생토노레 거리(명품 쇼핑) 후 저녁. 지하철 없이 하루 완성.</div>
+</div>
+<div class="leg">도보 약 3분 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Orangerie+Museum+Paris&destination=Place+de+la+Concorde&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="10">
+<h3>콩코르드 광장 <small>단두대에서 화합으로</small></h3>
+<ul>
+<li>원래 루이 15세 광장 → 혁명기에 기마상을 무너뜨리고 <b>단두대 설치. 루이 16세와 마리 앙투아네트가 처형된 곳.</b></li>
+<li>혁명↔왕정복고가 반복되는 혼란 속에 양 진영 모두 여기서 희생 → "서로 화합하자" = <b>콩코르드(화합) 광장.</b></li>
+<li>구성: <b>마들렌 성당 ↔ 국회의사당 마주 봄</b>(종교·정치의 화합) / 프랑스 8개 대표 도시 여신상 / 강·바다 형상 분수.</li>
+<li>정중앙 <b>이집트 오벨리스크:</b> 다른 유럽 도시와 달리 <b>이집트 왕이 프랑스 왕에게 선물한 것</b>(람세스 2세 치적 기록). "다시는 정치적 조형물을 세우지 않겠다"는 루이 필리프의 의지가 담겼다고 전해진다.</li>
+</ul>
+</div>
+<div class="leg">도보 약 12분 · 하단 가로수길(겨울엔 마켓, 그 외엔 버스로 스킵 추천) <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Place+de+la+Concorde&destination=Rond-Point+des+Champs-Elysees+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="11">
+<h3>샹젤리제 거리 <span class="tg tg-eat">🌰</span></h3>
+<ul>
+<li>기원: 앙리 4세의 왕비 <b>마리 드 메디시스</b>의 산책길 → <b>루이 14세</b>가 베르사유 마차길로 확장(르 노트르 작업).</li>
+<li><b>하단 절반은 가로수길</b> — 걷기엔 심심하지만 <b>겨울엔 크리스마스 마켓.</b> 전구·캐럴·부스는 예쁜데 상품·음식은 다소 조악하고, 아이용 놀이기구 소음이 섞인다. <b>군밤 한 봉지 들고 걸으면 금방 통과.</b> "고급스러운 야시장"으로 생각하고 가면 즐겁다.</li>
+<li>로터리(롱푸앵)를 지나면 본격 샹젤리제 — 현실은 명동. <b>통행 인구 중 프랑스인 약 5%,</b> 나머지는 관광객.</li>
+<li>역사: 부르주아 유입 → 고급 카페·명품숍 + 넓은 도로에서 마차를 뽐내는 이들을 노린 자동차 상점가 → 지금은 프랜차이즈 거리. 올림픽을 계기로 정비.</li>
+</ul>
+</div>
+<div class="leg">도보 약 15분(또는 버스) <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Rond-Point+des+Champs-Elysees+Paris&destination=Arc+de+Triomphe&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="12">
+<h3>개선문 <small>저녁 6시 추모식은 꼭</small><span class="tg tg-view">🌇 전망대</span><span class="tg tg-book">🎟</span></h3>
+<ul>
+<li><b>나폴레옹 1세</b>가 이탈리아 원정에서 개선문을 보고 "승전 후 저런 문으로 루브르에 입성하자"(사기 진작+승리 각인) → 건립 지시.</li>
+<li>조각 읽는 법: 맨 위 = 승전 전투명 → 그 아래 = 전투 부조 → 평민 나폴레옹을 황제로 만든 <b>프랑스 대혁명 부조.</b></li>
+<li>아이러니: <b>완공 전 나폴레옹 실각.</b> 이 문으로 첫 개선식을 한 사람은 <b>프로이센의 비스마르크</b>(1870~71 보불전쟁 승전).</li>
+<li>문 아래: <b>1차대전 무명용사의 꺼지지 않는 횃불</b>과 유해.</li>
+<li>★<b>매일 저녁 6시 추모식:</b> 꽃을 든 아이들 → 제복의 참전용사 → 군악대 → 횃불 앞 추모. 규모 큰 날은 퇴근시간 샹젤리제 전체를 통제. <b>17:50 도착</b>이 공식 — 보다가 우는 사람이 많을 만큼 감동적.</li>
+<li>★<b>전망대(50m, 계단만):</b> 파리 최고의 조망. <b>에펠탑 전망대에선 정작 에펠탑이 안 보이지만 여기선 보인다.</b> 12개 도로가 교차하는 에투알 광장의 방사형 전경까지.</li>
+</ul>
+</div>
+<div class="leg">30번 버스 약 8분(도보는 25분) <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Arc+de+Triomphe&destination=Place+du+Trocadero+Paris&travelmode=transit">길찾기</a></div>
+
+<div class="stop" data-n="13">
+<h3>트로카데로 <small>에펠탑 최고 감상 스팟</small><span class="tg tg-eat">🥪</span><span class="tg tg-photo">📸</span></h3>
+<ul>
+<li>에펠탑은 워낙 커서 바로 앞에선 전신샷을 찍으려면 바닥에 누워야 한다 → <b>언덕 위 트로카데로에서 볼 것.</b></li>
+<li><b>버스에서 내리면 맞은편 모노프리</b>(마트+편의점 중간): 샌드위치·빵·과자·음료·와인 조달 → 에펠탑 보며 피크닉.</li>
+<li>난간에 살짝 앉아 인증샷(관리인이 제지할 수 있음) → <b>계단으로 내려간다.</b></li>
+</ul>
+</div>
+<div class="leg">도보 약 12분 · 센강 건너기 <b>전, 에펠탑 보고 왼쪽</b>의 드빌리 다리(차 없는 인도교·야경 명당) 경유 가능 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Place+du+Trocadero+Paris&destination=Eiffel+Tower&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="14">
+<h3>에펠탑 <small>혐오시설에서 파리의 상징까지</small><span class="tg tg-warn">⚠ 소매치기</span></h3>
+<ul>
+<li>배경: <b>1889 만국박람회 = 대혁명 100주년.</b> 추가 혁명들, 나폴레옹 실각, 1870년 프로이센전 굴욕패를 겪은 프랑스가 "우리 아직 안 죽었다"를 보여줄 거대하고 강력하고 기술적인 무언가가 필요했다.</li>
+<li>공모전 1등: <b>귀스타브 에펠의 300m 철탑.</b> 예술가·시민들이 "거대한 검은 굴뚝", "끔찍한 악몽"이라며 반대 → 예산은 예상 건축비의 <b>약 1/4만 지원</b> → <b>에펠이 향후 20년 입장 수익을 갖는 조건으로 자비 건설.</b> <b>2년 2개월</b> 만에 무사고 완공, <b>1889년 5월 5일</b> 박람회 개막과 함께 전 세계의 찬사 속에 개장.</li>
+<li><b>41년간(크라이슬러 빌딩 전까지) 세계 최고층</b> + 엘리베이터 전망대 → 1년 만에 건축비 회수.</li>
+<li><b>철거 위기:</b> 20년 한시 조건이 끝나자 철거 여론 — 선두는 소설가 모파상. 정작 점심은 늘 에펠탑 2층 레스토랑에서: <b>"파리에서 에펠탑이 안 보이는 유일한 곳이니까."</b></li>
+<li><b>구원자 = 라디오:</b> 송신탑이 필요해지자 유럽 최초 음성 송신을 여기서 → TV·이동통신 안테나까지 얹으며 존치(지금도 설치돼 있음).</li>
+<li>방문 시간의 정답: <b>새벽·아침·점심·오후·저녁·밤 전부.</b> 시간대마다 하늘과 분위기가 완전히 다르다 — 매일 다른 시간대에 한 번씩.</li>
+<li>⚠️ 탑 아래 타이머 바닥샷은 재밌지만, <b>전망대 대기줄 = 소매치기단 주 활동지.</b></li>
+</ul>
+</div>
+<div class="leg">도보 약 3분 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Eiffel+Tower&destination=Champ+de+Mars+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="15">
+<h3>샹드마르스 &amp; 앵발리드</h3>
+<ul>
+<li><b>샹드마르스 = 군신 마르스의 들판.</b> 잔디밭에 돗자리 깔고 에펠탑 감상. 이름의 이유는 바로 앞이 앵발리드라서.</li>
+<li><b>앵발리드 = 부상병:</b> 루이 14세의 잦은 전쟁으로 생긴 상이군인들의 치료·주거 시설 → 현재 군사병원·군사박물관 + <b>나폴레옹 유해 안치.</b> 밀리터리에 관심 있는 가족이면 추천, 아니면 패스. <a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Les+Invalides+Paris">위치 보기</a></li>
+<li><b>그랑팔레:</b> 1900년 만국박람회 전시관으로 지어져 지금까지 전시 공간으로 쓰인다(2024 올림픽 때 본관에서 태권도·펜싱 개최). 본관 재개장 완료.</li>
+</ul>
+</div>
+
+</div>
+
+<div class="mapcard">
+<div class="mtitle" style="background:var(--r1)">🗺 루트 1 후반부 지도 — 콩코르드 → 에펠탑</div>
+<iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?saddr=Place+de+la+Concorde&daddr=Arc+de+Triomphe+to:Place+du+Trocadero,+Paris+to:Eiffel+Tower+to:Champ+de+Mars,+Paris&dirflg=w&hl=ko&output=embed"></iframe>
+<div class="mfoot"><span>개선문→트로카데로 구간은 실제론 30번 버스</span><a class="btn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Place+de+la+Concorde&destination=Champ+de+Mars+Paris&waypoints=Arc+de+Triomphe%7CPlace+du+Trocadero+Paris%7CEiffel+Tower&travelmode=walking">구글맵에서 전체 동선 열기 →</a></div>
+</div>
+
+<div class="card" style="border-left:6px solid var(--r1)">
+<h3 style="font-size:17px;font-weight:900">🚌 마무리 — 72번 버스 '이별 코스'</h3>
+<p style="margin-top:6px">에펠탑에서 시내로 들어가는 길은 <b>센강변을 그대로 달린다.</b> 마지막으로 에펠탑을 한 번 보고 탑 앞에서 <b>72번 승차 → 진행 방향 오른쪽 좌석.</b> 창밖으로 에펠탑이 서서히 멀어지고, <b>콩코르드 → 오르세 → 튈르리 → 루브르 → 시청 → 노트르담</b> 순으로 여행 전체를 되감는다. 파리와의 이별을 로맨틱하게, 버스비로.</p>
+<a class="dir" style="display:inline-block;margin-top:10px" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Eiffel+Tower&destination=Hotel+de+Ville+Paris&travelmode=transit">72번 노선 길찾기</a>
+</div>
+</section>
+
+<section id="r2" class="r2sec">
+<div class="rhead" style="background:var(--r2)">
+<div class="no">ROUTE 2 · 가로축 동쪽</div>
+<h2>노트르담 → 바스티유</h2>
+<p>시청 → 퐁피두 → 마레 지구(보주 광장) → 바스티유 광장 · 전 구간 도보</p>
+</div>
+
+<div class="mapcard">
+<div class="mtitle" style="background:var(--r2)">🗺 루트 2 지도 — 노트르담 → 바스티유 (도보)</div>
+<iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?saddr=Notre-Dame+de+Paris&daddr=Hotel+de+Ville,+Paris+to:Centre+Pompidou+to:Place+des+Vosges+to:Place+de+la+Bastille&dirflg=w&hl=ko&output=embed"></iframe>
+<div class="mfoot"><span>전 구간 도보 30분 내외 + 구경 시간</span><a class="btn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Notre-Dame+de+Paris&destination=Place+de+la+Bastille&waypoints=Hotel+de+Ville+Paris%7CCentre+Pompidou%7CPlace+des+Vosges&travelmode=walking">구글맵에서 전체 동선 열기 →</a></div>
+</div>
+
+<div class="tl">
+
+<div class="stop" data-n="1">
+<h3>파리 시청 <span class="tg tg-photo">📸 야경</span></h3>
+<ul>
+<li><b>노트르담에서 다리 하나만 건너면 나온다.</b></li>
+<li>1551년, 르네상스에 심취한 <b>프랑수아 1세</b>가 르네상스 양식으로 건축.</li>
+<li><b>밤 포인트:</b> 가로등 불빛의 돌바닥 반사 + 건물 간접조명 + 회전목마.</li>
+<li>그 유명한 <b>로베르 두아노</b>의 사진 <b>'시청 앞 키스'</b>의 촬영지. 여름엔 파리 플라주(인공 해변), 겨울엔 스케이트장.</li>
+<li>단독 방문은 비효율 — <b>노트르담이나 퐁피두 갈 때 잠깐</b> 들르는 곳.</li>
+</ul>
+</div>
+<div class="leg">도보 약 6분 · <b>시청을 등지고 고개를 오른쪽으로 돌리면 보이는 건물</b> <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Hotel+de+Ville+Paris&destination=Centre+Pompidou&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="2">
+<h3>퐁피두 센터 <small>※2026년 현재 휴관 — 외관만</small></h3>
+<ul>
+<li>한마디로 <b>'인사이드 아웃':</b> 벽 속에 숨기는 배관·설비를 전부 밖으로. <b>배관 = 녹색, 냉난방 공기 = 파란색, 환기·소방 안전 = 빨간색.</b></li>
+<li>내부는 벽도 기둥도 없는 통짜 공간 → 가벽으로 무한 변형.</li>
+<li>구성: 유럽 최대 현대미술관 + 공공도서관 + 음악·음향 연구센터 + 예술 서점 + 기념품점.</li>
+<li><b>파리의 시대별 분산 전략:</b> 고대~근대 이전 = 루브르 / 근대 = 오르세 / 현대 = 퐁피두. 관광객 분산 + 입장료 3중 수익. 전 시대 명작이 한 도시에 다 있는 곳은 사실상 파리뿐.</li>
+<li>소장: 뒤샹, 피카소, 칸딘스키, 달리 등. <b>2030년 재개관 예정.</b></li>
+</ul>
+</div>
+<div class="leg">도보 약 13분 · 마레 골목 구경하며 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Centre+Pompidou&destination=Place+des+Vosges&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="3">
+<h3>마레 지구 &amp; 보주 광장 <small>파리의 성수동</small><span class="tg tg-eat">🥙</span><span class="tg tg-photo">📸</span></h3>
+<ul>
+<li>범위: 퐁피두–시청–바스티유를 잇는 삼각형. <b>마레 = 늪</b> — 센강 범람 지대의 농경지였다가, 도시화된 파리를 피해 귀족들이 대저택을 짓고 모여 산 곳.</li>
+<li><b>보주 광장:</b> 왕(앙리 4세)이 친한 이들과 모여 살려고 지은 광장 — 36채가 광장을 둘러싼다.</li>
+<li><b>빅토르 위고의 집:</b> 16년 거주한 집 → 기념관, <b>무료.</b> <a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Maison+de+Victor+Hugo+Paris">위치</a></li>
+<li><b>쉴리 저택</b>(앙리 4세의 재상): 현 국립기념물센터. 조용한 정원 + <b>기념품점</b>(국립중앙박물관 굿즈샵 느낌 — 선물용 최적). <a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Hotel+de+Sully+Paris">위치</a></li>
+<li><b>역사:</b> 루이 14세의 베르사유 천도로 귀족 전원 이주 → 혁명 때 저택 파괴 → 유대인·중국인·성소수자·소상공인 등 비주류 유입 → 오스만 대개조에서 소외·낙후 → 1960년대 철거 논의 → 시민 반대로 보존 → 저렴한 임대료에 실험적 카페·갤러리 + 인근 직물·염색 공장의 패션 인력 유입 → 시가 저택들을 매입해 박물관·도서관으로 → <b>현재 파리 최고 핫플 + 최고가 지역.</b></li>
+<li><b>쇼핑:</b> 명품 대신 프랑스 로컬 중고가 브랜드.</li>
+</ul>
+<div class="tip">💡 <b>피크닉 공식:</b> ①방수천 소풍 돗자리 지참 ②유대인식 샌드위치(팔라펠) 또는 골목 과일가게에서 조달 — <b>과일가게는 마트의 2~3배 가격, 맛은 10배. 납작복숭아는 무조건 여기서</b> ③보주 광장 수돗가에서 씻어 ④돗자리 피크닉.<br>💡 <b>구글맵 팁:</b> "브랜드명, 파리"로 검색하면 전 매장이 핀으로 뜬다 — 가고 싶은 곳을 미리 찍고 동선을 짜서 갈 것.</div>
+</div>
+<div class="leg">도보 약 8분 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Place+des+Vosges&destination=Place+de+la+Bastille&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="4">
+<h3>바스티유 광장 <small>대혁명의 시작점</small></h3>
+<ul>
+<li>파리 동쪽을 지키던 요새 → 13세기부터 <b>정치범 감옥</b>(볼테르, 디드로도 수감 이력).</li>
+<li><b>1789년 시민 1,000명이 습격 → 프랑스 대혁명 개막.</b> 정작 안에는 죄수 7명뿐이었다.</li>
+<li>혁명 정부가 '왕정의 상징'이라며 철거 → 현재는 <b>혁명 기념탑(7월 기둥)</b> + 현대 건물 <b>바스티유 오페라 극장.</b></li>
+<li><b>오페라가 여기 선 이유:</b> 프랑스에서 계층의 기준은 돈이 아니라 <b>문화.</b> 1980년대 미테랑 정부가 낙후된 바스티유에 고급문화의 대표를 심은 것.</li>
+<li><b>티켓:</b> 15유로대 좌석 + <b>당일 공연 2시간 전 현장가 5~10유로.</b> 1층 앞좌석이면 격식 있는 복장. 조합 공식: <b>오페라는 바스티유, 발레는 가르니에.</b></li>
+</ul>
+</div>
+
+</div>
+</section>
+
+<section id="r3" class="r3sec">
+<div class="rhead" style="background:var(--r3)">
+<div class="no">ROUTE 3 · 세로축</div>
+<h2>피카소 로드: 생제르맹 데프레 → 몽마르트르</h2>
+<p>무명 시절 피카소의 하루 — 낮엔 생제르맹에서 친구들과, 해 지면 몽마르트르로. 도보+버스+지하철 조합</p>
+</div>
+
+<div class="mapcard">
+<div class="mtitle" style="background:var(--r3)">🗺 루트 3 전반부 지도 — 생제르맹 → 오페라</div>
+<iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?saddr=Les+Deux+Magots,+Paris&daddr=Le+Procope,+Paris+to:Le+Bon+Marche,+Paris+to:Palais+Royal,+Paris+to:Palais+Garnier+to:Galeries+Lafayette+Haussmann&dirflg=w&hl=ko&output=embed"></iframe>
+<div class="mfoot"><span>생제르맹→팔레 루아얄은 95번 버스 추천</span><a class="btn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Les+Deux+Magots+Paris&destination=Galeries+Lafayette+Haussmann&waypoints=Le+Procope+Paris%7CEglise+Saint-Germain-des-Pres%7CLe+Bon+Marche+Paris%7CJardin+du+Luxembourg%7CPalais+Royal+Paris%7CPalais+Garnier&travelmode=walking">구글맵에서 전체 동선 열기 →</a></div>
+</div>
+
+<div class="tl">
+
+<div class="stop" data-n="1">
+<h3>카페 드 플로르 · 레 되 마고 <small>여행의 시작점</small><span class="tg tg-eat">☕</span></h3>
+<ul>
+<li>고풍스럽고 여유로운 <b>'진짜 파리'</b> — 학교가 많아 학생·교수가 활보하던 지식인 거리, 생제르맹 데프레의 대표 카페 둘.</li>
+<li>파리에서 <b>현지인 비율이 가장 높은 '관광지'</b>(카페가 아니라 관광지다). <b>사르트르와 보부아르가 살다시피 하며 글을 쓴 실존주의의 본진.</b> 비싸지만 사람이 많은데 이상하게 여유로운 특유의 공기.</li>
+<li><b>에스프레소 + 크루아상</b>으로 파리 여행을 시작할 것. 맞은편 <b>브라스리 립</b>은 피카소가 친구들과 어울리던 곳.</li>
+</ul>
+</div>
+<div class="leg">도보 약 5분 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Les+Deux+Magots+Paris&destination=Le+Procope+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="2">
+<h3>르 프로코프 <small>세계 최초의 카페</small><span class="tg tg-eat">🍽</span></h3>
+<ul>
+<li>커피 파는 곳은 그전에도 있었지만, 괜찮은 분위기에서 대화하는 <b>문화공간으로서의 카페는 여기가 원조.</b> 거울 벽·대리석 테이블·신문꽂이·옷걸이 — 유럽 유서 깊은 카페의 공식이 전부 여기 카피.</li>
+<li>역사: <b>볼테르·디드로의 백과사전 편찬 회의</b> / <b>당통·마라·로베스피에르의 혁명 모의</b> / 커피값이 없어 <b>모자를 맡긴 가난한 장교 나폴레옹</b> / 위고·발자크 등의 아지트. 2층에 박물관식 전시.</li>
+<li>현재는 레스토랑 — 애매한 시간이 아니면 <b>식사 필수.</b> 가성비보다 역사 체험 가치 — <b>자녀 동반 시 교육 효과 최고.</b></li>
+</ul>
+</div>
+<div class="leg">도보 약 5분 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Le+Procope+Paris&destination=Eglise+Saint-Germain-des-Pres+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="3">
+<h3>생제르맹 데프레 성당 &amp; 쇼핑가</h3>
+<ul>
+<li><b>현존 파리에서 가장 오래된 성당</b>(옛 수도원). 맞은편에 초대형 <b>루이비통</b> — 금욕의 상징 정면에 사치의 상징이라는 지극히 파리다운 대비. 구글맵 소개문: "옛 문학 중심지였던 쇼핑가".</li>
+<li><b>변천:</b> 지식인 동네로 선망받으며 집값 상승 → 부자 유입 → 출판사·언론사 자리가 전부 명품관·상점으로 — 젠트리피케이션의 교과서.</li>
+<li>걸어서 전부 해결: <b>루이비통 / 셀린느 / 에르메스(카페 병설 — 식기 전부 에르메스) / 롤렉스·오메가 / SPA 브랜드 / 이자벨 마랑 등 디자이너 / 네스프레소(캡슐 100개 묶음 저렴) / 약국 화장품 성지 시티파르마 / 애플스토어.</b></li>
+<li><b>치안:</b> 소매치기 사례를 들어본 적이 없는 동네(관광객 적음 + 부촌 치안) — <b>고가품 구매는 이 동네에서.</b></li>
+</ul>
+</div>
+<div class="leg">도보 약 10분 (근처 뤽상부르 정원도 추천 — <a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Jardin+du+Luxembourg+Paris" style="color:var(--ac)">위치</a>) <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Eglise+Saint-Germain-des-Pres+Paris&destination=Le+Bon+Marche+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="4">
+<h3>르 봉 마르셰 <small>세계 최초의 백화점</small><span class="tg tg-eat">🧀 식품관</span></h3>
+<ul>
+<li>내부가 소박해 보이는 이유 = <b>에펠탑의 귀스타브 에펠 회사가 디자인한 모습 그대로.</b> 철의 우아함 + 트레이드마크 <b>에스컬레이터.</b></li>
+<li>관광지에서 떨어져 한갓지게 쇼핑, <b>택스 리펀 완비.</b></li>
+<li><b>식품관 = 프랑스 전역의 최고 미식만 모아둔 곳.</b> 내부 카페·식당도 전부 기본 이상.</li>
+</ul>
+<div class="tip">💡 <b>쇼핑 데이 풀코스:</b> 아침 유서 깊은 카페 → 뤽상부르 방향 쇼핑 → 정원 산책 → 점심 → 봉 마르셰 방향 쇼핑 → 백화점 → 저녁 → 택시 귀가.</div>
+</div>
+<div class="leg">95번 버스 약 15분 (쇼핑 패스 시: 아침 카페 → 바로 95번, <b>루브르 안뜰 통과 — 차창으로 피라미드</b>) <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Le+Bon+Marche+Paris&destination=Palais+Royal+Paris&travelmode=transit">길찾기</a></div>
+
+<div class="stop" data-n="5">
+<h3>팔레 루아얄 <small>왕의 궁전 + 아시아 음식 클러스터</small><span class="tg tg-eat">🍜</span></h3>
+<ul>
+<li>루이 13세의 재상 <b>리슐리외의 저택</b> → 사후 왕실 헌납 → <b>5살 루이 14세가 동생과 거주</b>하며 '왕의 궁전'이라는 이름.</li>
+<li>저택이 정원을 둘러싼 구조 + 카페 + 상가 + 예쁜 파사주 <b>갤러리 비비엔</b> 연결.</li>
+<li>정원 안 에어비앤비 有 — 여유가 되면 '루이 14세가 살던 저택 1박' 도전.</li>
+<li>🍜 근처에 우동 명가 <b>사누키야</b> 등 일식·한식·베트남 식당 밀집. 프랑스 음식은 계속 먹으면 물리고 짜다 — 겨울엔 뜨끈한 국물 필수. <b>한국 마트</b>도 있음(깻잎·청양고추까지, 라면은 수출용이 더 맛있다). <a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Sanukiya+Paris">사누키야 위치</a></li>
+</ul>
+</div>
+<div class="leg">버스 5분 / 도보 13분 · 가까워 보여도 1km, 중간에 들를 데 없음 — 버스 추천 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Palais+Royal+Paris&destination=Palais+Garnier&travelmode=transit">길찾기</a></div>
+
+<div class="stop" data-n="6">
+<h3>오페라 가르니에 <small>오페라의 유령의 그 극장</small><span class="tg tg-book">🎟 발레</span></h3>
+<ul>
+<li><b>나폴레옹 3세</b>가 파리 대개조의 중심에 초호화 오페라 극장을 원함 → 공모전 1등 <b>샤를 가르니에.</b></li>
+<li>"빈 공간 없이 장식으로 채워라" → 신바로크 + 르네상스식 대칭 + 그리스 기둥 + 로마네스크 아치의 혼합. 황제가 "이게 무슨 양식인가?" 묻자 가르니에: <b>"세상에서 가장 아름다운 나폴레옹 3세 양식입니다."</b></li>
+<li>디테일: 꼭대기 <b>에메랄드 돔 = 황제의 왕관</b> / 파사드의 <b>N·E = 나폴레옹 3세 &amp; 황후 외제니.</b></li>
+<li>나폴레옹 3세도 완공을 못 봤다 — 1870 보불전쟁 포로 → 폐위 → 영국 망명. 개선문의 나폴레옹 1세와 판박이 운명.</li>
+<li>★<b>진면목은 내부:</b> 입장만 14유로 — 조금 보태서 <b>공연 관람이 정답.</b> 주로 발레(드가의 발레 그림 무대가 여기). 파리 공연 추천 순위: <b>①가르니에 발레 ②바스티유 오페라 ③물랑루즈 ④리도.</b></li>
+<li><b>샤갈 천장화</b>는 관람석 천장 — 낮에 리허설·무대 세팅 중이면 관람석 출입 불가. 공연 관람이 확실한 방법.</li>
+<li><b>오페라의 유령:</b> 지하수 배수만 8개월(지금도 정기 배수) + 1896년 샹들리에 추락 사고 → 가스통 르루 소설의 모티브. <b>2층 5번 박스석은 '유령의 자리'로 비워둠 — 예매 불가.</b></li>
+<li>완공 전부터 <b>두 달치 전석 매진</b> — 개관과 동시에 부르주아 사교의 중심이 됐다.</li>
+</ul>
+</div>
+<div class="leg">도보 약 4분 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Palais+Garnier&destination=Galeries+Lafayette+Haussmann&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="7">
+<h3>프랭탕 &amp; 갤러리 라파예트 <span class="tg tg-view">🌇 옥상 무료</span></h3>
+<ul>
+<li>가르니에 뒤편에 날개처럼 선 두 백화점. <b>크리스마스 장식</b>으로 현지인까지 몰리는 성지.</li>
+<li>★<b>두 곳 모두 옥상 무료 개방 — 파리 전경.</b> 루프탑 레스토랑에서 전망 식사·칵테일도 가능.</li>
+<li>관광객 서비스 최상급(한국인 직원 통역 지원 사례). 대신 인기 품목 품절이 빠르다.</li>
+</ul>
+</div>
+<div class="leg">도보 7분 → <b>생라자르역</b>(⚠️기차역 = 소매치기 구역, 소지품 사수) → <b>지하철 12호선 6분</b> → 아베스 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Galeries+Lafayette+Haussmann&destination=Abbesses+Paris&travelmode=transit">길찾기</a></div>
+
+<div class="stop" data-n="8">
+<h3>아베스역 <small>몽마르트르의 관문</small><span class="tg tg-warn">⚠ 소매치기·팔찌단</span></h3>
+<ul>
+<li><b>몽마르트르 = 파리판 달동네:</b> 나폴레옹 3세 대개조 때 철거민들이 빈 언덕에 집을 지으며 형성. 가파른 언덕이라 시내버스가 없다(주민용 미니버스 1대뿐 — 이용 자제). 소매치기·야바위꾼·팔찌단 상시 활동 지역.</li>
+<li>아베스역은 언덕 중턱, <b>파리에서 가장 깊은 역</b> → 유일하게 엘리베이터가 있다(100명 넘게 타는 초대형 2대). 계단 말고 <b>무조건 엘리베이터.</b></li>
+<li><b>출구 감상:</b> 식물에서 영감을 얻은 아르누보 양식 — 디자이너 <b>엑토르 기마르가 직접 작업한 원본 출구는 여기뿐.</b> 한 바퀴 돌며 볼 것.</li>
+</ul>
+</div>
+<div class="leg">도보 약 1분 · 출구 맞은편 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Abbesses+Paris&destination=Le+Mur+des+Je+t%27aime+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="9">
+<h3>사랑해 벽 <span class="tg tg-photo">📸</span></h3>
+<ul>
+<li>가로 10m × 세로 4m 벽에 <b>250개 언어로 '사랑해'가 311번.</b></li>
+<li>쨍한 남색 배경이라 인물 사진이 화사하게 나온다.</li>
+</ul>
+</div>
+<div class="leg">도보 약 4분 · <b>다시 출구로 → 출구를 등지고 → 왼쪽 평지로 직진</b> <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Le+Mur+des+Je+t%27aime+Paris&destination=Funiculaire+de+Montmartre&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="10">
+<h3>푸니쿨라 → 사크레쾨르 대성당 <span class="tg tg-view">🌇 파노라마</span></h3>
+<ul>
+<li><b>푸니쿨라(산악열차):</b> 나비고·일반 교통권으로 탑승. <b>언덕의 4/5를 커버, 남은 1/5만 계단.</b></li>
+<li><b>사크레쾨르:</b> 1871년 보불전쟁 패배로 비탄에 빠진 국민을 위로하고자 <b>국민 모금으로</b> 지은 순백의 성당.</li>
+<li>내부: 각국 최초 순교자들의 초상 — <b>한복 입은 김대건 신부의 초상</b>도 있다.</li>
+<li><b>성당을 등지고 뒤돌면</b> 파리 파노라마.</li>
+<li><b>몽마르트르 어원:</b> 몽(언덕)+마르트르(순교자). 파리 초대 주교 <b>생드니</b>가 280년경 이 언덕에서 참수당한 뒤 잘린 머리를 들고 북쪽으로 6km를 걸으며 강론했다는 전설 — 쓰러진 자리가 생드니 성당·지역. 아이러니하게도 순교지 몽마르트르는 19세기 최대 환락가가 됐고, 생드니 지역은 현재 프랑스 최대 우범지대.</li>
+</ul>
+</div>
+<div class="leg">도보 약 3분 · <b>사크레쾨르에서 왼쪽으로</b> — 인파·기념품점·꼬마기차 구역을 지나 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Basilique+du+Sacre-Coeur&destination=Place+du+Tertre&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="11">
+<h3>테르트르 광장 <small>초상화가들의 광장</small></h3>
+<ul>
+<li>아무나 못 앉는다 — <b>시청 주관 오디션 통과자만</b>(한국인 화가도 1명 활동, 실력 보장).</li>
+<li>단, <b>당시 화가들이 실제 여기서 그림을 그린 건 아니다</b>(그냥 광장이었다). 대부분 관광객이 이것만 보고 하산하는데, 조금만 더 가면 진짜가 나온다.</li>
+</ul>
+</div>
+<div class="leg">도보 약 2분 · 광장에서 살짝 벗어나면 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Place+du+Tertre&destination=La+Bonne+Franquette+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="12">
+<h3>라 본 프랑케트 <small>고흐 그림의 배경</small><span class="tg tg-eat">☕</span></h3>
+<ul>
+<li>마주 보는 유서 깊은 카페 2곳 중 하나(간판에 역사 명시). <b>오르세 소장 반 고흐 작품의 배경.</b></li>
+<li>몽마르트르가 예술가 성지가 된 진짜 이유 = <b>좁고 허름한 집 대신, 음료값만 내면 죽치고 앉을 카페가 있었기 때문.</b> 여기서 커피 한잔.</li>
+</ul>
+</div>
+<div class="leg">도보 약 3분 · <b>카페를 등지고 오른쪽으로 내려가면</b> <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=La+Bonne+Franquette+Paris&destination=La+Maison+Rose+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="13">
+<h3>라 메종 로즈 <small>분홍집</small><span class="tg tg-photo">📸</span></h3>
+<ul>
+<li>현재 레스토랑. 화가들의 뮤즈이자 본인도 화가였던 <b>수잔 발라동</b>의 집 — 르누아르 그림의 모델, 툴루즈 로트렉과 연애하며 드가에게 그림을 사사, <b>프랑스 최초로 아카데미에 등록된 여성 화가.</b></li>
+<li><b>이 집에서 오른쪽</b>에 드라마 '파리의 연인' 촬영 주택이 보인다.</li>
+</ul>
+</div>
+<div class="leg">도보 약 2분 · <b>그 골목을 올라가면</b> <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=La+Maison+Rose+Paris&destination=Musee+de+Montmartre&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="14">
+<h3>몽마르트르 박물관 &amp; 탕기 영감 화방</h3>
+<ul>
+<li>과거 <b>르누아르가 살던 집.</b> 안뜰 정원엔 르누아르가 '그네'를 그린 바로 그 자리에 <b>실제 그네가 걸려 있다.</b> 내부는 당시 생활상 유물 위주 — 외관·정원만 봐도 충분.</li>
+<li>옆이 <b>탕기 영감의 화방 자리:</b> 반 고흐가 초상을 3점이나 그린 인물. 별명은 <b>페르 탕기(아버지 탕기)</b> — 재료를 싸게, 외상으로, 외상값은 그림으로도 받아준 가난한 화가들의 아버지(에밀 베르나르도 그의 초상을 남겼다).</li>
+<li>이 길을 "가난하지만 희망에 찬 젊은 화가들이 매일 닳도록 걷던 길"이라 상상하며 걸으면 평범한 골목이 특별해진다.</li>
+</ul>
+</div>
+<div class="leg">도보 약 5분 · 한 바퀴 돌아 <b>라 본 프랑케트를 등지고 조금 내려가면</b> <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Musee+de+Montmartre&destination=Bateau-Lavoir+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="15">
+<h3>바토 라부아르 <small>피카소의 집</small><span class="tg tg-photo">📸</span></h3>
+<ul>
+<li><b>피카소와 모딜리아니가 살던 집.</b> 피카소가 <b>'아비뇽의 처녀들'을 처음 공개한 곳.</b></li>
+<li>지금도 사람이 산다 — 내부 불가. 대신 <b>피카소가 사진을 찍었던 가로등에 기대 같은 구도로 한 컷.</b> 맞은편에 분위기 좋은 카페.</li>
+</ul>
+</div>
+<div class="leg">도보 약 4분 · 쭉 내려가면 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Bateau-Lavoir+Paris&destination=Rue+des+Abbesses+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="16">
+<h3>아베스 거리 &amp; 반 고흐의 집 <span class="tg tg-eat">🥖</span></h3>
+<ul>
+<li>카페·와인바·빵 맛집·과일가게·해산물가게 — <b>주민들이 장 보러 나오는 거리.</b></li>
+<li>조금 더 가면 <b>반 고흐가 살던 파란 대문 집</b>(지금도 주거 중 — 외관만). <a target="_blank" href="https://www.google.com/maps/search/?api=1&query=54+Rue+Lepic+Paris">위치</a></li>
+</ul>
+</div>
+<div class="leg">도보 약 8분 · 아래로 쭉 내려오면 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Rue+des+Abbesses+Paris&destination=Moulin+Rouge&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="17">
+<h3>물랑루즈 <small>투어의 종착점</small><span class="tg tg-photo">📸</span></h3>
+<ul>
+<li><b>빨간 풍차</b>를 배경으로 한 컷 = 몽마르트르 투어 종료.</li>
+<li>여기서 <b>30번 버스</b>로 개선문·에펠탑 연계 가능.</li>
+</ul>
+</div>
+
+</div>
+
+<div class="mapcard">
+<div class="mtitle" style="background:var(--r3)">🗺 루트 3 후반부 지도 — 몽마르트르 (아베스 → 물랑루즈)</div>
+<iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?saddr=Abbesses,+Paris&daddr=Basilique+du+Sacre-Coeur+to:Place+du+Tertre+to:La+Maison+Rose,+Paris+to:Bateau-Lavoir,+Paris+to:Moulin+Rouge&dirflg=w&hl=ko&output=embed"></iframe>
+<div class="mfoot"><span>언덕길 — 푸니쿨라 활용, 소지품 주의</span><a class="btn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Abbesses+Paris&destination=Moulin+Rouge&waypoints=Le+Mur+des+Je+t%27aime%7CBasilique+du+Sacre-Coeur%7CPlace+du+Tertre%7CLa+Maison+Rose+Paris%7CMusee+de+Montmartre%7CBateau-Lavoir+Paris&travelmode=walking">구글맵에서 전체 동선 열기 →</a></div>
+</div>
+</section>
+
+<section id="appendix">
+<h2 class="sec">부록</h2>
+
+<h3 style="font-size:17px;font-weight:900;margin-top:10px">A. 먹거리 총정리</h3>
+<table>
+<tr><th style="width:26%">위치</th><th style="width:32%">먹을 것</th><th>포인트</th></tr>
+<tr><td>시테섬(노트르담 옆)</td><td>셰익스피어 앤 컴퍼니 옆 카페</td><td>서점 구경 + 커피</td></tr>
+<tr><td>시테섬 꼭짓점</td><td>와인</td><td>해질녘 노을. 울타리 없음 — <b>딱 1잔</b></td></tr>
+<tr><td>튈르리 옆</td><td><b>안젤리나</b> 몽블랑·에클레어</td><td>테이크아웃 → 정원 초록 의자, 루브르 배경 샷</td></tr>
+<tr><td>샹젤리제(겨울)</td><td>크리스마스 마켓 <b>군밤</b></td><td>한 봉지 들고 걸으며 통과</td></tr>
+<tr><td>트로카데로 정류장 맞은편</td><td><b>모노프리</b></td><td>샌드위치·빵·와인 → 에펠탑 피크닉</td></tr>
+<tr><td>마레</td><td><b>유대인식 샌드위치(팔라펠)</b> + 골목 과일가게</td><td>보주 광장 수돗가에서 씻어 피크닉. 과일은 마트 말고 골목 가게</td></tr>
+<tr><td>생제르맹 데프레</td><td><b>카페 드 플로르 / 레 되 마고</b></td><td>에스프레소 + 크루아상으로 여행 시작</td></tr>
+<tr><td>생제르맹 데프레</td><td><b>르 프로코프</b> 식사</td><td>세계 최초 카페 — 역사 체험(자녀 동반 추천)</td></tr>
+<tr><td>생제르맹 데프레</td><td><b>봉 마르셰 식품관</b> / 에르메스 카페</td><td>프랑스 미식 총집합 / 식기 전부 에르메스</td></tr>
+<tr><td>팔레 루아얄 인근</td><td><b>사누키야 우동</b> + 한국 마트</td><td>겨울 국물 보급. 라면은 수출용, 깻잎·청양고추까지</td></tr>
+<tr><td>오페라 뒤</td><td>프랭탕·라파예트 <b>루프탑</b></td><td>파리 전경 + 식사·칵테일(옥상 자체는 무료)</td></tr>
+<tr><td>몽마르트르</td><td>라 본 프랑케트 / 라 메종 로즈 / 아베스 거리 빵집</td><td>예술가들의 카페 문화 체험</td></tr>
+</table>
+
+<h3 style="font-size:17px;font-weight:900;margin-top:22px">B. 치안 요약</h3>
+<div class="warncard">
+<ul style="margin-left:18px">
+<li><b>소매치기 핫스팟:</b> 에펠탑 전망대 대기줄 / 기차역(생라자르 등) / 몽마르트르(+야바위꾼·팔찌단) / 샹젤리제 인파.</li>
+<li><b>상대적 안전지대:</b> 생제르맹 데프레 — 고가 쇼핑은 여기서.</li>
+<li>시테섬 꼭짓점: 안전장치 전무 — <b>와인 1잔 룰.</b></li>
+<li>밤 에펠탑 주변: 관광 밀집지에서 조금만 벗어나면 조용하고 안전한 편. 기본 주의는 유지.</li>
+</ul>
+</div>
+
+<div class="card" style="border-left:6px solid var(--gold)">
+👨‍👩‍👧‍👦 <b>가족 일정으로 재구성한 4일 루트는 별도 파일 「파리 가족 4일 루트」 참고.</b>
+</div>
+</section>
+
+</main>
+
+<footer>파리 핵심 동선 가이드 · 전직 파리 투어가이드 강의 정리 · 2026</footer>
+</body>
+</html>

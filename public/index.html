@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>여행 루트 라이브러리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@600;800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F6EFE2;--paper:#FFFDF7;--ink:#242B3A;--navy:#1B2A4A;--gold:#C6A02B;--line:#E4D9C2;--mut:#8A7F68;
+--c1:#2C6E9B;--c2:#BC5638;--c3:#7D4A75;--c4:#B07A1F;--c5:#4E8B4E}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--cream);color:var(--ink);line-height:1.7;font-size:15.5px;min-height:100vh;display:flex;flex-direction:column}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px;width:100%}
+.hero{background:var(--navy);color:#F4EDDC;padding:60px 0 46px;text-align:center}
+.hero .lines{display:flex;justify-content:center;gap:8px;margin-bottom:22px}
+.hero .lines span{width:52px;height:6px;border-radius:3px}
+.hero h1{font-family:'Hahmlet',serif;font-weight:800;font-size:38px;letter-spacing:-1px;cursor:pointer}
+.hero p{margin-top:12px;color:#CBBE9E;font-size:14.5px}
+main{flex:1;padding:36px 0 50px}
+h2.sec{font-family:'Hahmlet',serif;font-weight:800;font-size:24px;letter-spacing:-.5px;margin-bottom:4px}
+p.lead{color:var(--mut);font-size:14px;margin-bottom:18px}
+.back{display:inline-flex;align-items:center;gap:6px;color:var(--navy);text-decoration:none;font-weight:900;font-size:13.5px;margin-bottom:16px;background:var(--paper);border:1.5px solid var(--line);border-radius:99px;padding:6px 16px}
+.back:hover{border-color:var(--navy)}
+/* country cards */
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.ccard{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 22px;text-align:center;cursor:pointer;transition:transform .15s,box-shadow .15s;box-shadow:0 2px 8px rgba(27,42,74,.05)}
+.ccard:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(27,42,74,.12)}
+.ccard .flag{font-size:52px;line-height:1}
+.ccard h3{font-family:'Hahmlet',serif;font-weight:800;font-size:21px;margin-top:12px}
+.ccard .cnt{margin-top:6px;font-size:13px;color:var(--mut);font-weight:700}
+.ccard .cnt b{color:var(--gold)}
+/* route cards */
+.rcard{display:block;background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--ac,#2C6E9B);border-radius:14px;padding:18px 20px;margin:14px 0;text-decoration:none;color:var(--ink);transition:transform .15s,box-shadow .15s;box-shadow:0 2px 8px rgba(27,42,74,.05)}
+.rcard:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(27,42,74,.12)}
+.rcard .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.rcard h3{font-family:'Hahmlet',serif;font-weight:800;font-size:19px;letter-spacing:-.3px}
+.rcard .open{flex-shrink:0;background:var(--ac,#2C6E9B);color:#fff;border-radius:99px;padding:6px 16px;font-size:12.5px;font-weight:900}
+.rcard .sub{margin-top:6px;font-size:14px;color:#4a4433}
+.rcard .meta{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.chip{font-size:11.5px;font-weight:900;background:var(--cream);border:1px solid var(--line);border-radius:99px;padding:2px 10px;color:#6b6250}
+.chip.city{background:var(--ac,#2C6E9B);border-color:var(--ac,#2C6E9B);color:#fff}
+.rcard .src{margin-top:8px;font-size:12px;color:var(--mut)}
+.empty{background:var(--paper);border:1px dashed var(--line);border-radius:14px;padding:40px 20px;text-align:center;color:var(--mut);font-size:14px}
+.err{background:#FBEFE7;border:1px solid #E8C9B6;border-radius:12px;padding:16px;font-size:14px}
+footer{background:var(--navy);color:#B9AB8B;text-align:center;padding:26px 16px;font-size:12.5px}
+@media(max-width:640px){.hero h1{font-size:28px}.ccard .flag{font-size:44px}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+<div class="wrap">
+<div class="lines"><span style="background:var(--c1)"></span><span style="background:var(--c2)"></span><span style="background:var(--c3)"></span><span style="background:var(--c4)"></span></div>
+<h1 onclick="location.hash=''">여행 루트 라이브러리</h1>
+<p id="siteSub">가이드 영상 기반 · 정류장 단위 도보 루트</p>
+</div>
+</header>
+
+<main><div class="wrap" id="app">
+<div class="empty">불러오는 중…</div>
+</div></main>
+
+<footer>TRAVEL ROUTE LIBRARY · Cloudflare Workers</footer>
+
+<script>
+const COLS = ['var(--c1)','var(--c2)','var(--c3)','var(--c4)','var(--c5)'];
+let DATA = null;
+
+async function boot(){
+  try{
+    DATA = await (await fetch('/data/routes.json')).json();
+    if(DATA.site && DATA.site.subtitle) document.getElementById('siteSub').textContent = DATA.site.subtitle;
+    render();
+  }catch(e){
+    document.getElementById('app').innerHTML =
+      '<div class="err"><b>routes.json을 불러오지 못했습니다.</b><br>로컬에서 열었다면 <code>wrangler dev</code>로 실행하거나 배포 후 접속하세요.</div>';
+  }
+}
+
+function render(){
+  if(!DATA) return;
+  const code = location.hash.replace(/^#\/?/, '');
+  const app = document.getElementById('app');
+  if(!code){ app.innerHTML = viewCountries(); return; }
+  const c = DATA.countries.find(x => x.code === code);
+  app.innerHTML = c ? viewRoutes(c) : viewCountries();
+  window.scrollTo(0,0);
+}
+
+function viewCountries(){
+  const cards = DATA.countries.map(c => `
+    <div class="ccard" onclick="location.hash='#/${c.code}'">
+      <div class="flag">${c.flag}</div>
+      <h3>${c.name}</h3>
+      <div class="cnt"><b>${c.routes.length}</b>개 루트${c.routes.length===0 ? ' · 준비 중' : ''}</div>
+    </div>`).join('');
+  return `<h2 class="sec">나라를 선택하세요</h2>
+    <p class="lead">나라 → 루트 순서로 들어갑니다. 새 루트는 계속 추가됩니다.</p>
+    <div class="cgrid">${cards}</div>`;
+}
+
+function viewRoutes(c){
+  const list = c.routes.length === 0
+    ? `<div class="empty">아직 등록된 루트가 없습니다.<br>routes.json에 루트를 추가하면 여기에 표시됩니다.</div>`
+    : c.routes.map((r,i) => `
+      <a class="rcard" style="--ac:${COLS[i % COLS.length]}" href="${r.file}">
+        <div class="top"><h3>${r.title}</h3><span class="open">열기 →</span></div>
+        <div class="sub">${r.subtitle || ''}</div>
+        <div class="meta">
+          <span class="chip city">${r.city || ''}</span>
+          ${r.days ? `<span class="chip">🗓 ${r.days}</span>` : ''}
+          ${(r.tags||[]).map(t => `<span class="chip">${t}</span>`).join('')}
+          ${r.updated ? `<span class="chip">갱신 ${r.updated}</span>` : ''}
+        </div>
+        ${r.source ? `<div class="src">출처: ${r.source}</div>` : ''}
+      </a>`).join('');
+  return `<a class="back" href="#" onclick="location.hash='';return false;">← 나라 선택으로</a>
+    <h2 class="sec">${c.flag} ${c.name}</h2>
+    <p class="lead">루트를 선택하면 가이드가 열립니다.</p>
+    ${list}`;
+}
+
+window.addEventListener('hashchange', render);
+boot();
+</script>
+</body>
+</html>
