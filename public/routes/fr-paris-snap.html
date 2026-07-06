@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>파리 스냅사진 명소 도보 가이드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@600;800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F6EFE2; --paper:#FFFDF7; --ink:#242B3A; --navy:#1B2A4A; --gold:#C6A02B; --line:#E4D9C2; --mut:#8A7F68;
+  --r1:#2C6E9B; --r1bg:#EBF2F7; --r2:#BC5638; --r2bg:#F9EFEA; --r3:#7D4A75; --r3bg:#F5EDF4;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--cream);color:var(--ink);line-height:1.78;font-size:15.5px}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px}
+b,strong{font-weight:700}
+/* nav */
+nav{position:sticky;top:0;z-index:60;background:rgba(27,42,74,.97);backdrop-filter:blur(4px)}
+nav .wrap{display:flex;gap:2px;overflow-x:auto;white-space:nowrap}
+nav a{color:#EFE6D0;text-decoration:none;font-size:13.5px;font-weight:700;padding:12px 11px;display:inline-flex;align-items:center;gap:6px}
+nav a .dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+nav a:hover{background:rgba(255,255,255,.08)}
+/* hero */
+.hero{background:var(--navy);color:#F4EDDC;padding:58px 0 46px;text-align:center;position:relative;overflow:hidden}
+.hero .lines{display:flex;justify-content:center;gap:8px;margin-bottom:22px}
+.hero .lines span{width:64px;height:6px;border-radius:3px}
+.hero h1{font-family:'Hahmlet',serif;font-weight:800;font-size:40px;letter-spacing:-1px;line-height:1.25}
+.hero p.sub{margin-top:14px;color:#CBBE9E;font-size:15px}
+.hero .meta{margin-top:20px;font-size:12.5px;letter-spacing:2px;color:#9FB0CC;text-transform:uppercase}
+/* sections */
+section{padding:36px 0;scroll-margin-top:58px}
+h2.sec{font-family:'Hahmlet',serif;font-weight:800;font-size:27px;letter-spacing:-.5px;margin-bottom:6px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:14px 0}
+.warncard{background:#FBEFE7;border:1px solid #E8C9B6;border-left:6px solid var(--r2);border-radius:12px;padding:16px 18px;margin:14px 0}
+table{width:100%;border-collapse:collapse;background:var(--paper);font-size:14px;margin:12px 0;border-radius:10px;overflow:hidden}
+th{background:var(--navy);color:#F4EDDC;font-weight:700;text-align:left}
+th,td{padding:10px 12px;border:1px solid var(--line);vertical-align:top}
+tr:nth-child(even) td{background:#FBF7EC}
+/* route header */
+.rhead{border-radius:16px;padding:26px 24px;color:#fff;margin-bottom:4px}
+.rhead .no{font-size:12px;letter-spacing:3px;font-weight:900;opacity:.85}
+.rhead h2{font-family:'Hahmlet',serif;font-weight:800;font-size:29px;margin-top:4px;letter-spacing:-.5px}
+.rhead p{margin-top:8px;font-size:14px;opacity:.92}
+.sumline{border-radius:12px;padding:13px 16px;font-size:13.8px;margin:12px 0;border:1px dashed}
+/* map card */
+.mapcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:16px 0;box-shadow:0 8px 24px rgba(27,42,74,.08)}
+.mapcard .mtitle{padding:11px 16px;font-weight:900;font-size:14px;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.mapcard iframe{width:100%;height:390px;border:0;display:block}
+.mapcard .mfoot{padding:10px 16px;font-size:12.5px;color:var(--mut);display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.btn{display:inline-block;background:var(--navy);color:#F4EDDC;padding:9px 16px;border-radius:99px;text-decoration:none;font-weight:700;font-size:13px}
+.btn:hover{background:#2A3D66}
+/* metro timeline */
+.tl{position:relative;padding-left:40px;margin-top:14px}
+.tl::before{content:"";position:absolute;left:15px;top:10px;bottom:10px;width:6px;border-radius:3px;background:var(--ac,#2C6E9B)}
+.stop{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:13px;padding:16px 18px;margin:12px 0;box-shadow:0 2px 8px rgba(27,42,74,.04)}
+.stop::before{content:attr(data-n);position:absolute;left:-40px;top:14px;width:30px;height:30px;border-radius:50%;background:var(--ac,#2C6E9B);color:#fff;font-weight:900;font-size:13.5px;display:flex;align-items:center;justify-content:center;border:3px solid var(--cream)}
+.stop h3{font-size:18px;font-weight:900;letter-spacing:-.3px;line-height:1.4}
+.stop h3 small{font-weight:500;color:var(--mut);font-size:13px}
+.stop ul{margin:8px 0 0 18px}
+.stop li{margin:5px 0}
+.stop .tip{margin-top:10px;background:#FCF6E6;border-left:4px solid var(--gold);border-radius:8px;padding:9px 12px;font-size:13.8px}
+.leg{position:relative;display:flex;align-items:center;flex-wrap:wrap;gap:8px;color:var(--mut);font-size:13px;padding:3px 0 3px 8px}
+.leg::before{content:"▾";position:absolute;left:-30px;color:var(--ac,#2C6E9B);font-size:15px}
+.dir{background:var(--paper);border:1.5px solid var(--ac,#2C6E9B);color:var(--ac,#2C6E9B);border-radius:99px;padding:2px 12px;font-size:12px;font-weight:900;text-decoration:none}
+.dir:hover{background:var(--ac,#2C6E9B);color:#fff}
+/* tags */
+.tg{display:inline-block;font-size:11px;font-weight:900;padding:2px 9px;border-radius:99px;margin-left:5px;vertical-align:2px}
+.tg-eat{background:#F4E5CE;color:#8A5A18}
+.tg-photo{background:#E3EDF5;color:#2C6E9B}
+.tg-warn{background:#F7DDD4;color:#A5391D}
+.tg-book{background:#F2E8C8;color:#8A6D0E}
+.tg-view{background:#E8E0EF;color:#6B3E85}
+.r1sec{--ac:var(--r1)} .r2sec{--ac:var(--r2)} .r3sec{--ac:var(--r3)}
+footer{background:var(--navy);color:#B9AB8B;text-align:center;padding:34px 16px;font-size:13px;margin-top:40px}
+@media(max-width:640px){.hero h1{font-size:29px}.mapcard iframe{height:300px}body{font-size:15px}.stop{padding:14px 14px}.tl{padding-left:36px}.stop::before{left:-36px;width:27px;height:27px}}
+@media print{nav,.mapcard iframe{display:none}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+<a href="/" title="루트 목록">🏠 홈</a>
+<a href="#update">⚠ 업데이트</a>
+<a href="#basics">기본 원칙</a>
+<a href="#r1"><span class="dot" style="background:var(--r1)"></span>루트 1 명소 코스</a>
+<a href="#appendix">부록</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+<div class="lines"><span style="background:var(--r1)"></span></div>
+<h1>파리 최고의 사진 명소 도보 가이드</h1>
+<p class="sub">게으른 완벽주의자 · 남는 것은 사진뿐! 파리 사진 맛집 10곳 추천</p>
+<p class="meta">PARIS · 1 ROUTE · STOP BY STOP</p>
+</div></header>
+
+<main class="wrap">
+<section id="update">
+<h2 class="sec">⚠️ 먼저: 현재 기준, 영상과 달라진 것</h2>
+<table>
+<tr><th>항목</th><th>영상 내용</th><th>현재</th></tr>
+<tr><td>명소 정보 업데이트</td><td>2022년 기준 명소 소개</td><td>(출발 전 재확인 필요)</td></tr>
+</table>
+</section>
+
+<section id="basics">
+<h2 class="sec">기본 원칙</h2>
+<div class="card">
+<ul style="margin-left:18px">
+<li><b>빨간 날(공휴일/일요일) 오전</b>을 적극 활용할 것. 현지인들이 늦게 하루를 시작하므로 사람이 없는 틈을 타 스냅사진을 찍기 가장 좋다.</li>
+<li>파리는 도시 규모가 크지 않아 <b>도보와 대중교통</b>만으로도 충분히 이동하며 사진 촬영이 가능하다.</li>
+<li>지하철역 진입로의 아치, 타일 장식, 가로등 등 일상의 모든 풍경이 이국적인 배경이 된다.</li>
+</ul>
+</div>
+<table>
+<tr><th>노선</th><th>구간</th><th>활용법</th></tr>
+<tr><td>메트로 6호선</td><td>Passy ~ Bir-Hakeim</td><td>지하철 내부 및 계단에서 이국적인 분위기 연출</td></tr>
+<tr><td>버스 82번</td><td>비르아켐 인근 ~ 뤽상부르 공원</td><td>명소 간 빠르고 편리한 이동 수단</td></tr>
+</table>
+</section>
+
+<section id="r1" class="r1sec">
+<div class="rhead" style="background:var(--r1)">
+<div class="no">ROUTE 1 · 도보 및 버스 연계 코스</div>
+<h2>에펠탑 주변에서 뤽상부르까지 사진 명소 정복</h2>
+<p>파시 역 → 비르아켐 다리 → 생 도미니크 거리 인근 → 뤽상부르 공원 → 생 쉴피스 성당</p>
+</div>
+<div class="sumline" style="background:var(--r1bg);border-color:var(--r1)"><b>이동 원칙:</b> 에펠탑 조망점들을 거쳐 버스를 타고 센강 좌안의 고풍스러운 공원과 성당으로 연결되는 동선이다.</div>
+
+<div class="mapcard">
+<div class="mtitle" style="background:var(--r1)">🗺 명소 코스 지도 — 전반부 동선</div>
+<iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?saddr=Passy+Station+Paris&daddr=Bir-Hakeim+Bridge+Paris+to:Rue+Saint-Dominique+Paris+to:Luxembourg+Gardens+Paris&dirflg=w&hl=ko&output=embed"></iframe>
+<div class="mfoot"><span>비르아켐에서 뤽상부르 이동 구간은 실제로는 82번 버스를 탑승한다.</span><a class="btn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Passy+Station+Paris&destination=Luxembourg+Gardens+Paris&waypoints=Bir-Hakeim+Bridge+Paris%7CRue+Saint-Dominique+Paris&travelmode=walking">구글맵에서 전체 동선 열기 →</a></div>
+</div>
+
+<div class="tl">
+<div class="stop" data-n="1">
+<h3>파시 역 & 지하철 내부 <small>이국적인 진입로</small><span class="tg tg-photo">📸</span></h3>
+<ul>
+<li>메트로 6호선의 <b>파시(Passy) 역</b>과 지하철 내부를 배경으로 촬영을 시작한다.</li>
+<li>파리의 지하철역은 진입로가 타일과 아치형 구조물로 장식되어 있어 그 자체로 매우 이국적이다.</li>
+<li>차량이 이동하는 중에도 파리 고유의 풍경이 창밖으로 펼쳐져 자연스러운 연출이 가능하다.</li>
+</ul>
+</div>
+<div class="leg">도보 약 2분 · 역 밖으로 나와 다리 진입 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Passy+Station+Paris&destination=Bir-Hakeim+Bridge+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="2">
+<h3>비르아켐 다리 <small>영화 인셉션의 배경이자 에펠탑 명소</small><span class="tg tg-photo">📸</span></h3>
+<ul>
+<li>에펠탑의 높이는 약 <b>300m</b>에 달하기 때문에 너무 가까이서 찍으면 각도가 제대로 나오지 않는다.</li>
+<li><b>비르아켐 다리</b>는 에펠탑과 센강 사이에 가로막는 건물이 없어 전체 모습을 균형 있게 담을 수 있는 최적의 장소다.</li>
+<li>영화 <b>인셉션</b>에 등장한 다리로, 독특한 철교 아치 구조가 길게 이어져 기하학적인 원근감을 연출한다.</li>
+<li>다리의 고풍스러운 난간을 소품 삼아 기대어 찍으면 화보 같은 결과물을 얻을 수 있다.</li>
+</ul>
+</div>
+<div class="leg">도보 약 15분 · 에펠탑 방향을 바라보며 이동 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Bir-Hakeim+Bridge+Paris&destination=Rue+Saint-Dominique+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="3">
+<h3>생 도미니크 거리 인근 <small>우아한 건축물과 일상 스냅</small><span class="tg tg-photo">📸</span></h3>
+<ul>
+<li><b>나폴레옹 3세</b>와 오스만 남작의 파리 개조 사업으로 완성된 200년 역사 지형의 전형을 보여준다.</li>
+<li>건물의 높이가 엄격히 규제되어 있고 자재의 색상이 통일되어 있어 도시 경관이 매우 정돈되어 있다.</li>
+<li>다만 문, 조각, 방범창 등은 자유롭게 디자인할 수 있었기에 건물마다 세부 장식이 매우 우아하다.</li>
+<li>특히 <b>생 도미니크 거리(Rue Saint-Dominique)</b>와 샹 드 마스 공원 인근 건물들은 부유층이 거주하여 조경이 화려하다.</li>
+<li>주변 버스 정류장에서 버스를 기다리는 구도로 촬영하면 일상적이면서도 특별한 사진이 완성된다.</li>
+</ul>
+<div class="tip">💡 카페 테라스에 앉아 에펠탑을 배경으로 커피를 마시며 잠시 휴식을 취하기 좋은 구간이다.</div>
+</div>
+<div class="leg">교통편: 82번 버스 약 20분 · 인근 정류장에서 탑승 후 이동 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Rue+Saint-Dominique+Paris&destination=Luxembourg+Gardens+Paris&travelmode=transit">길찾기</a></div>
+
+<div class="stop" data-n="4">
+<h3>뤽상부르 공원 <small>피렌체 양식의 아름다운 분수</small><span class="tg tg-photo">📸</span></h3>
+<ul>
+<li>루이 13세의 어머니인 <b>마리 드 메디시스</b>를 위해 지어진 뤽상부르 궁전에 부속된 정원이다.</li>
+<li>현재 궁전 건물은 프랑스 상원 의원 건물로 사용 중이며 내부 정원은 시민들에게 개방되어 있다.</li>
+<li>다른 파리의 정원들에 비해 조경이 화려하고 우아하며, 파리의 상징인 <b>초록색 의자</b>가 곳곳에 배치되어 있다.</li>
+<li>특히 공원 내에 위치한 <b>메디치 분수</b>는 물길이 길게 뻗어 있어 마치 야외 식장이나 버진 로드를 연상케 하는 최고의 스냅 포인트다. 실제 현지인들이 청혼 장소로 자주 찾는다.</li>
+</ul>
+</div>
+<div class="leg">도보 약 5분 · 북서쪽 방향으로 이동 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Luxembourg+Gardens+Paris&destination=Eglise+Saint-Sulpice+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="5">
+<h3>생 쉴피스 성당 <small>가장 오래된 성당과 데카르트의 심장</small><span class="tg tg-warn">⚠ 주의</span></h3>
+<ul>
+<li>파리에서 가장 고풍스럽고 역사가 깊은 성당 중 하나로, 철학자 <b>데카르트의 심장</b>이 모셔진 곳이다.</li>
+<li>성당 내부의 웅장하고 경건한 분위기가 인상적이며 침착하고 정적인 톤의 사진을 남길 수 있다.</li>
+<li>종교 시설이므로 내부에서는 절대 소란을 피워서는 안 되며 이동 동선과 포즈를 미리 구상해 둔 뒤 신속하게 촬영을 마쳐야 한다.</li>
+</ul>
+<div class="tip">💡 성당 입구 부근에서 조용히 두세 장만 빠르게 촬영하고 나오는 방식으로 진행하는 것을 권장한다.</div>
+</div>
+</div>
+</section>
+
+<section id="appendix">
+<h2 class="sec">부록</h2>
+<table>
+<tr><th>위치</th><th>먹을 것</th><th>포인트</th></tr>
+<tr><td>동선 내 임의 카페</td><td>디저트 및 커피</td><td>먹는 모습이나 디저트 소품을 활용해 자연스러운 연출 가능</td></tr>
+</table>
+<div class="warncard">
+<ul style="margin-left:18px">
+<li>에펠탑 주변이나 유명 조망점(트로카데로 광장 등)에는 열쇠고리를 강매하는 잡상인과 소매치기가 매우 많다.</li>
+<li>촬영에 집중하느라 가방이나 소지품을 바닥에 방치하면 순식간에 도난당할 수 있으므로 항시 주의해야 한다.</li>
+<li>잡상인이 다가올 경우 단호하게 거절 의사를 밝히고 자리를 이동하는 것이 좋다.</li>
+</ul>
+</div>
+</section>
+</main>
+<footer>파리 스냅사진 명소 도보 가이드 · 게으른 완벽주의자 · 2026</footer>
+</body>
+</html>
