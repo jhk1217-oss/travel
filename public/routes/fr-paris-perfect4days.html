@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>프랑스 파리 자유여행 4일 완벽 가이드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@600;800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F6EFE2; --paper:#FFFDF7; --ink:#242B3A; --navy:#1B2A4A; --gold:#C6A02B; --line:#E4D9C2; --mut:#8A7F68;
+  --r1:#2C6E9B; --r1bg:#EBF2F7; --r2:#BC5638; --r2bg:#F9EFEA; --r3:#7D4A75; --r3bg:#F5EDF4;
+  --d1:#2C6E9B; --d1bg:#EBF2F7; --d2:#B07A1F; --d2bg:#F8F1E2;
+  --d3:#B3403A; --d3bg:#F9ECEA; --d4:#7D4A75; --d4bg:#F5EDF4;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--cream);color:var(--ink);line-height:1.78;font-size:15.5px}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px}
+b,strong{font-weight:700}
+/* nav */
+nav{position:sticky;top:0;z-index:60;background:rgba(27,42,74,.97);backdrop-filter:blur(4px)}
+nav .wrap{display:flex;gap:2px;overflow-x:auto;white-space:nowrap}
+nav a{color:#EFE6D0;text-decoration:none;font-size:13.5px;font-weight:700;padding:12px 11px;display:inline-flex;align-items:center;gap:6px}
+nav a .dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+nav a:hover{background:rgba(255,255,255,.08)}
+/* hero */
+.hero{background:var(--navy);color:#F4EDDC;padding:58px 0 46px;text-align:center;position:relative;overflow:hidden}
+.hero .lines{display:flex;justify-content:center;gap:8px;margin-bottom:22px}
+.hero .lines span{width:64px;height:6px;border-radius:3px}
+.hero h1{font-family:'Hahmlet',serif;font-weight:800;font-size:40px;letter-spacing:-1px;line-height:1.25}
+.hero p.sub{margin-top:14px;color:#CBBE9E;font-size:15px}
+.hero .meta{margin-top:20px;font-size:12.5px;letter-spacing:2px;color:#9FB0CC;text-transform:uppercase}
+.hero .chips{margin-top:18px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+.hero .chips span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:99px;padding:4px 14px;font-size:13px}
+/* sections */
+section{padding:36px 0;scroll-margin-top:58px}
+h2.sec{font-family:'Hahmlet',serif;font-weight:800;font-size:27px;letter-spacing:-.5px;margin-bottom:6px}
+p.lead{color:var(--mut);font-size:14.5px;margin-bottom:16px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:14px 0}
+.warncard{background:#FBEFE7;border:1px solid #E8C9B6;border-left:6px solid var(--r2);border-radius:12px;padding:16px 18px;margin:14px 0}
+table{width:100%;border-collapse:collapse;background:var(--paper);font-size:14px;margin:12px 0;border-radius:10px;overflow:hidden}
+th{background:var(--navy);color:#F4EDDC;font-weight:700;text-align:left}
+th,td{padding:10px 12px;border:1px solid var(--line);vertical-align:top}
+tr:nth-child(even) td{background:#FBF7EC}
+/* route header */
+.rhead{border-radius:16px;padding:26px 24px;color:#fff;margin-bottom:4px}
+.rhead .no{font-size:12px;letter-spacing:3px;font-weight:900;opacity:.85}
+.rhead h2{font-family:'Hahmlet',serif;font-weight:800;font-size:29px;margin-top:4px;letter-spacing:-.5px}
+.rhead p{margin-top:8px;font-size:14px;opacity:.92}
+.sumline{border-radius:12px;padding:13px 16px;font-size:13.8px;margin:12px 0;border:1px dashed}
+/* map card */
+.mapcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:16px 0;box-shadow:0 8px 24px rgba(27,42,74,.08)}
+.mapcard .mtitle{padding:11px 16px;font-weight:900;font-size:14px;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.mapcard iframe{width:100%;height:390px;border:0;display:block}
+.mapcard .mfoot{padding:10px 16px;font-size:12.5px;color:var(--mut);display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.btn{display:inline-block;background:var(--navy);color:#F4EDDC;padding:9px 16px;border-radius:99px;text-decoration:none;font-weight:700;font-size:13px}
+.btn:hover{background:#2A3D66}
+/* metro timeline */
+.tl{position:relative;padding-left:40px;margin-top:14px}
+.tl::before{content:"";position:absolute;left:15px;top:10px;bottom:10px;width:6px;border-radius:3px;background:var(--ac,#2C6E9B)}
+.stop{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:13px;padding:16px 18px;margin:12px 0;box-shadow:0 2px 8px rgba(27,42,74,.04)}
+.stop::before{content:attr(data-t);position:absolute;left:-40px;top:14px;width:30px;height:30px;border-radius:50%;background:var(--ac,#2C6E9B);color:#fff;font-weight:900;font-size:10.5px;display:flex;align-items:center;justify-content:center;border:3px solid var(--cream)}
+.stop h3{font-size:18px;font-weight:900;letter-spacing:-.3px;line-height:1.4}
+.stop h3 small{font-weight:500;color:var(--mut);font-size:13px}
+.stop ul{margin:8px 0 0 18px}
+.stop li{margin:5px 0}
+.stop .tip{margin-top:10px;background:#FCF6E6;border-left:4px solid var(--gold);border-radius:8px;padding:9px 12px;font-size:13.8px}
+.stop .kid{margin-top:10px;background:#EAF3EA;border-left:4px solid #4E8B4E;border-radius:8px;padding:9px 12px;font-size:13.8px}
+.leg{position:relative;display:flex;align-items:center;flex-wrap:wrap;gap:8px;color:var(--mut);font-size:13px;padding:3px 0 3px 8px}
+.leg::before{content:"▾";position:absolute;left:-30px;color:var(--ac,#2C6E9B);font-size:15px}
+.dir{background:var(--paper);border:1.5px solid var(--ac,#2C6E9B);color:var(--ac,#2C6E9B);border-radius:99px;padding:2px 12px;font-size:12px;font-weight:900;text-decoration:none}
+.dir:hover{background:var(--ac,#2C6E9B);color:#fff}
+/* tags */
+.tg{display:inline-block;font-size:11px;font-weight:900;padding:2px 9px;border-radius:99px;margin-left:5px;vertical-align:2px}
+.tg-eat{background:#F4E5CE;color:#8A5A18}
+.tg-photo{background:#E3EDF5;color:#2C6E9B}
+.tg-warn{background:#F7DDD4;color:#A5391D}
+.tg-book{background:#F2E8C8;color:#8A6D0E}
+.tg-view{background:#E8E0EF;color:#6B3E85}
+.tg-kid{background:#E2EFE2;color:#3D7A3D}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.d1sec{--ac:var(--d1)} .d2sec{--ac:var(--d2)} .d3sec{--ac:var(--d3)} .d4sec{--ac:var(--d4)}
+footer{background:var(--navy);color:#B9AB8B;text-align:center;padding:34px 16px;font-size:13px;margin-top:40px}
+@media(max-width:640px){.hero h1{font-size:29px}.mapcard iframe{height:300px}body{font-size:15px}.stop{padding:14px 14px}.tl{padding-left:36px}.stop::before{left:-36px;width:27px;height:27px}.grid2{grid-template-columns:1fr}}
+@media print{nav,.mapcard iframe{display:none}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+<a href="/" title="루트 목록">🏠 홈</a>
+<a href="#update">⚠️ 업데이트</a>
+<a href="#basics">기본 원칙</a>
+<a href="#day1"><span class="dot" style="background:var(--d1)"></span>Day 1</a>
+<a href="#day2"><span class="dot" style="background:var(--d2)"></span>Day 2</a>
+<a href="#day3"><span class="dot" style="background:var(--d3)"></span>Day 3</a>
+<a href="#day4"><span class="dot" style="background:var(--d4)"></span>Day 4</a>
+<a href="#appendix">부록</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+<div class="lines">
+<span style="background:var(--d1)"></span>
+<span style="background:var(--d2)"></span>
+<span style="background:var(--d3)"></span>
+<span style="background:var(--d4)"></span>
+</div>
+<h1>파리 처음 가는 분들을 위한 완벽 가이드</h1>
+<p class="sub">유튜브 '게으른 완벽주의자' · 도착/출발일 제외 순수 4일 압축 일정</p>
+<div class="chips">
+<span>👥 어른2+16세+12세</span>
+<span>📅 11월 말</span>
+<span>🏨 숙소 기준</span>
+</div>
+<p class="meta">PARIS · 4 DAYS ITINERARY · STOP BY STOP</p>
+</div></header>
+
+<main class="wrap">
+<section id="update">
+<h2 class="sec">⚠️ 먼저: 현재 기준, 영상과 달라진 것</h2>
+<table>
+<tr><th>항목</th><th>영상 내용</th><th>현재</th></tr>
+<tr><td>명소 개장 및 운영 사항</td><td>노트르담 대성당 화재 복구 후 재개장 내부 관람 가능</td><td>(출발 전 재확인 필요)</td></tr>
+<tr><td>근교 운영 시즌</td><td>고흐의 집(오베르시르우아즈), 모네의 집(지베르니) 3월~11월 운영</td><td>(출발 전 재확인 필요)</td></tr>
+</table>
+</section>
+
+<section id="basics">
+<h2 class="sec">기본 원칙 및 필수 정보</h2>
+<div class="grid2">
+<div class="card">
+<h3>🎟️ 예약 체크리스트</h3>
+<ul style="margin-left:18px; margin-top:8px;">
+<li><b>루브르 박물관:</b> 오픈 시간대 타임슬롯 필수 예약.</li>
+<li><b>오르세 미술관:</b> 사전 입장권 구매 및 타임 예약 권장.</li>
+<li><b>생샤펠 성당:</b> 시간대별 예약 필수.</li>
+<li><b>쌍크막스(달팽이 요리):</b> 사전 예약 필수.</li>
+<li><b>베르사유 궁전:</b> 내부 가이드 투어 예약 권장.</li>
+</ul>
+</div>
+<div class="card">
+<h3>🎒 11월 말 준비물</h3>
+<ul style="margin-left:18px; margin-top:8px;">
+<li><b>방한 의류:</b> 쌀쌀하고 흐린 11월 날씨 대비 패딩 및 머플러.</li>
+<li><b>국제운전면허증:</b> 베르사유 정원 골프 카트 대여 시 필수.</li>
+<li><b>아이폰 스냅 예약:</b> 30분~1시간 가성비 스냅 사전 준비.</li>
+<li><b>개인 이어폰:</b> 화이트 에펠 야경 감상 시 음악 청취용.</li>
+</ul>
+</div>
+</div>
+
+<h3>하루 구조 공식</h3>
+<div class="card">
+<ul style="margin-left:18px">
+<li><b>아침:</b> 숙소 근처 빵집에서 갓 나온 빵으로 현지인처럼 시작한다.</li>
+<li><b>오전:</b> 대형 미술관/박물관은 무조건 오픈 시간대에 입장하여 보고 싶은 핵심 작품으로 직행한다.</li>
+<li><b>오후:</b> 감성 카페 휴식 1회를 보장하며, 쇼핑 및 거리 산책을 배치한다.</li>
+<li><b>저녁:</b> 현지 맛집 코스 또는 한식 마트를 적절히 섞어 체력을 안배한다.</li>
+</ul>
+</div>
+
+<h3>파리 교통 치트시트</h3>
+<table>
+<tr><th>노선</th><th>구간</th><th>활용법</th></tr>
+<tr><td><b>지하철 1호선</b></td><td>루브르/팔레 루아얄 → 조지 5세역(샹젤리제)</td><td>퇴근 시간대 상젤리제 거리의 극심한 정체를 피해 빠르게 이동하는 치트키.</td></tr>
+<tr><td><b>RER C선</b></td><td>파리 시내 → 베르사유 전용역</td><td>베르사유 궁전 연결선 (공사가 잦으므로 대체 버스 확인 필요).</td></tr>
+<tr><td><b>버스 30번</b></td><td>몽마르트르 → 개선문 / 에펠탑</td><td>파리의 전형적인 아름다운 풍경을 차창 밖으로 감상하며 이동하는 황금 노선.</td></tr>
+</table>
+</section>
+
+<section id="day1" class="d1sec">
+<div class="rhead" style="background:var(--d1)">
+<div class="no">DAY 1 · 오픈런과 프렌치 감성</div>
+<h2>루브르 오픈런과 샹젤리제 야경</h2>
+<p>숙소 출발 → 루브르 박물관 → 비스트로 중식 → 팔레 루아얄 → 카페 키츠네 → 갤러리 비비엔 → 메르시 2호점 → 샹젤리제 거리 → 라뒤레 → 개선문 전망대</p>
+</div>
+<div class="sumline" style="background:var(--d1bg);border-color:var(--d1)"><b>이동 원칙:</b> 오전 도보 이동 후, 퇴근 시간대에는 정체가 심한 버스 대신 지하철 1호선을 이용해 이동한다.</div>
+
+<div class="mapcard">
+<div class="mtitle" style="background:var(--d1)">🗺️ Day 1 전체 동선 지도</div>
+<iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?saddr=Louvre+Museum&daddr=Palais-Royal+Paris+to:Galerie+Vivienne+Paris+to:Merci+Paris+to:Arc+de+Triomphe&dirflg=w&hl=ko&output=embed"></iframe>
+<div class="mfoot"><span>샹젤리제 이동 시 지하철 1호선 탑승 권장</span><a class="btn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Louvre+Museum&destination=Arc+de+Triomphe&waypoints=Palais-Royal+Paris%7CGalerie+Vivienne+Paris%7CMerci+Paris&travelmode=walking">구글맵에서 전체 동선 열기 →</a></div>
+</div>
+
+<div class="tl">
+<div class="stop" data-t="08:30">
+<h3>숙소 출발 및 아침 식사 <small>동네 빵집 탐방</small></h3>
+<ul>
+<li>숙소 근처 빵집에서 갓 나온 따뜻한 빵으로 1일차 일정을 시작한다.</li>
+</ul>
+</div>
+<div class="leg">도보 약 10분 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Rue+Montorgueil+Paris&destination=Louvre+Museum&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-t="09:00">
+<h3>루브르 박물관 <small>무조건 오픈런 전략</small><span class="tg tg-book">🎟️ 예약</span></h3>
+<ul>
+<li>혼잡함과 대기 시간을 피하기 위해 <b>무조건 오픈 시간대</b>에 입장한다.</li>
+<li>입장하자마자 박물관이 제안하는 정석 동선을 따르지 말고, <b>내가 가장 보고 싶었던 작품으로 곧장 달려가는 것</b>이 핵심이다.</li>
+<li>아무도 없는 전시장 공간에서 다른 관람객들이 오기 전까지 나 혼자 작품을 사유하는 짧은 순간을 즐긴다.</li>
+</ul>
+<div class="tip">💡 관람을 마친 후 피라미드 출구로 나와 피라미드를 배경으로 인증 사진을 남긴다.</div>
+</div>
+<div class="leg">🚶 관내 이동 후 피라미드를 등지고 오른쪽 출구로 퇴장</div>
+
+<div class="stop" data-t="12:30">
+<h3>주변 비스트로 중식 <small>오늘의 메뉴 공략</small><span class="tg tg-eat">🍽️ 먹거리</span></h3>
+<ul>
+<li>프랑스 비스트로나 브라세리에서 운영하는 <b>오늘의 메뉴(Formule du jour)</b>를 선택한다.</li>
+<li>당일 아침 시장에서 공수한 가장 신선하고 저렴한 제철 식재료로 구성되므로 정식 메뉴판이 아닌 식당 앞 보드판에 적혀 있다.</li>
+<li>단품 가격 수준에 프랑스식 코스 요리를 즐길 수 있으며, 평소 생각지 못했던 새로운 현지 음식을 시도하기 좋은 기회다.</li>
+</ul>
+</div>
+<div class="leg">도보 약 5분 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Louvre+Museum&destination=Palais-Royal+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-t="14:00">
+<h3>팔레 루아얄 & 카페 키츠네 <small>테라스 감성 충전</small><span class="tg tg-photo">📸 포토</span><span class="tg tg-eat">🍽️ 먹거리</span></h3>
+<ul>
+<li>들어서자마자 보이는 현대 미술 작품(줄무늬 기둥) 위에서 사진을 촬영한 후 정원을 산책한다.</li>
+<li>정원 내 위치한 <b>카페 키츠네</b>에서 커피와 디저트를 즐긴다. 커피 맛은 평범할 수 있으나 야외 테라스의 감성이 훌륭하다.</li>
+</ul>
+</div>
+<div class="leg">도보 약 4분 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Palais-Royal+Paris&destination=Galerie+Vivienne+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-t="15:30">
+<h3>갤러리 비비엔 & 프랑스 국립 도서관 <small>고전적 아케이드와 여유</small></h3>
+<ul>
+<li>아름다운 지붕이 있는 상가인 갤러리 비비엔에서 사진을 찍고 엽서나 기념품을 구경한다.</li>
+<li>체력과 취향에 따라 인근 <b>프랑스 국립 도서관</b>에 방문하여 잠시 앉아 책을 읽는 여유를 가진다. 대단한 명소를 볼 때보다 오랫동안 기억에 남는 진한 순간이 된다. (선택 사항)</li>
+</ul>
+</div>
+<div class="leg">도보 약 3분 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Galerie+Vivienne+Paris&destination=Merci+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-t="16:30">
+<h3>메르시 2호점 <small>팔레 루아얄 인근 쇼핑</small></h3>
+<ul>
+<li>마레 지구의 상징적인 편집숍 메르시의 2호점이 팔레 루아얄 근처에 오픈했다.</li>
+<li>시그니처 아이템인 <b>메르시 에코백</b>은 선물용으로 인기가 높으며 찬사를 받을 수 있는 아이템이다. 매장을 둘러보며 프렌치 감성을 느껴본다.</li>
+</ul>
+</div>
+<div class="leg">지하철 이동 (퇴근 시간 정체 예방): 지하철 1호선 탑승 후 조지 5세(George V)역 하차 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Palais-Royal+Paris&destination=George+V+Paris&travelmode=transit">길찾기</a></div>
+
+<div class="stop" data-t="18:00">
+<h3>샹젤리제 거리 & 라뒤레 <small>마카롱 공주님처럼 즐기기</small><span class="tg tg-eat">🍽️ 먹거리</span></h3>
+<ul>
+<li>조지 5세역에서 올라오면 바로 샹젤리제 거리다. 유명 마카롱 매장인 <b>라뒤레(Laduree)</b>로 향한다.</li>
+<li>입구의 긴 줄은 테이크아웃 전용이므로, 긴장하며 불어로 주문하지 말고 <b>매장 안 좌석 테이블로 바로 입장</b>하여 웨이터의 정식 서비스를 받으며 편하게 즐긴다.</li>
+<li>마카롱이 생각보다 달기 때문에 처음부터 많이 시키지 말고 인당 1개씩 주문 후 취향에 맞으면 추가 주문한다. 커피보다는 따뜻한 차(Tea)와의 궁합이 훌륭하다.</li>
+<li>라뒤레 매장에서 판매하는 <b>예쁜 키링</b>은 훌륭한 기념품이 되며, 앞서 구매한 메르시 에코백에 달아주면 완벽한 조합이 된다.</li>
+</ul>
+</div>
+<div class="leg">도보 약 10분 · 상젤리제 거리 산책 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Laduree+Paris&destination=Arc+de+Triomphe&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-t="19:30">
+<h3>개선문 전망대 <small>에펠탑이 가장 잘 보이는 곳</small><span class="tg tg-view">🌇 전망</span><span class="tg tg-warn">⚠️ 주의</span></h3>
+<ul>
+<li>샹젤리제 거리를 따라 개선문으로 걸어간다. 가는 길에 루이비통 본점이 있으나 <b>일단 통과한다.</b> 명품 쇼핑백을 들고 개선문으로 가면 소매치기의 표적이 되므로 명품은 무조건 마지막 날 구매 후 우버로 숙소 복귀해야 한다.</li>
+<li>샹젤리제 거리에서 양옆으로 한 블록 떨어진 골목에서 개선문을 배경으로 사진을 찍으면 타인 방해 없이 여유롭게 촬영할 수 있다.</li>
+<li><b>개선문 전망대</b>에 오르면 에펠탑을 가장 가까이서 포함한 파리 시내 전경을 볼 수 있다. 단, 내부 엘리베이터가 없으므로 계단 이용이 필요하다.</li>
+</ul>
+<div class="tip">💡 저녁 식사는 샹젤리제 인근에 맛집이 적고 물가가 비싸므로 숙소 근처로 이동해 먹거나, 샹젤리제 내 대형 마트인 <b>모노프리(Monoprix)</b>에서 장을 본다. 한식이 생각난다면 팔레 루아얄 근처 한인마트에서 라면 등을 미리 구매해 숙소에서 먹는 것을 추천한다.</div>
+</div>
+<div class="leg">Day 1 일정 종료 · 숙소 복귀</div>
+</div>
+</section>
+
+<section id="day2" class="d2sec">
+<div class="rhead" style="background:var(--d2)">
+<div class="no">DAY 2 · 궁전의 품격과 에펠탑 낭만</div>
+<h2>베르사유 투어와 에펠탑 화이트 야경</h2>
+<p>카페 에스프레소 → 베르사유 궁전(정원/뱃놀이) → 현지 먹자골목 중식 → 비라케임 다리 → 에펠탑 스냅 → 샹드마르스 잔디밭 → 클레어 가로(이탈리아식) → 화이트 에펠 명당</p>
+</div>
+<div class="sumline" style="background:var(--d2bg);border-color:var(--d2)"><b>이동 원칙:</b> 베르사유 이동 시 RER C선을 이용하며, 공사 정체 시 대체 버스를 확인한다. 베르사유에서 에펠탑이 가장 가깝다.</div>
+
+<div class="mapcard">
+<div class="mtitle" style="background:var(--d2)">🗺️ Day 2 전체 동선 지도</div>
+<iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?saddr=Versailles+Palace&daddr=Pont+de+Bir-Hakeim&dirflg=w&hl=ko&output=embed"></iframe>
+<div class="mfoot"><span>시내와 베르사유 구간은 RER C선 또는 버스 이용</span><a class="btn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Versailles+Palace&destination=Pont+de+Bir-Hakeim&travelmode=transit">구글맵에서 전체 동선 열기 →</a></div>
+</div>
+
+<div class="tl">
+<div class="stop" data-t="08:00">
+<h3>현지 카페 스탠딩 조식 <small>파리지앵의 출근길 체험</small><span class="tg tg-eat">🍽️ 먹거리</span></h3>
+<ul>
+<li>현지인들처럼 출근 전 동네 카페에 들러 <b>바(Bar)에 서서 에스프레소 한 잔과 크루아상 하나</b>를 주문해 먹어본다. 앉아서 먹는 것과 다른 색다른 경험이 된다.</li>
+</ul>
+</div>
+<div class="leg">RER C선 탑승하여 베르사유역으로 이동 (약 40분)</div>
+
+<div class="stop" data-t="09:30">
+<h3>베르사유 궁전 및 정원 <small>해설 투어와 자전거 뱃놀이</small><span class="tg tg-book">🎟️ 예약</span></h3>
+<ul>
+<li>설명 없이 보면 밀려드는 인파(퇴근길 지하철 9호선 수준)에 휩쓸려 허무하게 끝날 수 있으므로 <b>한국인 가이드 투어</b> 참여를 적극 추천한다.</li>
+<li>날이 좋다면 광활한 베르사유 정원을 제대로 즐긴다. 걸어 다니기엔 무리가 있으므로 자전거를 대여해 타는 것을 추천한다. 의상과 편한 신발을 준비해야 한다.</li>
+<li>정원 내 거대한 운하(호수)에서 <b>뱃놀이 보트</b>를 타는 색다른 재미를 즐긴다. 체력이 허락한다면 자전거로 그랑 트리아농, 프티 트리아농까지 둘러본다.</li>
+</ul>
+<div class="tip">💡 정원 내 골프 카트를 대여해 운전하려면 <b>국제운전면허증</b>이 필수로 필요하므로 꼭 지참해야 한다.</div>
+<div class="kid">🧒 <b>자녀 미션:</b> 광활한 거울의 방에서 거울의 개수를 세어보고, 정원에서 자전거를 타며 프랑스식 정원의 좌우 대칭 구조를 관찰하여 보고서에 기록하기.</div>
+</div>
+<div class="leg">🚶 도보로 인근 현지 먹자골목으로 이동</div>
+
+<div class="stop" data-t="13:30">
+<h3>베르사유 현지 먹자골목 중식 <small>모로코식 또는 프랑스식</small><span class="tg tg-eat">🍽️ 먹거리</span></h3>
+<ul>
+<li>베르사유 궁전 주변 관광지 식당을 피해 현지인들이 찾는 먹자골목으로 향한다. 색다른 모로코 음식이나 대중적인 프랑스 음식을 맛본다.</li>
+</ul>
+</div>
+<div class="leg">RER C선 탑승 후 샹드마르스 에펠타워(Champ de Mars Tour Eiffel)역으로 이동 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Versailles+Palace&destination=Champ+de+Mars+Tour+Eiffel&travelmode=transit">길찾기</a></div>
+
+<div class="stop" data-t="15:30">
+<h3>비라케임 다리 <small>이색적인 에펠탑 조망</small><span class="tg tg-photo">📸 포토</span></h3>
+<ul>
+<li>역에서 나오면 독특한 복층 구조의 <b>비라케임(Bir-Hakeim) 다리</b>를 만난다. 다리 중심축과 철교 구조물 사이로 보이는 에펠탑이 매우 이색적이고 아름답다. 다리 위에서 사진을 찍으며 에펠탑 방향으로 건너온다.</li>
+</ul>
+</div>
+<div class="leg">도보 약 8분 · 센강 변 이동 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Pont+de+Bir-Hakeim&destination=Champ+de+Mars&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-t="16:00">
+<h3>샹드마르스 광장 에펠탑 스냅 <small>아이폰 가성비 스냅 활용</small><span class="tg tg-photo">📸 포토</span></h3>
+<ul>
+<li>에펠탑은 크기가 압도적이어서 너무 가까이서 찍으면 밑동만 나온다. 센강 건너편이나 샹드마르스 잔디밭 쪽에서 바라보는 것이 한눈에 담기며 가장 예쁘다.</li>
+<li>플랫폼(마이리얼트립 등)을 통해 예약할 수 있는 <b>30분~1시간짜리 아이폰 스냅 촬영</b>을 추천한다. 고가 장비로 찍은 큰 용량 파일보다, 힘들 때 꺼내 보기 편하게 핸드폰에 쏙 들어가는 가볍고 예쁜 결과물을 즉시 얻을 수 있다.</li>
+<li>얇고 예쁜 방수 매트를 한국에서 미리 준비해와 샹드마르스 잔디밭이나 센강 변에 깔고 앉아 여유롭게 에펠탑을 감상한다.</li>
+</ul>
+</div>
+<div class="leg">도보 동선 선택 (유람선 탑승 여부에 따라 분기)</div>
+
+<div class="stop" data-t="18:30">
+<h3>[선택 A] 센강 유람선 & 저녁 식사 <small>일몰 맞춤 선상 낭만</small><span class="tg tg-eat">🍽️ 먹거리</span></h3>
+<ul>
+<li>유람선을 탑승할 계획이라면 무조건 <b>일몰 시간대</b>에 맞춘다. 봄·가을·겨울에는 배 위에서 노을과 야경을 보며 식사하는 크루즈를 추천한다.</li>
+<li>해가 밤 10시에 지는 여름철에는 식사를 먼저 한 후 배를 탄다. 식당은 분위기와 가격이 편안한 노포 스타일의 <b>르 마르코(Le Marceau)</b>를 추천한다. 고급스러운 테라스 에펠탑 뷰를 원한다면 <b>무슈 블루(Monsieur Bleu)</b>를 예약한다.</li>
+</ul>
+</div>
+<div class="leg">도보 약 15분 (유람선 미탑승 시 B동선 진입) <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Champ+de+Mars&destination=Rue+Cler+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-t="18:30">
+<h3>[선택 B] 클레어 가로 <small>현지인 거리와 이탈리아식 식사</small><span class="tg tg-eat">🍽️ 먹거리</span></h3>
+<ul>
+<li>유람선을 타지 않는다면 에펠탑 주변의 아름다운 골목을 따라 프랑스인들의 일상이 녹아 있는 <b>클레어 가로(Rue Cler)</b>로 향한다. 생선가게, 과일가게 등을 구경하는 재미가 쏠쏠하다.</li>
+<li>저녁은 거리 내 위치한 이탈리아 식당을 추천한다. 프랑스 음식이 물릴 때 익숙한 이탈리아 음식을 찾게 되는데 파리 시내 상당수 이탈리아 식당이 맛이 없는 반면, 이곳은 한국인 입맛에 맞게 아주 맛이 좋다.</li>
+<li>식사 후 숙소 동선에 있는 <b>카르푸 시티(Carrefour City)</b> 마트에 들러 가볍게 장을 보거나 야간에 마실 와인을 구매한다.</li>
+</ul>
+</div>
+<div class="leg">도보 약 10분 · 센강 변 차량 통제 다리로 이동</div>
+
+<div class="stop" data-t="21:30">
+<h3>화이트 에펠 야경 감상 <small>등받이 난간이 있는 비밀 명당</small><span class="tg tg-view">🌇 전망</span><span class="tg tg-warn">⚠️ 주의</span></h3>
+<ul>
+<li>정각마다 반짝이는 에펠탑 쇼를 감상한 후, 하이라이트인 <b>화이트 에펠(White Eiffel)</b>을 기다린다.</li>
+<li>화이트 에펠은 노란색 간접 전구를 모두 끄고 흰색 불빛만 반짝인 후 에펠탑이 소등되는 마지막 쇼로, 시즌에 따라 밤 12시 또는 새벽 1시에 진행된다.</li>
+<li>오래 대기해야 하므로 <b>차가 다니지 않고 안전하며 난간에 등을 기댈 수 있는 다리 구조물</b> 위 명당에 자리를 잡는다. 등받이가 없으면 대기가 매우 고되다.</li>
+<li>와인을 마시고 이어폰을 한쪽씩 나눠 끼며 센강의 유람선과 야경을 즐기며 낭만적으로 하루를 마무리한다.</li>
+</ul>
+</div>
+<div class="leg">Day 2 일정 종료 · 숙소 복귀</div>
+</div>
+</section>
+
+<section id="day3" class="d3sec">
+<div class="rhead" style="background:var(--d3)">
+<div class="no">DAY 3 · 거장들의 숨결과 예술의 언덕</div>
+<h2>오르세 미술관 오픈런과 몽마르르트</h2>
+<p>동네 빵집 → 오르세 미술관 → 쌍크막스(달팽이 식사) → 솔페리노역 → 아베스 가로 → 몽마르르트 언덕 → 버스 30번 풍경 투어</p>
+</div>
+<div class="sumline" style="background:var(--d3bg);border-color:var(--d3)"><b>이동 원칙:</b> 미술관 투어 후 지하철 12호선을 이용하여 몽마르르트로 한 번에 수월하게 이동한다.</div>
+
+<div class="mapcard">
+<div class="mtitle" style="background:var(--d3)">🗺️ Day 3 전체 동선 지도</div>
+<iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?saddr=Musee+d%27Orsay&daddr=Abbesses+Paris&dirflg=w&hl=ko&output=embed"></iframe>
+<div class="mfoot"><span>미술관 관람 후 솔페리노역에서 12호선 탑승</span><a class="btn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Musee+d%27Orsay&destination=Abbesses+Paris&travelmode=transit">구글맵에서 전체 동선 열기 →</a></div>
+</div>
+
+<div class="tl">
+<div class="stop" data-t="08:30">
+<h3>아침 식사 <small>갓 나온 크루아상</small></h3>
+<ul>
+<li>숙소 근처에서 간단히 빵으로 아침을 해결하고 움직인다.</li>
+</ul>
+</div>
+<div class="leg">도보 약 15분 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Rue+Montorgueil+Paris&destination=Musee+d%27Orsay&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-t="09:00">
+<h3>오르세 미술관 <small>5층 역발상 오픈런</small><span class="tg tg-book">🎟️ 예약</span></h3>
+<ul>
+<li>오픈 시간에 맞춰 입장한다. 대부분의 일반 관람객들이 0층부터 순서대로 관람을 시작할 때, <b>곧장 엘리베이터를 타고 5층 인상주의 관으로 직행</b>하는 역발상 동선을 쓴다.</li>
+<li>아직 아무도 올라오지 않은 여유롭고 고요한 5층 전시장 공간에서 거장들의 작품을 온전히 사유하는 특별함을 맛본다.</li>
+<li>관람 후 미술관 내 기념품숍에 들러 퀄리티 높은 오르세 한정 굿즈들을 구매한다.</li>
+</ul>
+</div>
+<div class="leg">도보 약 8분 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Musee+d%27Orsay&destination=Les+Antiquaires+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-t="12:00">
+<h3>쌍크막스 등 인근 식당 <small>달팽이 요리 에스카르고 정복</small><span class="tg tg-eat">🍽️ 먹거리</span><span class="tg tg-book">🎟️ 예약</span></h3>
+<ul>
+<li>파리의 모든 레스토랑이 달팽이 요리를 판매하는 것은 아니다(한국의 파전·도토리묵처럼 파는 곳이 지정되어 있음). <b>쌍크막스(Les Antiquaires 등 주변 명소)</b> 계열 식당으로 향한다.</li>
+<li>프랑스 전통 달팽이 요리인 <b>에스카르고(Escargot)</b>와 푸아그라 등을 합리적인 가격과 높은 퀄리티로 맛볼 수 있다. 인기 매장이므로 반드시 사전에 예약해야 한다.</li>
+</ul>
+</div>
+<div class="leg">도보 3분 후 솔페리노(Solferino)역에서 지하철 12호선 탑승, 아베스(Abbesses)역 하차 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Solferino+Paris&destination=Abbesses+Paris&travelmode=transit">길찾기</a></div>
+
+<div class="stop" data-t="14:30">
+<h3>몽마르르트 & 아베스 가로 <small>예술가 언덕 산책</small><span class="tg tg-photo">📸 포토</span><span class="tg tg-eat">🍽️ 먹거리</span></h3>
+<ul>
+<li>아베스역에 하차하여 사랑해 벽을 지나 몽마르르트 언덕을 가장 낭만적으로 오르는 동선을 따라 여행한다.</li>
+<li>저녁 식사는 현지인들의 세련된 먹자골목인 <b>아베스 가로(Rue des Abbesses)</b>에서 해결한다. 만약 프랑스식 소스나 고기 요리가 한계에 도달했다면 몽마르르트 구역 내에 평점이 아주 좋은 한식당들이 포진해 있으니 한식으로 저녁을 즐긴다.</li>
+</ul>
+<div class="tip">💡 만약 지난 일정 중 체력 문제로 개선문이나 에펠탑 야경을 제대로 보지 못했다면, 몽마르르트에서 <b>30번 버스</b>를 탑승한다. 가성비 좋게 차창 밖으로 파리의 전형적이고 아름다운 시내 풍경을 감상하며 개선문과 에펠탑까지 한 번에 수월하게 이동할 수 있다.</div>
+<div class="kid">🧒 <b>자녀 미션:</b> 아베스 정원의 '사랑해 벽'에서 한국어 찾기 미션을 수행하고, 테르트르 광장의 거리 화가들을 관찰하며 마음에 드는 그림 화풍 기록하기.</div>
+</div>
+<div class="leg">Day 3 일정 종료 · 숙소 복귀</div>
+</div>
+</section>
+
+<section id="day4" class="d4sec">
+<div class="rhead" style="background:var(--d4)">
+<div class="no">DAY 4 · 파리의 마지막 밤을 불태우기</div>
+<h2>교외 근교 투어와 마레 지구 쇼핑</h2>
+<p>근교 오베르시르우아즈/지베르니 기차 이동 → 현지 중식 → 노틀담 대성당 → [선택 A] 시테섬 꼭짓점 일몰 / [선택 B] 파리 시청 → 마레 지구 골목 쇼핑 → 보주 광장 → 재즈바</p>
+</div>
+<div class="sumline" style="background:var(--d4bg);border-color:var(--d4)"><b>이동 원칙:</b> 오전 기차 연체 변수를 고려해 일찍 움직이며, 시내 복귀 후에는 지하철보다 골목 구경이 가능한 도보 및 버스를 이용한다.</div>
+
+<div class="mapcard">
+<div class="mtitle" style="background:var(--d4)">🗺️ Day 4 시내 복귀 후 동선 지도</div>
+<iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?saddr=Cathedrale+Notre-Dame+de+Paris&daddr=Paris+City+Hall&dirflg=w&hl=ko&output=embed"></iframe>
+<div class="mfoot"><span>시내 복귀 후 노트르담에서 시청, 마레 지구는 도보 권장</span><a class="btn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Cathedrale+Notre-Dame+de+Paris&destination=Place+des+Vosges&waypoints=Paris+City+Hall&travelmode=walking">구글맵에서 전체 동선 열기 →</a></div>
+</div>
+
+<div class="tl">
+<div class="stop" data-t="07:30">
+<h3>교외 근교 마을 오픈런 <small>오베르 시르 우아즈 또는 지베르니</small><span class="tg tg-warn">⚠️ 주의</span></h3>
+<ul>
+<li>파리 시내 풍경이 익숙해질 때쯤 전혀 다른 고즈넉한 프랑스 시골 풍경을 보러 떠난다. 기차로 1시간~1시간 반 거리에 위치한다.</li>
+<li><b>선택 1:</b> 고흐가 마지막 생을 보냈던 <b>오베르 시르 우아즈(Auvers-sur-Oise)</b></li>
+<li><b>선택 2:</b> 모네가 거주하며 수련을 그렸던 <b>지베르니(Giverny)</b></li>
+<li>프랑스 기차 연체나 파업 변수가 있을 수 있으므로 무조건 아침 일찍 출발하며, 교외 현지 마을에서 여유롭게 점심 식사까지 해결하고 시내로 복귀한다.</li>
+</ul>
+<div class="tip">💡 <b>중요:</b> 오베르 시르 우아즈의 고흐의 집이나 지베르니의 모네의 집은 <b>3월에서 11월 사이</b>에만 한정 운영하므로 방문 전 운영 여부를 반드시 확인해야 한다.</div>
+</div>
+<div class="leg">기차를 이용하여 파리 시내 시테섬으로 복귀</div>
+
+<div class="stop" data-t="14:30">
+<h3>노트르담 대성당 <small>파리 역사 중심지의 울림</small></h3>
+<ul>
+<li>화재 복구 이후 내부 관람이 가능해진 <b>노트르담 대성당</b>을 방문한다. 내부 무료 관람이 가능하나 시간대 사전 예약을 권장한다.</li>
+<li>미리 관련 배경 지식 영상을 시청하고, 이어폰으로 '노트르담 드 파리' 뮤지컬 넘버 음악을 들으며 외관과 센강 주변을 장엄하게 감상한다.</li>
+</ul>
+</div>
+<div class="leg">동선 선택 (가족 안점 일몰 동선 A 또는 밤을 불태우는 쇼핑 동선 B로 분기)</div>
+
+<div class="stop" data-t="16:00">
+<h3>[선택 A] 생샤펠 성당 & 시테섬 꼭짓점 <small>스테인드글라스와 고요한 일몰</small><span class="tg tg-book">🎟️ 예약</span><span class="tg tg-view">🌇 전망</span></h3>
+<ul>
+<li>아이나 어르신을 동반한 가족 단위 여행객이거나 고요한 마무리를 원한다면 시테섬 내부 동선을 유지한다. 먼저 <b>생샤펠(Sainte-Chapelle) 성당</b>에 입장하여 압도적인 스테인드글라스 빛의 향연을 감상한다.</li>
+<li>센강을 따라 <b>퐁네프(Pont Neuf) 다리</b>로 이동해 시테섬 가장 서쪽 꼭짓점으로 내려가는 계단을 찾는다. 꼭짓점 아래 간이 매점에서 음료를 사서 자리를 잡는다.</li>
+<li>이곳은 정확히 서쪽을 향하고 있어 파리에서 가장 고요하고 아름다운 <b>센강 일몰</b>을 감상할 수 있는 최고의 명당이다.</li>
+<li>봄·가을·겨울에는 일몰 후 미슐랭 레스토랑(파리는 한국 대비 예약이 상대적으로 수월함)을 예약해 호화로운 마지막 밤 식사를 즐긴다. 여름철에는 식사를 먼저 한 뒤 일몰을 본다.</li>
+</ul>
+</div>
+<div class="leg">도보 약 12분 (선택 B 진입 시 노트르담에서 시청 방면으로 다리를 건너 이동) <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Cathedrale+Notre-Dame+de+Paris&destination=Paris+City+Hall&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-t="16:00">
+<h3>[선택 B] 파리 시청사 <small>역사적 스냅 배경</small><span class="tg tg-photo">📸 포토</span></h3>
+<ul>
+<li>마지막 밤을 불태울 쇼핑·문화파라면 시청으로 향한다. 파리 시청사는 한눈에 봐도 화려하고 아름다운 건축물이다. 특히 로베르 두아노의 유명 사진 작품인 <b>'시청 앞 광장에서의 키스'</b> 배경이 된 장소이므로 광장에서 기념사진을 촬영한다.</li>
+</ul>
+</div>
+<div class="leg">도보 약 15분 · 대로변을 피해 안쪽 골목 상점가로 진입 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Paris+City+Hall&destination=Place+des+Vosges&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-t="16:30">
+<h3>마레 지구 쇼핑 & 보주 광장 <small>트렌디한 골목과 숨겨진 정원</small><span class="tg tg-eat">🍽️ 먹거리</span></h3>
+<ul>
+<li>시청에서 마레 지구까지 약 1km 거리다. 큰 대로변은 재미가 없으니 <b>상점들이 밀집한 안쪽 골목 구석구석</b>을 걸어 다닌다. (지하철은 실망스러운 파리의 단면을 보여주므로 1정거장 거리는 지하철 비추천)</li>
+<li>마레 지구에는 명품 브랜드 대신 산드로, 마쥬, 클로디 피에로 등의 <b>프랑스 현지 브랜드 아울렛 매장</b>과 감성적인 서점들이 가득해 구경만으로 시간이 빠르게 간다.</li>
+<li>쇼핑 중 지치면 <b>카르나발레 박물관 내부 숨겨진 정원 카페</b>나 <b>보주 광장(Place des Vosges)</b>의 녹지 공간 벤치에 앉아 현지 감성을 느끼며 휴식을 취한다.</li>
+<li>저녁은 전 세계 맛집이 포진해 있는 마레 지구에서 취향에 맞는 글로벌 레스토랑을 선택해 즐긴다.</li>
+</ul>
+</div>
+<div class="leg">도보 또는 버스로 인근 재즈바 골목으로 이동</div>
+
+<div class="stop" data-t="21:00">
+<h3>마레 재즈바 & 현지 노상 퍼블릭 드링크 <small>파리 마지막 밤의 정점</small><span class="tg tg-eat">🍽️ 먹거리</span><span class="tg tg-warn">⚠️ 주의</span></h3>
+<ul>
+<li>마레 지구 내 분위기 좋은 전통 <b>재즈바(Jazz bar)</b>에 입장한다. 보통 1시간 동안 밀도 높은 공연이 진행되어 지루하지 않고 여행을 마무리하기 딱 좋은 시간을 선사한다.</li>
+<li>공연 후 밖으로 나오면 현지인들이 와인바나 펍 앞 길거리에 떼 지어 서서 술을 마시는 풍경을 보게 된다. 이는 실내 흡연 금지로 인해 음료를 들고 나와 대화하며 마시는 <b>가장 파리스러운 노상 문화</b>다.</li>
+<li>자연스럽게 마음에 드는 펍이나 와인바에 들어가 마지막 잔을 기울이며 파리의 밤을 낭만적으로 불태운다.</li>
+</ul>
+</div>
+<div class="leg">Day 4 전체 일정 종료 · 숙소 복귀</div>
+</div>
+</section>
+
+<section id="appendix">
+<h2 class="sec">부록</h2>
+<h3>🍽️ 파리 먹거리 및 기념품 총정리</h3>
+<table>
+<tr><th>위치</th><th>구분 / 추천 항목</th><th>포인트 및 팁</th></tr>
+<tr><td><b>동네 전역</b></td><td>현지 파머스 마켓 (주 1~2회)</td><td>에어비앤비 호스트나 호텔에 동네 시장 서는 날을 확인해 소시지, 과일, 치즈를 구매해본다. 마트보다 비싸지만 신선도가 최상이다.</td></tr>
+<tr><td><b>샹젤리제</b></td><td>라뒤레 마카롱 & 굿즈</td><td>테이크아웃 줄 서지 말고 매장 안 테이블 착용. 마카롱은 차(Tea)와 곁들이고 에코백에 달 마카롱 키링 기념품을 필수 구매한다.</td></tr>
+<tr><td><b>오르세 주변</b></td><td>에스카르고 (달팽이 요리)</td><td>모든 프랑스 식당에서 팔지 않으므로 전용 비스트로(쌍크막스 등)를 사전 예약 후 방문해 프렌치 정식을 즐긴다.</td></tr>
+<tr><td><b>몽파르나스</b></td><td>몽파르나스 타워 카페 (출발일 아침)</td><td>전망대 입장료에 약간만 보태면 위층 카페에서 편안하게 조식 세트를 먹으며 파리 전경을 감상할 수 있다. (08:30 오픈)</td></tr>
+<tr><td><b>방돔 주변</b></td><td>르 봉 마르셰 백화점 식품관</td><td>프랑스 전역의 최고급 식재료만 모아둔 곳. 트러플 오일, 올리브 오일 등을 구매하면 귀국 후 파리의 맛을 재현할 최고의 기념품이 된다.</td></tr>
+</table>
+
+<div class="warncard">
+<h3>🛡️ 파리 안전 및 소매치기 대응 3원칙</h3>
+<ul style="margin-left:18px">
+<li><b>명품은 무조건 마지막에:</b> 일정 중간에 루이비통 등 명품을 쇼핑하고 백을 들고 개선문이나 에펠탑으로 이동하는 순간, 웃으며 다가오는 소매치기들의 표적이 된다. 명품 쇼핑은 무조건 일정 맨 끝에 배치하고, 구매 즉시 우버를 타고 숙소로 직행해야 안전하다.</li>
+<li><b>연장자녀 내비게이터 임무 부여:</b> 가족 여행 시 스마트폰을 보며 길을 찾는 어른은 소매치기의 표적이 되기 쉽다. 16세, 12세 자녀들에게 구글맵 길찾기 링크를 주고 '인간 내비게이터' 역할을 맡겨 스마트폰 시선을 분산하고 가족 전체의 경계 태세를 유지한다.</li>
+<li><b>연소자 페이스 보장:</b> 11월 말 추운 날씨에 계단이 많은 명소(개선문 전망대 등)는 하루에 딱 1개만 배치한다. 오후에는 반드시 카페 키츠네나 마레 지구 정원 카페 등에서 1회 이상 완벽한 휴식을 취하게 하여 체력 저하로 인한 안전사고를 예방한다.</li>
+</ul>
+</div>
+</section>
+</main>
+
+<footer>파리 처음 가는 분들을 위한 완벽 가이드 · 유튜브 게으른 완벽주의자 · 2026</footer>
+</body>
+</html>
