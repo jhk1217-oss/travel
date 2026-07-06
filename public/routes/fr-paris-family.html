@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>파리 완벽 가이드 — 여유로운 일주일 일정</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@600;800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F6EFE2; --paper:#FFFDF7; --ink:#242B3A; --navy:#1B2A4A; --gold:#C6A02B; --line:#E4D9C2; --mut:#8A7F68;
+  --d1:#2C6E9B; --d1bg:#EBF2F7; --d2:#B07A1F; --d2bg:#F8F1E2;
+  --d3:#B3403A; --d3bg:#F9ECEA; --d4:#7D4A75; --d4bg:#F5EDF4;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--cream);color:var(--ink);line-height:1.78;font-size:15.5px}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px}
+b,strong{font-weight:700}
+/* nav */
+nav{position:sticky;top:0;z-index:60;background:rgba(27,42,74,.97);backdrop-filter:blur(4px)}
+nav .wrap{display:flex;gap:2px;overflow-x:auto;white-space:nowrap}
+nav a{color:#EFE6D0;text-decoration:none;font-size:13.5px;font-weight:700;padding:12px 11px;display:inline-flex;align-items:center;gap:6px}
+nav a .dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+nav a:hover{background:rgba(255,255,255,.08)}
+/* hero */
+.hero{background:var(--navy);color:#F4EDDC;padding:58px 0 46px;text-align:center;position:relative;overflow:hidden}
+.hero .lines{display:flex;justify-content:center;gap:8px;margin-bottom:22px}
+.hero .lines span{width:64px;height:6px;border-radius:3px}
+.hero h1{font-family:'Hahmlet',serif;font-weight:800;font-size:40px;letter-spacing:-1px;line-height:1.25}
+.hero p.sub{margin-top:14px;color:#CBBE9E;font-size:15px}
+.hero .chips{margin-top:18px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+.hero .chips span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:99px;padding:4px 14px;font-size:13px}
+/* sections */
+section{padding:36px 0;scroll-margin-top:58px}
+h2.sec{font-family:'Hahmlet',serif;font-weight:800;font-size:27px;letter-spacing:-.5px;margin-bottom:6px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:14px 0}
+.warncard{background:#FBEFE7;border:1px solid #E8C9B6;border-left:6px solid #B3403A;border-radius:12px;padding:16px 18px;margin:14px 0}
+table{width:100%;border-collapse:collapse;background:var(--paper);font-size:14px;margin:12px 0;border-radius:10px;overflow:hidden}
+th{background:var(--navy);color:#F4EDDC;font-weight:700;text-align:left}
+th,td{padding:10px 12px;border:1px solid var(--line);vertical-align:top}
+tr:nth-child(even) td{background:#FBF7EC}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+/* route header */
+.rhead{border-radius:16px;padding:26px 24px;color:#fff;margin-bottom:4px}
+.rhead .no{font-size:12px;letter-spacing:3px;font-weight:900;opacity:.85}
+.rhead h2{font-family:'Hahmlet',serif;font-weight:800;font-size:29px;margin-top:4px;letter-spacing:-.5px}
+.rhead p{margin-top:8px;font-size:14px;opacity:.92}
+.sumline{border-radius:12px;padding:13px 16px;font-size:13.8px;margin:12px 0;border:1px dashed}
+/* map card */
+.mapcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:16px 0;box-shadow:0 8px 24px rgba(27,42,74,.08)}
+.mapcard .mtitle{padding:11px 16px;font-weight:900;font-size:14px;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.mapcard iframe{width:100%;height:390px;border:0;display:block}
+.mapcard .mfoot{padding:10px 16px;font-size:12.5px;color:var(--mut);display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.btn{display:inline-block;background:var(--navy);color:#F4EDDC;padding:9px 16px;border-radius:99px;text-decoration:none;font-weight:700;font-size:13px}
+.btn:hover{background:#2A3D66}
+/* metro timeline */
+.tl{position:relative;padding-left:40px;margin-top:14px}
+.tl::before{content:"";position:absolute;left:15px;top:10px;bottom:10px;width:6px;border-radius:3px;background:var(--ac,#2C6E9B)}
+.stop{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:13px;padding:16px 18px;margin:12px 0;box-shadow:0 2px 8px rgba(27,42,74,.04)}
+.stop::before{content:attr(data-t);position:absolute;left:-40px;top:14px;width:30px;height:30px;border-radius:50%;background:var(--ac,#2C6E9B);color:#fff;font-weight:900;font-size:10.5px;display:flex;align-items:center;justify-content:center;border:3px solid var(--cream)}
+.stop h3{font-size:18px;font-weight:900;letter-spacing:-.3px;line-height:1.4}
+.stop h3 small{font-weight:500;color:var(--mut);font-size:13px}
+.stop ul{margin:8px 0 0 18px}
+.stop li{margin:5px 0}
+.stop .tip{margin-top:10px;background:#FCF6E6;border-left:4px solid var(--gold);border-radius:8px;padding:9px 12px;font-size:13.8px}
+.stop .kid{margin-top:10px;background:#EAF3EA;border-left:4px solid #4E8B4E;border-radius:8px;padding:9px 12px;font-size:13.8px}
+.leg{position:relative;display:flex;align-items:center;flex-wrap:wrap;gap:8px;color:var(--mut);font-size:13px;padding:3px 0 3px 8px}
+.leg::before{content:"▾";position:absolute;left:-30px;color:var(--ac,#2C6E9B);font-size:15px}
+.dir{background:var(--paper);border:1.5px solid var(--ac,#2C6E9B);color:var(--ac,#2C6E9B);border-radius:99px;padding:2px 12px;font-size:12px;font-weight:900;text-decoration:none}
+.dir:hover{background:var(--ac,#2C6E9B);color:#fff}
+/* tags */
+.tg{display:inline-block;font-size:11px;font-weight:900;padding:2px 9px;border-radius:99px;margin-left:5px;vertical-align:2px}
+.tg-eat{background:#F4E5CE;color:#8A5A18}
+.tg-photo{background:#E3EDF5;color:#2C6E9B}
+.tg-warn{background:#F7DDD4;color:#A5391D}
+.tg-book{background:#F2E8C8;color:#8A6D0E}
+.tg-view{background:#E8E0EF;color:#6B3E85}
+.tg-kid{background:#E2EFE2;color:#3D7A3D}
+.d1sec{--ac:var(--d1)} .d2sec{--ac:var(--d2)} .d3sec{--ac:var(--d3)} .d4sec{--ac:var(--d4)}
+footer{background:var(--navy);color:#B9AB8B;text-align:center;padding:34px 16px;font-size:13px;margin-top:40px}
+@media(max-width:640px){.hero h1{font-size:29px}.mapcard iframe{height:300px}body{font-size:15px}.stop{padding:14px 14px}.tl{padding-left:36px}.stop::before{left:-36px;width:27px;height:27px}.grid2{grid-template-columns:1fr}}
+@media print{nav,.mapcard iframe{display:none}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+<a href="/" title="루트 목록">🏠 홈</a>
+<a href="#update">⚠ 업데이트</a>
+<a href="#basics">기본 원칙</a>
+<a href="#d1"><span class="dot" style="background:var(--d1)"></span>DAY 1</a>
+<a href="#d2"><span class="dot" style="background:var(--d2)"></span>DAY 2</a>
+<a href="#d3"><span class="dot" style="background:var(--d3)"></span>DAY 3</a>
+<a href="#d4"><span class="dot" style="background:var(--d4)"></span>DAY 4</a>
+<a href="#appendix">부록</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+<div class="lines">
+  <span style="background:var(--d1)"></span>
+  <span style="background:var(--d2)"></span>
+  <span style="background:var(--d3)"></span>
+  <span style="background:var(--d4)"></span>
+</div>
+<h1>파리 일주일 가족 가이드</h1>
+<p class="sub">게으른 완벽주의자 · 여유로운 동선 설계</p>
+<div class="chips"><span>인원: 가족형</span><span>시기: 연중</span><span>속도: 완급 조절</span></div>
+</div></header>
+
+<main class="wrap">
+<section id="update">
+<h2 class="sec">⚠️ 먼저: 현재 기준, 영상과 달라진 것</h2>
+<table>
+<tr><th>항목</th><th>영상 내용</th><th>현재</th></tr>
+<tr><td>파리 올림픽 제한</td><td>올림픽 준비로 에펠탑 앞 잔디밭 피크닉 제한 가능성 언급</td><td>(출발 전 재확인 필요) 올림픽 종료 후 잔디밭 개방 상태 확인 필요</td></tr>
+</table>
+</section>
+
+<section id="basics">
+<h2 class="sec">기본 원칙</h2>
+<div class="card">
+<ul style="margin-left:18px">
+<li><b>메인 일정 전면 배치:</b> 체력이 가장 좋은 오전 첫 일정에 미술관이나 핵심 명소를 배치한다.</li>
+<li><b>저녁 식사는 숙소 근처:</b> 포만감이 생기면 이동이 극도로 지치므로 밥 먹고 5~10분 안에 누울 수 있게 동선을 짠다.</li>
+<li><b>부모님 권한 위임:</b> 저녁 식당 선택과 구글맵 길안내 정권을 부모님께 이임하여 참여도를 높이고 내비게이터 부담을 던다.</li>
+</ul>
+</div>
+<table>
+<tr><th>노선</th><th>구간</th><th>활용법</th></tr>
+<tr><td>버스 30번</td><td>목마르뜨 → 개선문 → 에펠탑</td><td>목마르뜨 야경 감상 후 시내 중심가로 가장 편하게 귀가하거나 야경을 이어 볼 수 있는 치트시트 노선</td></tr>
+</table>
+</section>
+
+<section id="d1" class="d1sec">
+<div class="rhead" style="background:var(--d1)">
+<div class="no">DAY 1 · 인상주의와 예술가의 밤</div>
+<h2>오르세와 목마르뜨 동선</h2>
+<p>숙소 출발 → 오르세 미술관 → 레 아베스(식사) → 물랑루즈</p>
+</div>
+<div class="sumline" style="background:var(--d1bg);border-color:var(--d1)"><b>이동 원칙:</b> 오전은 실내 집중, 저녁은 대중교통으로 목마르뜨 이동 후 도보 이동</div>
+
+<div class="mapcard">
+<div class="mtitle" style="background:var(--d1)">🗺 DAY 1 동선 지도</div>
+<iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?saddr=Musee+d%27Orsay+Paris&daddr=Les+Abbesses+Paris+to:Moulin+Rouge+Paris&dirflg=w&hl=ko&output=embed"></iframe>
+<div class="mfoot"><span>미술관 관람 후 목마르뜨 이동 시 버스/지하철 연계 활용</span><a class="btn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Musee+d%27Orsay+Paris&destination=Moulin+Rouge+Paris&waypoints=Les+Abbesses+Paris&travelmode=walking">구글맵에서 전체 동선 열기 →</a></div>
+</div>
+
+<div class="tl">
+<div class="stop" data-t="09:00">
+<h3>오르세 미술관 <small>인상주의의 성지</small><span class="tg tg-book">🎟 예약</span></h3>
+<ul>
+<li>그날의 가장 중요한 <b>메인 일정</b>이므로 가장 먼저 방문한다.</li>
+<li>사람이 없는 시간에 가기 위해 <b>오전 첫 타임</b> 진입이 정석이다. 아무도 없는 여유로운 감상이 가능하다.</li>
+<li>자유 관람 가이드 기준, 다음 일정을 고려한 가장 이상적인 관람 시간은 <b>2시간</b>이다. 추가로 <b>30분</b>은 고품질의 기념품샵 투어에 배정한다.</li>
+</ul>
+</div>
+<div class="leg">🚶 관내 이동 약 5분 · 내부 관람 및 이동 구간으로 별도 외부 지도를 제공하지 않음 → <b>관내 기념품샵 및 출구</b></div>
+
+<div class="stop" data-t="11:30">
+<h3>미술관 근처 현지 식당 <small>오르세 주변</small><span class="tg tg-eat">🍽 먹거리</span></h3>
+<ul>
+<li>현지인들 사이에서도 유명한 곳이므로 <b>사전 예약 필수</b>다.</li>
+<li>식사 예약 시간은 미술관 입장 시간 기준으로 <b>2시간 30분 뒤</b>로 잡으면 완벽하게 맞아떨어진다.</li>
+</ul>
+</div>
+<div class="leg">🚌 transit 약 25분 · 오르세 인근에서 목마르뜨 지역으로 이동 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Musee+d%27Orsay+Paris&destination=Les+Abbesses+Paris&travelmode=transit">길찾기</a></div>
+
+<div class="stop" data-t="18:00">
+<h3>레 아베스 <small>Les Abbesses · 목마르뜨 현지인 맛집 구역</small><span class="tg tg-eat">🍽 먹거리</span></h3>
+<ul>
+<li>관광객 대상 식당들은 음식 퀄리티 관리에 소홀하기 쉬우나, 이곳은 <b>프랑스 현지인들이 주로 찾는 구역</b>이라 맛이 훌륭하다.</li>
+<li>가격은 파리 시내보다 아주 약간 비쌀 수 있으나 충분히 납득 가능한 <b>합리적인 수준</b>이다.</li>
+</ul>
+</div>
+<div class="leg">도보 약 6분 · 카페 거리를 지나 내리막길 방향 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Les+Abbesses+Paris&destination=Moulin+Rouge+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-t="20:00">
+<h3>물랑루즈 <small>Moulin Rouge · 밤에 빛나는 유흥의 역사</small><span class="tg tg-photo">📸 포토</span></h3>
+<ul>
+<li>물랑루즈는 <b>낮보다 밤이 훨씬 화려하고 아름다우므로</b> 저녁 동선 끝에 배치한다.</li>
+<li>과거 목마르뜨는 스페인 이비자섬과 같은 원정 유흥과 환락의 중심지였다. 손님들의 여흥을 돋우기 위해 시작된 역사적 공연이 지금까지 이어진다.</li>
+<li>대단히 연습량이 많고 훌륭한 공연이지만, 의상 노출도가 높아 <b>부모님과 동반 관람 시 다소 민망할 수 있으므로</b> 내부 관람 예약은 추천하지 않는다. 앞의 화려한 조명을 배경으로 기념사진 촬영을 권장한다.</li>
+</ul>
+<div class="tip">💡 체력이 남았다면 물랑루즈 앞 정류장에서 <b>30번 버스</b>를 탑승한다. 개선문을 거쳐 에펠탑까지 직행하는 명당 노선이다.</div>
+</div>
+</div>
+</section>
+
+<section id="d2" class="d2sec">
+<div class="rhead" style="background:var(--d2)">
+<div class="no">DAY 2 · 모네의 발자취를 따라서</div>
+<h2>지베르니 근교와 오랑주리</h2>
+<p>파리 출발 → 지베르니(모네 정원) → 파리 복귀 → 오랑주리 미술관 → 콩코드 광장 노을</p>
+</div>
+<div class="sumline" style="background:var(--d2bg);border-color:var(--d2)"><b>이동 원칙:</b> 기차를 이용한 오전 외곽 이동, 오후 시내 복귀 후 도보 중심 동선</div>
+
+<div class="mapcard">
+<div class="mtitle" style="background:var(--d2)">🗺 DAY 2 동선 지도 (파리 복귀 이후)</div>
+<iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?saddr=Musee+de+l%27Orangerie+Paris&daddr=Place+de+la+Concorde+Paris&dirflg=w&hl=ko&output=embed"></iframe>
+<div class="mfoot"><span>지베르니 기차 이동은 생라자르역 기차 편 이용</span><a class="btn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Musee+de+l%27Orangerie+Paris&destination=Place+de+la+Concorde+Paris&travelmode=walking">구글맵에서 전체 동선 열기 →</a></div>
+</div>
+
+<div class="tl">
+<div class="stop" data-t="08:00">
+<h3>지베르니 <small>Giverny · 모네가 사랑한 정원</small><span class="tg tg-book">🎟 예약</span></h3>
+<ul>
+<li>화가 클로드 모네가 40세부터 생을 마감할 때까지 인생의 절반을 보내며 가꾼 생가와 정원이다.</li>
+<li>파리 외곽 지역을 여행할 때는 대중교통 지연 및 결항 변수에 대비해 <b>무조건 아침 일찍 출발하여 점심을 먹고 돌아오는 일정</b>을 짜야 한다. 연착 시 대체 편을 구하기 쉽고 심리적 여유가 확보된다.</li>
+<li>오후 2시쯤 지베르니에서 출발하면 오후 3시쯤 파리 시내에 여유롭게 안착한다.</li>
+</ul>
+</div>
+<div class="leg">🚌 transit 약 60분 · 기차를 이용하여 파리 시내 복귀 후 오랑주리로 이동 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Giverny&destination=Musee+de+l%27Orangerie+Paris&travelmode=transit">길찾기</a></div>
+
+<div class="stop" data-t="15:30">
+<h3>오랑주리 미술관 <small>수련 연작과 영혼의 위로</small><span class="tg tg-book">🎟 예약</span><span class="tg tg-view">🌇 전망</span></h3>
+<ul>
+<li>모네가 자신의 가장 큰 걸작으로 꼽았던 <b>'지베르니의 정원'</b>을 대형 화폭 8점에 담아 최상의 형태로 전시하기 위해 맞춤 설계된 공간이다.</li>
+<li>1차 세계대전 직후, 전쟁의 상처를 받은 국민들을 위로하기 위해 국가에 기증된 작품이다. 배경을 모른 채 들어가도 깊은 위로를 준다.</li>
+<li>전시실 입구의 백발 동상은 모네가 아닌 건립에 결정적 역할을 한 정치인 <b>조르주 클레망소</b>다. 입구에서 감사의 뜻을 표하고 들어가자.</li>
+<li>지하에는 폴 기욤과 장 발터의 컬렉션이 있으며 르누아르, 모딜리아니 등 대중적인 근현대 거장들의 작품이 밀도 높게 전시되어 있어 만족도가 높다.</li>
+</ul>
+</div>
+<div class="leg">🚶 관내 이동 약 5분 · 건물 내부에서 서쪽 출구로 연결되는 동선</div>
+
+<div class="stop" data-t="17:30">
+<h3>콩코드 광장 앞 석양 <small>오랑주리 정면 구역</small><span class="tg tg-view">🌇 전망</span><span class="tg tg-photo">📸</span></h3>
+<ul>
+<li>오랑주리 미술관을 나와 정면을 바라보면 바로 <b>콩코드 광장</b>이 펼쳐진다.</li>
+<li>광장 너머 서쪽으로 샹젤리제 거리와 개선문이 직선으로 이어지므로, 해 질 무렵 기가 막힌 <b>파리의 석양 명당</b>이 된다. 잠시 멈춰 노을을 감상한다.</li>
+</ul>
+</div>
+<div class="leg">🚶 도보 약 5분 · 숙소 근처 식당으로 이동하기 전 안전 통행</div>
+</div>
+</section>
+
+<section id="d3" class="d3sec">
+<div class="rhead" style="background:var(--d3)">
+<div class="no">DAY 3 · 왕실의 위용과 센강의 낭만</div>
+<h2>베르사유와 바토무슈 야경</h2>
+<p>숙소 출발 → 베르사유 궁전 → 숙소 휴식 → 저녁 식사 → 바토무슈 선착장</p>
+</div>
+<div class="sumline" style="background:var(--d3bg);border-color:var(--d3)"><b>이동 원칙:</b> 대외 근교 일정 후 반드시 숙소에서 리프레시 휴식을 취하는 완급 조절</div>
+
+<div class="mapcard">
+<div class="mtitle" style="background:var(--d3)">🗺 DAY 3 동선 지도 (파리 야간 구간)</div>
+<iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?saddr=Bateaux-Mouches+Paris&daddr=Eiffel+Tower+Paris&dirflg=w&hl=ko&output=embed"></iframe>
+<div class="mfoot"><span>베르사유 궁전은 왕복 RER C선 또는 전용 철도편 이용</span><a class="btn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Bateaux-Mouches+Paris&destination=Eiffel+Tower+Paris&travelmode=walking">구글맵에서 전체 동선 열기 →</a></div>
+</div>
+
+<div class="tl">
+<div class="stop" data-t="08:30">
+<h3>베르사유 궁전 <small>Château de Versailles</small><span class="tg tg-book">🎟 예약</span></h3>
+<ul>
+<li>파리 여행 중반부(4일 차 전후)에 접어들면 누적 체력 저하가 오므로, 오전 베르사유 일정을 마치면 <b>반드시 숙소로 복귀해 한두 시간 쉬어가는 시간</b>을 확보해야 야간 일정을 소화할 수 있다.</li>
+<li>궁전 관람 및 정원 산책 후 현지에서 점심을 해결하고 시내로 넘어온다.</li>
+</ul>
+</div>
+<div class="leg">🚌 transit 약 50分 · RER 선을 이용하여 파리 시내 숙소로 복귀하여 휴식 후 저녁 식사 이동</div>
+
+<div class="stop" data-t="20:00">
+<h3>바토무슈 선착장 <small>Bateaux-Mouches · 센강 유람선 최고의 명당</small><span class="tg tg-book">🎟 예약</span><span class="tg tg-photo">📸 포토</span></h3>
+<ul>
+<li>뻔한 패키지 코스라는 편견을 버리고 <b>남녀노소 불문 반드시 타야 하는 파리 최고의 필수 코스</b>다. 배에서 보는 시선의 깊이가 완전히 다르다.</li>
+<li><b>최고의 명당 명시: 2층 야외 구역의 오른쪽 맨 뒷좌석이다.</b></li>
+<li>오른쪽에 앉으면 왕복선 특성상 갈 때와 올 때의 양측 풍경을 모두 가장 좋은 각도에서 감상할 수 있다.</li>
+<li>배가 전진하면서 예쁜 명소들을 지나친 후, 내 뒤편으로 배경이 걸릴 때 사진을 찍으면 <b>뒤에 다른 사람이 절대 걸리지 않는 깨끗한 인생 사진</b>을 건질 수 있다.</li>
+<li>대다수 관광객이 흥분하여 1층이나 2층 맨 앞으로 몰려가 번잡하게 사진을 찍다가 올 때쯤 추위에 지쳐 실내로 내려가지만, 뒷자리에 든든하게 입고 앉아 끝까지 여유롭게 감상하는 것이 진정한 팁이다.</li>
+</ul>
+</div>
+<div class="leg">🚶 도보 약 15분 · 강변 산책로를 따라 에펠탑 방향 이동 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Bateaux-Mouches+Paris&destination=Eiffel+Tower+Paris&travelmode=walking">길찾기</a></div>
+</div>
+</section>
+
+<section id="d4" class="d4sec">
+<div class="rhead" style="background:var(--d4)">
+<div class="no">DAY 4 · 늦잠의 여유와 명품 쇼핑</div>
+<h2>에펠탑 피크닉과 백화점 투어</h2>
+<p>숙소 출발(늦잠) → 에펠탑 앞 잔디밭(스냅 촬영) → 명품 브랜드 본점 및 백화점</p>
+</div>
+<div class="sumline" style="background:var(--d4bg);border-color:var(--d4)"><b>이동 원칙:</b> 여유로운 아침 기상 후 중심가 내부 집중 도보 및 택시 이동</div>
+
+<div class="mapcard">
+<div class="mtitle" style="background:var(--d4)">🗺 DAY 4 동선 지도</div>
+<iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?saddr=Eiffel+Tower+Paris&daddr=Galeries+Lafayette+Paris&dirflg=w&hl=ko&output=embed"></iframe>
+<div class="mfoot"><span>백화점 및 브랜드 본점 이동 시 도보 또는 택시 권장</span><a class="btn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Eiffel+Tower+Paris&destination=Galeries+Lafayette+Paris&travelmode=walking">구글맵에서 전체 동선 열기 →</a></div>
+</div>
+
+<div class="tl">
+<div class="stop" data-t="11:00">
+<h3>에펠탑 앞 피크닉 <small>샹드마르스 광장 또는 센강변</small><span class="tg tg-photo">📸 포토</span><span class="tg tg-view">🌇 전망</span></h3>
+<ul>
+<li>전날까지의 피로를 풀기 위해 <b>늦잠을 자고 일어나</b> 아침 겸 점심(브런치) 개념으로 이동한다.</li>
+<li>에펠탑 인근에서 예쁜 피크닉 세트(와인, 샌드위치 포함)를 대여해 주는 업체들을 활용하여 로망을 실현한다. 만약 올림픽 여파 등으로 잔디밭 진입이 통제된다면 에펠탑이 잘 보이는 <b>센강변 구역</b>으로 대체한다.</li>
+<li>야외 스튜디오 가족사진 촬영 비용 수준으로 현지 스냅 작가를 고용해 피크닉 하는 가족의 모습을 사진으로 남기면 평생 가는 최고의 기념이 된다.</li>
+</ul>
+</div>
+<div class="leg">🚶 도보 및 대중교통 약 20분 · 우안 쇼핑 중심가로 이동 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Eiffel+Tower+Paris&destination=Galeries+Lafayette+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-t="14:00">
+<h3>파리 명품 쇼핑 명소 <small>본점 스토리 투어</small><span class="tg tg-book">🎟 예약</span></h3>
+<ul>
+<li>"파리에 와서 쇼핑을 하지 않는 것은 기만이다"라는 마인드로 임한다. 쇼핑에 흥미가 없는 구성원이 있다면 별도 투어를 어레인지해 준다.</li>
+<li>특정 브랜드 제품을 구매할 계획이라면 역사적 스토리가 깃든 <b>브랜드의 태동지(본점)</b>로 가는 것을 강력히 추천한다.</li>
+<li><b>샤넬(Chanel):</b> 샤넬이 세상에 처음으로 매장을 열었던 역사적인 <b>'깜봉(Cambon) 매장'</b>으로 간다. 이곳은 패키지나 쇼핑백 종이 색깔부터 타 매장과 다른 특별함을 준다.</li>
+<li><b>에르메스(Hermes):</b> 에르메스 본점 거리에서는 간혹 가죽 앞치마를 메고 나온 장인들이 숨을 돌리는 모습을 볼 수 있다. 본점 특유의 스토리를 느끼며 진열 대기 상품을 조율해 보는 재미가 있다.</li>
+<li><b>라파예트 백화점(Galeries Lafayette):</b> 2층에 관광객을 위한 컨시어지 데스크가 매우 잘 갖춰져 있어 <b>택스 리펀(Tax Refund) 및 FTA 관세 환급 서류 작업</b>을 완벽하게 지원받을 수 있다. 사마리텐 백화점도 좋은 대안이다.</li>
+</ul>
+</div>
+<div class="leg">🚶 도보 약 5분 · 당일 쇼핑 완료 후 숙소 인근 복귀 동선</div>
+</div>
+</section>
+
+<section id="appendix">
+<h2 class="sec">부록</h2>
+<h3>🍽 파리 먹거리 요약</h3>
+<table>
+<tr><th>위치</th><th>먹을 것</th><th>포인트</th></tr>
+<tr><td>오르세 미술관 인근</td><td>프랑스 현지식</td><td>미술관 퇴장 시간에 맞춰 2시간 반 전 예약 필수</td></tr>
+<tr><td>목마르뜨 레 아베스</td><td>비스트로 현지 요리</td><td>관광객 뜨내기 식당이 아닌 로컬들이 찾는 검증된 맛</td></tr>
+<tr><td>에펠탑 주변</td><td>피크닉 샌드위치 & 와인</td><td>대여 세트를 활용한 비주얼 중심의 야외 브런치</td></tr>
+</table>
+
+<h3>🎒 가족 여행 운영 수칙 & 치안 요약</h3>
+<div class="warncard">
+<ul style="margin-left:18px">
+<li><b>소매치기 방지 3원칙:</b> 가방은 무조건 앞으로 메고, 낯선 사람이 말을 걸거나 서명 운동을 요구하면 눈길도 주지 말고 무시하며, 카페나 식당 테이블 위에 스마트폰을 절대 올려두지 않는다.</li>
+<li><b>장기 일정 팁 (5일 이상):</b> 일정의 여유가 더 있다면 <b>1박 2일 코스의 몽생미셸 투어</b>를 붙인다. 이동에만 편도 6시간이 걸리므로 당일치기는 지친다. 가톨릭 신자인 부모님에게는 최고의 성지순례지이며, 반드시 현지에서 숙박하며 일몰과 다음 날 아침의 일출을 모두 보아야 진가를 알 수 있다.</li>
+</ul>
+</div>
+</section>
+</main>
+
+<footer>파리 일주일 가족 가이드 · 게으른 완벽주의자 · 2026</footer>
+</body>
+</html>

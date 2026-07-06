@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>파리 오르세 미술관 완전 정복 가이드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@600;800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F6EFE2; --paper:#FFFDF7; --ink:#242B3A; --navy:#1B2A4A; --gold:#C6A02B; --line:#E4D9C2; --mut:#8A7F68;
+  --r1:#2C6E9B; --r1bg:#EBF2F7; --r2:#BC5638; --r2bg:#F9EFEA; --r3:#7D4A75; --r3bg:#F5EDF4;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--cream);color:var(--ink);line-height:1.78;font-size:15.5px}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px}
+b,strong{font-weight:700}
+/* nav */
+nav{position:sticky;top:0;z-index:60;background:rgba(27,42,74,.97);backdrop-filter:blur(4px)}
+nav .wrap{display:flex;gap:2px;overflow-x:auto;white-space:nowrap}
+nav a{color:#EFE6D0;text-decoration:none;font-size:13.5px;font-weight:700;padding:12px 11px;display:inline-flex;align-items:center;gap:6px}
+nav a .dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+nav a:hover{background:rgba(255,255,255,.08)}
+/* hero */
+.hero{background:var(--navy);color:#F4EDDC;padding:58px 0 46px;text-align:center;position:relative;overflow:hidden}
+.hero .lines{display:flex;justify-content:center;gap:8px;margin-bottom:22px}
+.hero .lines span{width:64px;height:6px;border-radius:3px}
+.hero h1{font-family:'Hahmlet',serif;font-weight:800;font-size:40px;letter-spacing:-1px;line-height:1.25}
+.hero p.sub{margin-top:14px;color:#CBBE9E;font-size:15px}
+.hero .meta{margin-top:20px;font-size:12.5px;letter-spacing:2px;color:#9FB0CC;text-transform:uppercase}
+/* sections */
+section{padding:36px 0;scroll-margin-top:58px}
+h2.sec{font-family:'Hahmlet',serif;font-weight:800;font-size:27px;letter-spacing:-.5px;margin-bottom:6px}
+p.lead{color:var(--mut);font-size:14.5px;margin-bottom:16px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:14px 0}
+.warncard{background:#FBEFE7;border:1px solid #E8C9B6;border-left:6px solid var(--r2);border-radius:12px;padding:16px 18px;margin:14px 0}
+table{width:100%;border-collapse:collapse;background:var(--paper);font-size:14px;margin:12px 0;border-radius:10px;overflow:hidden}
+th{background:var(--navy);color:#F4EDDC;font-weight:700;text-align:left}
+th,td{padding:10px 12px;border:1px solid var(--line);vertical-align:top}
+tr:nth-child(even) td{background:#FBF7EC}
+/* route header */
+.rhead{border-radius:16px;padding:26px 24px;color:#fff;margin-bottom:4px}
+.rhead .no{font-size:12px;letter-spacing:3px;font-weight:900;opacity:.85}
+.rhead h2{font-family:'Hahmlet',serif;font-weight:800;font-size:29px;margin-top:4px;letter-spacing:-.5px}
+.rhead p{margin-top:8px;font-size:14px;opacity:.92}
+.sumline{border-radius:12px;padding:13px 16px;font-size:13.8px;margin:12px 0;border:1px dashed}
+/* map card */
+.mapcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:16px 0;box-shadow:0 8px 24px rgba(27,42,74,.08)}
+.mapcard .mtitle{padding:11px 16px;font-weight:900;font-size:14px;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.mapcard iframe{width:100%;height:390px;border:0;display:block}
+.mapcard .mfoot{padding:10px 16px;font-size:12.5px;color:var(--mut);display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.btn{display:inline-block;background:var(--navy);color:#F4EDDC;padding:9px 16px;border-radius:99px;text-decoration:none;font-weight:700;font-size:13px}
+.btn:hover{background:#2A3D66}
+/* metro timeline */
+.tl{position:relative;padding-left:40px;margin-top:14px}
+.tl::before{content:"";position:absolute;left:15px;top:10px;bottom:10px;width:6px;border-radius:3px;background:var(--ac,#2C6E9B)}
+.stop{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:13px;padding:16px 18px;margin:12px 0;box-shadow:0 2px 8px rgba(27,42,74,.04)}
+.stop::before{content:attr(data-n);position:absolute;left:-40px;top:14px;width:30px;height:30px;border-radius:50%;background:var(--ac,#2C6E9B);color:#fff;font-weight:900;font-size:13.5px;display:flex;align-items:center;justify-content:center;border:3px solid var(--cream)}
+.stop h3{font-size:18px;font-weight:900;letter-spacing:-.3px;line-height:1.4}
+.stop h3 small{font-weight:500;color:var(--mut);font-size:13px}
+.stop ul{margin:8px 0 0 18px}
+.stop li{margin:5px 0}
+.stop .tip{margin-top:10px;background:#FCF6E6;border-left:4px solid var(--gold);border-radius:8px;padding:9px 12px;font-size:13.8px}
+.leg{position:relative;display:flex;align-items:center;flex-wrap:wrap;gap:8px;color:var(--mut);font-size:13px;padding:3px 0 3px 8px}
+.leg::before{content:"▾";position:absolute;left:-30px;color:var(--ac,#2C6E9B);font-size:15px}
+.dir{background:var(--paper);border:1.5px solid var(--ac,#2C6E9B);color:var(--ac,#2C6E9B);border-radius:99px;padding:2px 12px;font-size:12px;font-weight:900;text-decoration:none}
+.dir:hover{background:var(--ac,#2C6E9B);color:#fff}
+/* tags */
+.tg{display:inline-block;font-size:11px;font-weight:900;padding:2px 9px;border-radius:99px;margin-left:5px;vertical-align:2px}
+.tg-eat{background:#F4E5CE;color:#8A5A18}
+.tg-photo{background:#E3EDF5;color:#2C6E9B}
+.tg-warn{background:#F7DDD4;color:#A5391D}
+.tg-book{background:#F2E8C8;color:#8A6D0E}
+.tg-view{background:#E8E0EF;color:#6B3E85}
+.r1sec{--ac:var(--r1)} .r2sec{--ac:var(--r2)} .r3sec{--ac:var(--r3)}
+footer{background:var(--navy);color:#B9AB8B;text-align:center;padding:34px 16px;font-size:13px;margin-top:40px}
+@media(max-width:640px){.hero h1{font-size:29px}.mapcard iframe{height:300px}body{font-size:15px}.stop{padding:14px 14px}.tl{padding-left:36px}.stop::before{left:-36px;width:27px;height:27px}}
+@media print{nav,.mapcard iframe{display:none}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+<a href="/" title="루트 목록">🏠 홈</a>
+<a href="#update">⚠ 업데이트</a>
+<a href="#basics">기본 원칙</a>
+<a href="#r1"><span class="dot" style="background:var(--r1)"></span>오르세 미술관 루트</a>
+<a href="#appendix">부록</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+<div class="lines"><span style="background:var(--r1)"></span></div>
+<h1>오르세 미술관 완전 정복 가이드</h1>
+<p class="sub">게으른 완벽주의자 · 주요 작품과 체력을 아끼는 완벽 관람 동선 총정리</p>
+<p class="meta">FRANCE · PARIS · MUSEUM ROUTE · STOP BY STOP</p>
+</div></header>
+
+<main class="wrap">
+<section id="update">
+<h2 class="sec">⚠️ 먼저: 현재 기준, 영상과 달라진 것</h2>
+<table>
+<tr><th>항목</th><th>영상 내용</th><th>현재</th></tr>
+<tr><td>관내 작품 배치 상태</td><td>상시 고정 전시인 것처럼 설명</td><td>오르세 미술관은 국내외 미술관과의 작품 대여 교류가 매우 활발한 미술관이므로 특정 시기 방문 시 본문의 핵심 작품(예: 마네의 풀밭 위의 점심식사 등)이 자리에 없을 확률이 존재함 (출발 전 재확인 필요)</td></tr>
+</table>
+</section>
+
+<section id="basics">
+<h2 class="sec">기본 원칙</h2>
+<div class="card">
+<ul style="margin-left:18px">
+<li><b>선택과 집중 전략:</b> 미술관의 모든 작품을 0층부터 5층까지 전부 완벽히 보겠다는 욕심을 버려야 한다. 가장 보고 싶었던 핵심 작품 <b>5점 정도만 온전히 감상하겠다</b>는 마음으로 접근해야 아쉬움과 지침 없이 행복하게 관람을 끝낼 수 있다.</li>
+<li><b>체력 안배 필수:</b> 아는 작품이 끊임없이 쏟아져 초반에 에너지가 급격히 소진된다. 빈센트 반 고흐의 핵심 작품은 5층 가장 마지막 전시실에 있으므로 하단의 동선을 따라 체력을 분배해야 한다.</li>
+<li><b>관내 이동 원칙:</b> 0층 관람 후 5층으로 이동할 때는 숨겨져 있는 <b>에스컬레이터</b>를 반드시 찾아 탑승한다. 계단은 체력 소모가 극심하며, 엘리베이터는 공간이 협소하고 노약자·휠체어 이용자 우선이라 눈치가 보일 수 있다.</li>
+</ul>
+</div>
+<table>
+<tr><th>노선</th><th>구간</th><th>활용법</th></tr>
+<tr><td>오르세 외부 진입</td><td>시내 인접 지하철역 → 미술관 입구</td><td>미술관 내부로 들어가기 전 역이나 정류장에서 입구까지 이동할 때만 구글맵 도보 길찾기를 활용한다.</td></tr>
+</table>
+</section>
+
+<section id="r1" class="r1sec">
+<div class="rhead" style="background:var(--r1)">
+<div class="no">ROUTE 1 · 관내 핵심 동선</div>
+<h2>오르세 미술관 효율 극대화 루트</h2>
+<p>0층(인상주의 이전) → 5층(인상주의 거장 & 포토존) → 2층(후기 인상주의 & 장식 미술)</p>
+</div>
+<div class="sumline" style="background:var(--r1bg);border-color:var(--r1)"><b>이동 원칙:</b> 미술관 외부 접근 시에만 구글맵을 사용하며, 관내에서는 미술관 내부 구조와 안내된 방향 지시만을 따라 이동한다.</div>
+
+<div class="mapcard">
+<div class="mtitle" style="background:var(--r1)">🗺 오르세 미술관 진입 지도</div>
+<iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?saddr=Musee+d%27Orsay&daddr=Orsay+Museum+Paris&dirflg=w&hl=ko&output=embed"></iframe>
+<div class="mfoot"><span>미술관 외부 진입 및 입구 찾기용 지도입니다. 관내 내부 이동은 지도가 제공되지 않습니다.</span><a class="btn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Musee+d%27Orsay&destination=Orsay+Museum+Paris&travelmode=walking">구글맵에서 외부 위치 열기 →</a></div>
+</div>
+
+<div class="tl">
+<div class="stop" data-n="1">
+<h3>0층 1~3번 관 <small>아카데미즘과 낭만주의의 대치</small></h3>
+<ul>
+<li>안내 데스크에서 표를 보여주고 들어가서 <b>쭉 계단을 내려가면 1번 관</b>에 도착한다.</li>
+<li>첫 번째 작품으로 걸려 있는 <b>외젠 들라크루아의 사자 그림</b>을 감상한다. 오르세 미술관의 시대가 들라크루아로부터 시작되었음을 상징하는 장치다.</li>
+<li>1, 2, 3번 관에는 당시 주류 예술이었던 <b>아카데미즘</b> 작품들이 소장되어 있다.</li>
+<li>들라크루아의 정신을 계승했다고 볼 수 있는 <b>도미니크 앵그르의 샘</b>이 들라크루아와 서로 마주 보고 배치되어 있어 두 거장이 경쟁하고 반목하는 듯한 연출을 감상할 수 있다.</li>
+</ul>
+</div>
+<div class="leg">🚶 관내 이동 약 2분 · 동선에 따라 옆 전시관으로 이동 → <b>4번 관</b></div>
+
+<div class="stop" data-n="2">
+<h3>0층 4번 관 <small>밀레의 바르비종파 명작</small></h3>
+<ul>
+<li>한국인 관광객들이 초반에 가장 열광하고 집중적으로 사진을 촬영하는 구간이다.</li>
+<li>밀레의 대표작인 <b>만종</b>과 <b>이삭줍는 여인들</b>이 소장되어 있어 눈앞에서 명작의 질감을 확인할 수 있다.</li>
+</ul>
+<div class="tip">💡 초반 명작 출현에 너무 많은 시간을 빼앗기면 후반 5층 고흐 관에서 심각한 체력 방전과 표정 관리가 안 되는 현상을 겪게 되므로 촬영 템포를 조절해야 한다.</div>
+</div>
+<div class="leg">🚶 관내 이동 약 2분 · 계속해서 옆으로 이동 → <b>5~7번 관</b></div>
+
+<div class="stop" data-n="3">
+<h3>0층 5~7번 관 <small>쿠르베의 사실주의</small></h3>
+<ul>
+<li>사실주의 미술의 수장이라 할 수 있는 <b>구스타프 쿠르베</b>의 작품들이 6번 관과 7번 관에 걸쳐 집중 전시되어 있다.</li>
+<li>미술에 관심이 없는 사람도 한 번쯤 들어봤을 법한 논란의 화제작 <b>세상의 기원</b>이 소장되어 있다.</li>
+<li>작품을 보며 이것이 예술의 영역인지 외설의 영역인지 직접 마주하고 사유해보는 것을 권장한다.</li>
+</ul>
+</div>
+<div class="leg">🚶 관내 이동 약 3분 · 통로를 따라 인상주의 태동기 구역으로 이동 → <b>14번 및 18번 관</b></div>
+
+<div class="stop" data-n="4">
+<h3>0층 14, 18, 13, 11번 관 <small>인상주의의 서막과 가세실</small></h3>
+<ul>
+<li><b>14번 관:</b> 에두아르 마네의 핵심 걸작인 <b>피리 부는 소년</b>과 <b>올랭피아</b>를 감상할 수 있다.</li>
+<li><b>18번 관:</b> 클로드 모네와 오귀스트 르누아르가 인상주의 초기 시절인 1860년대에 그렸던 풋풋한 초기 작품들이 소장되어 있다.</li>
+<li><b>13번 관:</b> 맞은편에 위치해 있으며 에드가 드가의 초기 발레리나 및 인물 관련 작품들을 볼 수 있다.</li>
+<li><b>11번 관(콜렉션 가세):</b> 고흐가 그렸던 의사로 유명한 <b>가세 박사</b>의 이름을 딴 방이다. 정신과 의사이자 인상주의 화가들의 후원자였던 가세 박사가 수집하여 미술관에 기증한 폴 세잔과 빈센트 반 고흐의 초기 인상주의 콜렉션을 만날 수 있다.</li>
+</ul>
+</div>
+<div class="leg">🚶 관내 이동 약 5분 · 11번 관 근처에 숨겨진 <b>에스컬레이터</b>를 찾아 타고 곧장 <b>5층</b>으로 이동 → <b>5층 대형 시계탑 앞</b></div>
+
+<div class="stop" data-n="5">
+<h3>5층 메인 포토존 <small>오르세 역사의 상징, 대형 시계탑</small><span class="tg tg-photo">📸</span></h3>
+<ul>
+<li>에스컬레이터에서 내리면 오르세 미술관의 가장 유명한 첫 번째 사진 맛집을 만나게 된다.</li>
+<li>오르세 미술관은 <b>과거 기차역</b> 건물이었기 때문에 외부에 거대한 시계가 2개 장치되어 있었다. 하나는 카페 내부에 있어 눈치가 보이지만, 이곳은 아예 대놓고 사진을 찍을 수 있도록 조성된 공인 포토존이다.</li>
+<li>시계 너머로 파리 시내가 투영되며 완전히 <b>역광 구조</b>이기 때문에 얼굴은 실루엣만 나오지만, 매우 감성적이고 멋진 인생 사진을 건질 수 있어 전 세계 관광객들이 줄을 서서 촬영한다.</li>
+</ul>
+</div>
+<div class="leg">🚶 관내 이동 약 1분 · 시계탑 바로 옆 전시실 진입 → <b>29번 관</b></div>
+
+<div class="stop" data-n="6">
+<h3>5층 29~34번 관 <small>인상주의의 만개와 거장들의 화풍</small></h3>
+<ul>
+<li><b>29번 관:</b> 에두아르 마네의 <b>풀밭 위의 점심식사</b>가 전시의 포문을 연다. 시기적으로는 0층 올랭피아보다 먼저 그려진 작품이지만 후배 화가들에게 "그림을 이렇게도 그릴 수 있구나"라는 엄청난 시각적 깨우침을 준 기념비적 명작이기에 5층 인상주의 관의 시작점에 배치되어 있다.</li>
+<li><b>30~34번 관:</b> 세잔, 드가, 마네, 모네, 피사로, 르누아르, 시슬리의 작품들이 연달아 펼쳐진다.</li>
+<li>초기 29번 관 주변 작품들은 화가별 개성이 뚜렷하지 않아 모네와 시슬리, 르누아르의 화풍이 서로 구분이 잘 안 가지만, 30번 관을 넘어가며 시대순으로 감상할수록 각 화가들이 자신만의 화풍을 완성해 나가며 거장으로 거듭나는 진화 과정을 뚜렷하게 느낄 수 있다.</li>
+</ul>
+</div>
+<div class="leg">🚶 관내 이동 약 2분 · 이동 통로를 따라 전진 → <b>35~37번 관</b></div>
+
+<div class="stop" data-n="7">
+<h3>5층 35~37번 관 <small>신인상주의 점묘파</small></h3>
+<ul>
+<li>학창 시절 미술 시간에 <b>점묘법</b>이라는 이름으로 중요하게 배웠던 <b>신인상주의</b> 화가들의 공간이다.</li>
+<li>조르주 쇠라와 폴 시냐크 등 선이 아닌 순수한 색채의 점을 찍어 형태를 구성한 거장들의 독창적인 작품들을 가까이서 관찰할 수 있다.</li>
+</ul>
+</div>
+<div class="leg">🚶 관내 이동 약 2분 · 5층 카페테리아 구역을 지나 안쪽 갤러리로 진입 → <b>갤러리아 프랑스 아가씨</b></div>
+
+<div class="stop" data-n="8">
+<h3>5층 갤러리아 프랑스 아가씨 <small>후기 인상주의, 고흐와 고갱</small></h3>
+<ul>
+<li>오르세 관람의 최종 목적지이자 관람객들이 그토록 기다리던 <b>빈센트 반 고흐</b>, <b>폴 고갱</b>, <b>툴루즈 로트레크</b>의 명작들이 집중 소장된 구역이다.</li>
+<li>서로 완전히 다른 화풍을 지닌 이 거장들을 한 공간에 묶어놓은 배경에는 역사적 스토리텔링이 존재한다. 고흐와 고갱은 프랑스 남부 아를에서 노란 집을 짓고 함께 살았던 깊은 인연이 있고, 툴루즈 로트레크는 고흐가 파리 시절 고독하게 지낼 때 만났던 사실상 유일한 예술가 친구였기 때문이다.</li>
+</ul>
+</div>
+<div class="leg">🚶 관내 이동 약 4분 · 다시 메인 에스컬레이터를 타고 <b>2층</b>으로 하강 → <b>2층 67~72번 관</b></div>
+
+<div class="stop" data-n="9">
+<h3>2층 67~72번 관 및 장식미술 코너 <small>나비파와 아르누보 가구의 미학</small></h3>
+<ul>
+<li><b>67~72번 관:</b> 후기 인상주의의 강렬한 색채 영향과 원색적인 표현 기법을 그대로 이어받아 발전시킨 화가들의 모임인 <b>나비파</b> 작품들이 전시되어 있다.</li>
+<li><b>장식 미술 코너:</b> 회화보다 생활 가구나 인테리어 디자인에 관심이 많은 사람들에게 눈이 번쩍 뜨일 만한 공간이다. <b>자연물에서 영감을 얻어 곡선의 미를 강조한 아르누보 양식</b>의 가구와 오브제들이 대거 전시되어 있어 색다른 미적 영감을 준다.</li>
+</ul>
+</div>
+<div class="leg">🚶 관내 이동 약 3분 · 2층 상징주의 구역을 지나 대연회장으로 전진 (상징주의 유명 작 상당수는 퐁피두 센터로 이관되었으므로 체력이 부족하면 스킵하고 곧장 51번 관으로 향한다) → <b>51번 관</b></div>
+
+<div class="stop" data-n="10">
+<h3>2층 51번 관 <small>오르세 역의 과거, 화려한 대연회장</small><span class="tg tg-photo">📸</span></h3>
+<ul>
+<li>전시실 문을 열고 들어서는 순간 작품은 없고 사방이 극도로 화려한 황금빛 장식으로 가득 찬 대공간을 마주하게 된다.</li>
+<li>과거 기차역 시절, 파리로 여행을 오는 전 세계 부유한 귀족과 대부호들을 위해 미술관 내부에 함께 운영되던 <b>고급 호텔의 대연회장</b> 시설을 그대로 보존한 장소다.</li>
+<li>화려함에 비해 일반 관람객들이 잘 모르고 스쳐 지나가거나 한두 명 들어왔다 금방 나가기 때문에 내부가 매우 한적하다. 창문에서 들어오는 역광을 활용해 원피스 등을 입고 춤을 추는 듯한 실루엣 인생샷을 아주 여유롭게 찍을 수 있는 숨겨진 최고의 사진 맛집이다.</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section id="appendix">
+<h2 class="sec">부록</h2>
+<table>
+<tr><th>위치</th><th>먹을 것</th><th>포인트</th></tr>
+<tr><td>2층 51번 관 인근 레스토랑</td><td>☕ 에스프레소 및 티타임 음료 (3.3유로 내외)</td><td>내부 인테리어가 비현실적으로 아름답고 화려하여 눈이 즐겁다. 다만 과거 기준 가격 대비 식사 메뉴의 맛과 퀄리티는 다소 아쉽다는 평가가 많았으므로, 비싼 식사를 하기보다 <b>티타임 전용 시간대에 방문하여 음료만 가볍게 주문</b>해 내부 분위기를 감상하며 체력을 충전하고 사진을 찍는 용도로 활용하는 편이 훨씬 경제적이고 만족도가 높다. <span class="tg tg-eat">🍽</span></td></tr>
+</table>
+<div class="warncard">
+<ul style="margin-left:18px">
+<li><b>관람 동선 배치 팁:</b> 미술관 투어가 끝난 직후 곧바로 다음 관광 일정을 잡으면 발과 다리에 엄청난 무리가 온다. 내부 관람이 끝나면 51번 관이나 레스토랑 카페에서 커피를 한잔하며 휴식을 취한 뒤, 체력 상태를 냉정하게 자가 진단하여 숙소로 복귀할지 가벼운 시내 산책 정도로 마무리를 지을지 결정하는 것이 행복한 여행을 유지하는 비결이다.</li>
+<li><b>소매치기 예방:</b> 파리 중심가 명소인 만큼 미술관 입구 주변과 인접 지하철역 동선에서는 항상 가방을 앞으로 매고 스마트폰 소매치기를 주의해야 한다.</li>
+</ul>
+</div>
+</section>
+</main>
+
+<footer>파리 오르세 미술관 완전 정복 가이드 · 게으른 완벽주의자 · 2023</footer>
+</body>
+</html>
