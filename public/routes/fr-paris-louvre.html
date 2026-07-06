@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>파리 루브르 박물관 3대 꽃 명작 도보 가이드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght=600;800&family=Noto+Sans+KR:wght=400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F6EFE2; --paper:#FFFDF7; --ink:#242B3A; --navy:#1B2A4A; --gold:#C6A02B; --line:#E4D9C2; --mut:#8A7F68;
+  --r1:#2C6E9B; --r1bg:#EBF2F7; --r2:#BC5638; --r2bg:#F9EFEA; --r3:#7D4A75; --r3bg:#F5EDF4;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--cream);color:var(--ink);line-height:1.78;font-size:15.5px}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px}
+b,strong{font-weight:700}
+/* nav */
+nav{position:sticky;top:0;z-index:60;background:rgba(27,42,74,.97);backdrop-filter:blur(4px)}
+nav .wrap{display:flex;gap:2px;overflow-x:auto;white-space:nowrap}
+nav a{color:#EFE6D0;text-decoration:none;font-size:13.5px;font-weight:700;padding:12px 11px;display:inline-flex;align-items:center;gap:6px}
+nav a .dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+nav a:hover{background:rgba(255,255,255,.08)}
+/* hero */
+.hero{background:var(--navy);color:#F4EDDC;padding:58px 0 46px;text-align:center;position:relative;overflow:hidden}
+.hero .lines{display:flex;justify-content:center;gap:8px;margin-bottom:22px}
+.hero .lines span{width:64px;height:6px;border-radius:3px}
+.hero h1{font-family:'Hahmlet',serif;font-weight:800;font-size:40px;letter-spacing:-1px;line-height:1.25}
+.hero p.sub{margin-top:14px;color:#CBBE9E;font-size:15px}
+.hero .meta{margin-top:20px;font-size:12.5px;letter-spacing:2px;color:#9FB0CC;text-transform:uppercase}
+/* sections */
+section{padding:36px 0;scroll-margin-top:58px}
+h2.sec{font-family:'Hahmlet',serif;font-weight:800;font-size:27px;letter-spacing:-.5px;margin-bottom:6px}
+p.lead{color:var(--mut);font-size:14.5px;margin-bottom:16px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:14px 0}
+.warncard{background:#FBEFE7;border:1px solid #E8C9B6;border-left:6px solid var(--r2);border-radius:12px;padding:16px 18px;margin:14px 0}
+table{width:100%;border-collapse:collapse;background:var(--paper);font-size:14px;margin:12px 0;border-radius:10px;overflow:hidden}
+th{background:var(--navy);color:#F4EDDC;font-weight:700;text-align:left}
+th,td{padding:10px 12px;border:1px solid var(--line);vertical-align:top}
+tr:nth-child(even) td{background:#FBF7EC}
+/* route header */
+.rhead{border-radius:16px;padding:26px 24px;color:#fff;margin-bottom:4px}
+.rhead .no{font-size:12px;letter-spacing:3px;font-weight:900;opacity:.85}
+.rhead h2{font-family:'Hahmlet',serif;font-weight:800;font-size:29px;margin-top:4px;letter-spacing:-.5px}
+.rhead p{margin-top:8px;font-size:14px;opacity:.92}
+.sumline{border-radius:12px;padding:13px 16px;font-size:13.8px;margin:12px 0;border:1px dashed}
+/* map card */
+.mapcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:16px 0;box-shadow:0 8px 24px rgba(27,42,74,.08)}
+.mapcard .mtitle{padding:11px 16px;font-weight:900;font-size:14px;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.mapcard iframe{width:100%;height:390px;border:0;display:block}
+.mapcard .mfoot{padding:10px 16px;font-size:12.5px;color:var(--mut);display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.btn{display:inline-block;background:var(--navy);color:#F4EDDC;padding:9px 16px;border-radius:99px;text-decoration:none;font-weight:700;font-size:13px}
+.btn:hover{background:#2A3D66}
+/* metro timeline */
+.tl{position:relative;padding-left:40px;margin-top:14px}
+.tl::before{content:"";position:absolute;left:15px;top:10px;bottom:10px;width:6px;border-radius:3px;background:var(--ac,#2C6E9B)}
+.stop{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:13px;padding:16px 18px;margin:12px 0;box-shadow:0 2px 8px rgba(27,42,74,.04)}
+.stop::before{content:attr(data-n);position:absolute;left:-40px;top:14px;width:30px;height:30px;border-radius:50%;background:var(--ac,#2C6E9B);color:#fff;font-weight:900;font-size:13.5px;display:flex;align-items:center;justify-content:center;border:3px solid var(--cream)}
+.stop h3{font-size:18px;font-weight:900;letter-spacing:-.3px;line-height:1.4}
+.stop h3 small{font-weight:500;color:var(--mut);font-size:13px}
+.stop ul{margin:8px 0 0 18px}
+.stop li{margin:5px 0}
+.stop .tip{margin-top:10px;background:#FCF6E6;border-left:4px solid var(--gold);border-radius:8px;padding:9px 12px;font-size:13.8px}
+.leg{position:relative;display:flex;align-items:center;flex-wrap:wrap;gap:8px;color:var(--mut);font-size:13px;padding:3px 0 3px 8px}
+.leg::before{content:"▾";position:absolute;left:-30px;color:var(--ac,#2C6E9B);font-size:15px}
+.dir{background:var(--paper);border:1.5px solid var(--ac,#2C6E9B);color:var(--ac,#2C6E9B);border-radius:99px;padding:2px 12px;font-size:12px;font-weight:900;text-decoration:none}
+.dir:hover{background:var(--ac,#2C6E9B);color:#fff}
+/* tags */
+.tg{display:inline-block;font-size:11px;font-weight:900;padding:2px 9px;border-radius:99px;margin-left:5px;vertical-align:2px}
+.tg-eat{background:#F4E5CE;color:#8A5A18}
+.tg-photo{background:#E3EDF5;color:#2C6E9B}
+.tg-warn{background:#F7DDD4;color:#A5391D}
+.tg-book{background:#F2E8C8;color:#8A6D0E}
+.tg-view{background:#E8E0EF;color:#6B3E85}
+.r1sec{--ac:var(--r1)} .r2sec{--ac:var(--r2)} .r3sec{--ac:var(--r3)}
+footer{background:var(--navy);color:#B9AB8B;text-align:center;padding:34px 16px;font-size:13px;margin-top:40px}
+@media(max-width:640px){.hero h1{font-size:29px}.mapcard iframe{height:300px}body{font-size:15px}.stop{padding:14px 14px}.tl{padding-left:36px}.stop::before{left:-36px;width:27px;height:27px}}
+@media print{nav,.mapcard iframe{display:none}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+<a href="/" title="루트 목록">🏠 홈</a>
+<a href="#update">⚠ 업데이트</a>
+<a href="#basics">기본 원칙</a>
+<a href="#r1"><span class="dot" style="background:var(--r1)"></span>루트 1 루브르 3대 꽃</a>
+<a href="#appendix">부록</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+<div class="lines"><span style="background:var(--r1)"></span></div>
+<h1>루브르 박물관 뽕뽑기 가이드</h1>
+<p class="sub">게으른 완벽주의자 · 루브르 박물관 3대 꽃 공식 인증 명작 완벽 정복</p>
+<p class="meta">PARIS · 1 ROUTE · STOP BY STOP</p>
+</div></header>
+
+<main class="wrap">
+<section id="update">
+<h2 class="sec">⚠️ 먼저: 현재 기준, 영상과 달라진 것</h2>
+<table><tr><th>항목</th><th>영상 내용</th><th>현재</th></tr>
+<tr><td><b>입장료</b></td><td>영상 시점 기준</td><td><b>2026년 1월 14일부터 비EU 국적자 32유로</b>(EEA 국적·거주자 22유로, 18세 미만 무료)</td></tr>
+<tr><td><b>입장 방식</b></td><td>현장 구매 가능</td><td><b>공식 사이트 시간대 예약 필수</b>(예약 없이는 입장이 제한될 수 있음) · 화요일 휴관</td></tr>
+</table>
+</section>
+
+<section id="basics">
+<h2 class="sec">기본 원칙</h2>
+<div class="card">
+<ul style="margin-left:18px">
+<li><b>박물관 규모:</b> 총면적 60,800㎡로 축구장 6개 크기 이상이며, 소장 작품 수가 방대하여 길을 잃기 쉬우므로 철저한 동선 계획이 필수적이다.</li>
+<li><b>3대 명작 분포:</b> 박물관은 ㄷ자 형태로 <b>리슐리외 관, 쉴리 관, 드농 관</b>의 3개 핵심 전시관으로 구성되어 있으며, 3대 꽃으로 불리는 핵심 명작이 각 관에 1개씩 분산되어 있다.</li>
+</ul>
+</div>
+<table>
+<tr><th>노선</th><th>구간</th><th>활용법</th></tr>
+<tr><td>메트로 1, 7호선</td><td>Palais Royal - Musée du Louvre역</td><td>박물관 지하 상점가(Carrousel du Louvre) 및 피라미드 출입구로 직결되는 핵심 노선</td></tr>
+</table>
+</section>
+
+<section id="r1" class="r1sec">
+<div class="rhead" style="background:var(--r1)">
+<div class="no">ROUTE 1 · 관별 명작 정복</div>
+<h2>루브르 박물관 3대 명작 도보 루트</h2>
+<p>리슐리외 관(함무라비 법전) → 쉴리 관(밀로의 비너스) → 드농 관(모나리자)</p>
+</div>
+<div class="sumline" style="background:var(--r1bg);border-color:var(--r1)"><b>이동 원칙:</b> 박물관 안에서는 구글맵이 무의미하다 — 정류장 사이의 🚶 방향 지시와 관내 표지판(RICHELIEU / SULLY / DENON)으로만 이동한다. 지도는 박물관 찾아갈 때 한 번만 쓴다.</div>
+
+<div class="mapcard">
+<div class="mtitle" style="background:var(--r1)">🗺 찾아가기 — 메트로 1·7호선 Palais Royal역 → 피라미드 입구</div>
+<iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?saddr=Palais+Royal+Musee+du+Louvre+Metro+Paris&daddr=Louvre+Pyramid+Paris&dirflg=w&hl=ko&output=embed"></iframe>
+<div class="mfoot"><span>역에서 피라미드까지 도보 약 3분 · 지하 상가(카루젤 뒤 루브르) 입구 직결도 가능</span><a class="btn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Palais+Royal+Musee+du+Louvre+Metro+Paris&destination=Louvre+Pyramid+Paris&travelmode=walking">구글맵에서 길찾기 →</a></div>
+</div>
+
+<div class="tl">
+<div class="leg" style="padding-top:0">🚶 입장 → 피라미드 보안검색 후 지하 나폴레옹 홀의 세 갈래 입구 중 <b>RICHELIEU</b>로 진입 → 에스컬레이터로 0층 → 'Antiquités orientales(오리엔트 유물)' 표지판을 따라 <b>227호 전시실</b></div>
+
+<div class="stop" data-n="1">
+<h3>리슐리외 관: 함무라비 법전 <small>기원전 1750년경 · 바빌로니아의 유산</small></h3>
+<ul>
+<li><b>역사적 가치:</b> 기원전 1750년경 바빌로니아의 함무라비 왕이 세운 법전으로, 단순히 오래된 것을 넘어 당시 사람들의 세세한 생활상, 종교, 친족, 노예 제도, 가치관을 담은 282개 조항이 새겨져 있다.</li>
+<li><b>유물 특징:</b> 길가에 흔히 있는 비석 형태가 아니며, 거대하고 정교한 검은 돌 기둥 형태이다. 최상단에는 태양신이자 정의의 신인 <b>샤마슈</b>가 권력의 상징인 지팡이와 반지를 함무라비 왕에게 하사하는 모습이 정교하게 조각되어 있다. 눈앞에서 4,000년 전의 손길을 직접 근접하여 감상할 수 있다.</li>
+<li><b>주요 법 조항 내용:</b> 
+  <ul>
+    <li><b>동태복수법 (제196조, 제200조):</b> "평민이 귀족의 눈을 상하게 하면 그의 눈도 상하게 한다", "귀족이 귀족의 이를 상하게 하면 그의 이도 상하게 한다"와 같이 받은 만큼만 복수하도록 제한한 당시 기준으로 매우 선진적이고 인권적인 법이었다.</li>
+    <li><b>건축가 책임 (제230조):</b> 집이 무너져 집주인의 아들이 사망하면 그 집을 지은 건축가의 아들도 사형에 처한다는 엄격한 연좌 및 책임제였다.</li>
+    <li><b>남존여비 및 신분제 (제141조):</b> 아내가 부정한 행동을 했을 때 남편은 고소할 수 있으며, 이혼 시 지참금을 돌려주고 내보내거나, 이혼하지 않을 경우 아내를 노예로 삼고 새장가를 갈 수 있었던 철저한 남성 중심 사회상을 보여준다.</li>
+    <li><b>사회적 약자 보호 (제48조):</b> 자연재해(가뭄, 홍수 등)로 인해 농사를 망친 소장농은 그해 지주에게 곡식을 바치지 않아도 되도록 감면 조항을 두었다.</li>
+  </ul>
+</li>
+</ul>
+<div class="tip">💡 과거의 법전을 통해 현재를 비추어보고 더 나은 미래를 고민하게 만드는 박물관 본연의 존재 이유를 가장 잘 설명해주는 유물이다. 타 작품들과 거리가 멀어 많은 가이드들이 포기하곤 하지만 절대 놓쳐서는 안 된다.</div>
+</div>
+
+<div class="leg">🚶 관내 이동 약 7분 · 함무라비 법전 전시실(리슐리외 관 <b>227호</b>)을 나와 <b>SULLY</b> 표지판을 따라 메소포타미아·이란 전시실 통과 → 쉴리 관 0층 그리스 조각 구역 → 'Vénus de Milo' 표지판을 따라 <b>345호</b></div>
+
+<div class="stop" data-n="2">
+<h3>쉴리 관: 밀로의 비너스 <small>그리스 시대 · 이상적 미의 결정체</small><span class="tg tg-photo">📸</span></h3>
+<ul>
+<li><b>발견 일화:</b> 밀로 섬에서 한 농부가 농사를 짓던 중 괭이에 걸려 발견하였으며, 거의 온전한 형태로 묻혀 있었다. 마침 근처에 정박 중이던 해군 장교가 이를 목격하고 구입하여 프랑스 국왕 루이 18세에게 헌상하였다.</li>
+<li><b>유일무이한 보존성:</b> 로마 시대 아나톨리아 지역이 기독교화되면서 우상 숭배라는 이유로 대부분의 그리스 신상들이 목이 잘리거나 코가 떼어지는 등 철저히 파괴되었다. 반면 밀로의 비너스는 돌출되어 파손되기 가장 쉬운 <b>코와 안면부가 훼손되지 않고 온전하게 발견</b>된 거의 유일한 그리스 시대 비너스 상이다.</li>
+<li><b>콘트라포스토 자세의 율동미:</b> 한쪽 다리에 무게중심을 두고 다른 쪽 다리는 힘을 빼는 <b>콘트라포스토(Contrapposto)</b> 자세를 취하고 있다. 이에 따라 골반과 어깨선이 교차하여 자연스러운 S라인을 형성하며 조각상에 엄청난 율동감과 생동감을 부여한다.</li>
+<li><b>이상적인 비율과 착시 계산:</b> 인류가 가장 편안함을 느끼는 황금비율인 <b>1 : 1.618</b>(발끝에서 배꼽, 배꼽에서 정수리 등)이 적용되었으며, 신의 이상적인 사이즈(34-26-38인치 추정)로 조각되었다. 특히 정면이 아닌 약간 높은 단상 위에 전시되어 있는데, 이는 아래에서 위로 올려다볼 때 발생하는 착시(얼굴은 멀어져 작아 보이고 하체는 가까워 두꺼워 보이는 현상)를 완벽한 수학적 계산으로 보정한 결과물이다.</li>
+<li><b>잘려진 팔의 신비로움:</b> 추가 발굴 작업을 통해 손 모양 조각 등이 발견되어 원래 어떤 모습이었는지 추정 복원도(사과를 쥐고 있는 모습 등)가 작성되기도 했다. 그러나 당시 사람들은 복원하지 않은 현재 상태가 상상력을 자극하여 훨씬 더 아름답고 신비롭다고 판단하여 복원하지 않기로 결정하였다. 잘려진 팔 조각은 유물 뒤편에 따로 전시되어 있다.</li>
+</ul>
+</div>
+
+<div class="leg">🚶 관내 이동 약 8분 · 비너스를 등지고 <b>DENON / La Joconde</b> 표지판 방향으로 → <b>다뤼 계단(Escalier Daru)</b>을 오르면 계단참 정면에 <b>사모트라케의 니케</b>(잠깐 감상) → 계단을 마저 올라 1층 → 표지판을 따라 <b>국가의 방(Salle des États · 711호)</b></div>
+
+<div class="stop" data-n="3">
+<h3>드농 관: 모나리자 <small>레오나르도 다빈치 · 신비주의의 극치</small><span class="tg tg-warn">⚠ 주의</span></h3>
+<ul>
+<li><b>전시의 예외성:</b> 루브르 박물관은 다빈치의 걸작을 총 5점 소장하고 있으며, 그중 4점은 르네상스 관에 함께 모여 있다. 오직 <b>모나리자만 유일하게 다음 시대인 매너리즘 전시관 정중앙</b>에 독점 배치되어 있다. 이는 다빈치라는 위대한 거장을 단 하나의 시대적 틀에 가둘 수 없다는 루브르 박물관의 깊은 존경의 표시다.</li>
+<li><b>세계적 명성의 계기 (1911년 도난 사건):</b> 과거에는 리자 여사의 평범한 초상화로 인식되어 지금처럼 대단한 주목을 받지 못했다. 그러나 1911년 8월 21일, 박물관 직원 유니폼을 입은 도둑이 감쪽같이 훔쳐 걸어 나갔고, 이틀 동안 아무도 도난 사실을 인지하지 못했다. 전 세계 언론이 "세계 최고 박물관에서 모나리자가 사라졌다"고 대서특필하면서 대중의 폭발적인 관심을 끌었고, 2년 후 유물이 회수되어 돌아왔을 때 비로소 전 세계에서 가장 유명한 유일무이한 작품으로 등극했다.</li>
+<li><b>작품 속 수많은 모호성과 미스테리:</b> 
+  <ul>
+    <li>다빈치가 이탈리아를 떠나 프랑스로 이주할 때까지 평생 품에 지니고 다니며 죽기 전까지 수정을 거듭한 작품이다. 의뢰인에게 넘겨주지 않은 이유에 대해 의문이 많다.</li>
+    <li>자세히 보면 남성적인 골격과 다빈치 자신의 자화상과 매우 닮아 있으며, 다빈치 손에 있던 혹이 그림 속 손에도 똑같이 표현되어 있어 자신의 여성적 자아를 투영한 자화상이라는 주장도 존재한다.</li>
+    <li>컴퓨터 분석 결과 좌측면은 옆모습, 우측면은 앞모습의 각도를 다르게 결합한 비대칭 두상 구조를 취하고 있다.</li>
+    <li>눈썹이 없는 모호함, 경계선을 흐릿하게 뭉개어 안개 속에 있는 것처럼 표현한 <b>스푸마토(Sfumato)</b> 기법의 극치를 보여준다. 이로 인해 관람객의 감정 상태에 따라 웃는 것처럼 보이기도, 슬프게 울고 있는 것처럼 보이기도 하는 신비로운 매력을 발산한다.</li>
+  </ul>
+</li>
+</ul>
+<div class="tip">💡 <b>소매치기 절대 주의:</b> 모나리자 앞은 전 세계에서 몰려든 관람객들이 액자 하나만 뚫어지게 쳐다보며 밀집하는 공간이다. 소매치기들이 활동하기 가장 좋은 최적의 환경이므로 가방과 귀중품을 반드시 몸 앞으로 바짝 밀착하고 감상할 것. 인파를 헤치고 조금씩 앞으로 전진하면 맨 앞줄에서 가까이 마주할 수 있다.</div>
+</div>
+</div>
+</section>
+
+<section id="appendix">
+<h2 class="sec">부록</h2>
+<table>
+<tr><th>위치</th><th>먹을 것</th><th>포인트</th></tr>
+<tr><td>루브르 지하 및 주변</td><td>에스프레소 및 크루아상</td><td>관람 전후 휴식을 위한 프랑스 정통 베이커리 카페 활용 추천</td></tr>
+</table>
+<div class="warncard">
+<ul style="margin-left:18px">
+<li><b>치안 안내:</b> 루브르 박물관 내부, 특히 <b>모나리자 전시대 앞</b>은 관람객의 주의가 분산되는 틈을 타 소매치기가 극성을 부리는 곳이다. 고가의 입장료를 내고 들어온 전문 소매치기들이 상주하므로 가방은 무조건 앞으로 매고 지퍼를 잠가야 한다.</li>
+</ul>
+</div>
+</section>
+</main>
+<footer>루브르 박물관 뽕뽑기 가이드 · 게으른 완벽주의자 · 2026</footer>
+</body>
+</html>
