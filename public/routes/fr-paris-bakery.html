@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>프랑스 파리 미식 루트 가이드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@600;800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F6EFE2; --paper:#FFFDF7; --ink:#242B3A; --navy:#1B2A4A; --gold:#C6A02B; --line:#E4D9C2; --mut:#8A7F68;
+  --r1:#2C6E9B; --r1bg:#EBF2F7; --r2:#BC5638; --r2bg:#F9EFEA; --r3:#7D4A75; --r3bg:#F5EDF4;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--cream);color:var(--ink);line-height:1.78;font-size:15.5px}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px}
+b,strong{font-weight:700}
+/* nav */
+nav{position:sticky;top:0;z-index:60;background:rgba(27,42,74,.97);backdrop-filter:blur(4px)}
+nav .wrap{display:flex;gap:2px;overflow-x:auto;white-space:nowrap}
+nav a{color:#EFE6D0;text-decoration:none;font-size:13.5px;font-weight:700;padding:12px 11px;display:inline-flex;align-items:center;gap:6px}
+nav a .dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+nav a:hover{background:rgba(255,255,255,.08)}
+/* hero */
+.hero{background:var(--navy);color:#F4EDDC;padding:58px 0 46px;text-align:center;position:relative;overflow:hidden}
+.hero .lines{display:flex;justify-content:center;gap:8px;margin-bottom:22px}
+.hero .lines span{width:64px;height:6px;border-radius:3px}
+.hero h1{font-family:'Hahmlet',serif;font-weight:800;font-size:40px;letter-spacing:-1px;line-height:1.25}
+.hero p.sub{margin-top:14px;color:#CBBE9E;font-size:15px}
+.hero .meta{margin-top:20px;font-size:12.5px;letter-spacing:2px;color:#9FB0CC;text-transform:uppercase}
+/* sections */
+section{padding:36px 0;scroll-margin-top:58px}
+h2.sec{font-family:'Hahmlet',serif;font-weight:800;font-size:27px;letter-spacing:-.5px;margin-bottom:6px}
+p.lead{color:var(--mut);font-size:14.5px;margin-bottom:16px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:14px 0}
+.warncard{background:#FBEFE7;border:1px solid #E8C9B6;border-left:6px solid var(--r2);border-radius:12px;padding:16px 18px;margin:14px 0}
+table{width:100%;border-collapse:collapse;background:var(--paper);font-size:14px;margin:12px 0;border-radius:10px;overflow:hidden}
+th{background:var(--navy);color:#F4EDDC;font-weight:700;text-align:left}
+th,td{padding:10px 12px;border:1px solid var(--line);vertical-align:top}
+tr:nth-child(even) td{background:#FBF7EC}
+/* route header */
+.rhead{border-radius:16px;padding:26px 24px;color:#fff;margin-bottom:4px}
+.rhead .no{font-size:12px;letter-spacing:3px;font-weight:900;opacity:.85}
+.rhead h2{font-family:'Hahmlet',serif;font-weight:800;font-size:29px;margin-top:4px;letter-spacing:-.5px}
+.rhead p{margin-top:8px;font-size:14px;opacity:.92}
+.sumline{border-radius:12px;padding:13px 16px;font-size:13.8px;margin:12px 0;border:1px dashed}
+/* map card */
+.mapcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:16px 0;box-shadow:0 8px 24px rgba(27,42,74,.08)}
+.mapcard .mtitle{padding:11px 16px;font-weight:900;font-size:14px;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.mapcard iframe{width:100%;height:390px;border:0;display:block}
+.mapcard .mfoot{padding:10px 16px;font-size:12.5px;color:var(--mut);display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.btn{display:inline-block;background:var(--navy);color:#F4EDDC;padding:9px 16px;border-radius:99px;text-decoration:none;font-weight:700;font-size:13px}
+.btn:hover{background:#2A3D66}
+/* metro timeline */
+.tl{position:relative;padding-left:40px;margin-top:14px}
+.tl::before{content:"";position:absolute;left:15px;top:10px;bottom:10px;width:6px;border-radius:3px;background:var(--ac,#2C6E9B)}
+.stop{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:13px;padding:16px 18px;margin:12px 0;box-shadow:0 2px 8px rgba(27,42,74,.04)}
+.stop::before{content:attr(data-n);position:absolute;left:-40px;top:14px;width:30px;height:30px;border-radius:50%;background:var(--ac,#2C6E9B);color:#fff;font-weight:900;font-size:13.5px;display:flex;align-items:center;justify-content:center;border:3px solid var(--cream)}
+.stop h3{font-size:18px;font-weight:900;letter-spacing:-.3px;line-height:1.4}
+.stop h3 small{font-weight:500;color:var(--mut);font-size:13px}
+.stop ul{margin:8px 0 0 18px}
+.stop li{margin:5px 0}
+.stop .tip{margin-top:10px;background:#FCF6E6;border-left:4px solid var(--gold);border-radius:8px;padding:9px 12px;font-size:13.8px}
+.leg{position:relative;display:flex;align-items:center;flex-wrap:wrap;gap:8px;color:var(--mut);font-size:13px;padding:3px 0 3px 8px}
+.leg::before{content:"▾";position:absolute;left:-30px;color:var(--ac,#2C6E9B);font-size:15px}
+.dir{background:var(--paper);border:1.5px solid var(--ac,#2C6E9B);color:var(--ac,#2C6E9B);border-radius:99px;padding:2px 12px;font-size:12px;font-weight:900;text-decoration:none}
+.dir:hover{background:var(--ac,#2C6E9B);color:#fff}
+/* tags */
+.tg{display:inline-block;font-size:11px;font-weight:900;padding:2px 9px;border-radius:99px;margin-left:5px;vertical-align:2px}
+.tg-eat{background:#F4E5CE;color:#8A5A18}
+.tg-photo{background:#E3EDF5;color:#2C6E9B}
+.tg-warn{background:#F7DDD4;color:#A5391D}
+.tg-book{background:#F2E8C8;color:#8A6D0E}
+.tg-view{background:#E8E0EF;color:#6B3E85}
+.r1sec{--ac:var(--r1)} .r2sec{--ac:var(--r2)} .r3sec{--ac:var(--r3)}
+footer{background:var(--navy);color:#B9AB8B;text-align:center;padding:34px 16px;font-size:13px;margin-top:40px}
+@media(max-width:640px){.hero h1{font-size:29px}.mapcard iframe{height:300px}body{font-size:15px}.stop{padding:14px 14px}.tl{padding-left:36px}.stop::before{left:-36px;width:27px;height:27px}}
+@media print{nav,.mapcard iframe{display:none}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+<a href="/" title="루트 목록">🏠 홈</a>
+<a href="#update">⚠ 업데이트</a>
+<a href="#basics">기본 원칙</a>
+<a href="#r1"><span class="dot" style="background:var(--r1)"></span>루트 1 파리 베이커리 순례</a>
+<a href="#appendix">부록</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+<div class="lines"><span style="background:var(--r1)"></span></div>
+<h1>빵빵! 비키세요 파리 빵 소개 나갑니다</h1>
+<p class="sub">유튜브 채널 게으른 완벽주의자 · 파리 에센셜 식사빵 & 디저트 가이드</p>
+<p class="meta">PARIS · 1 ROUTE · STOP BY STOP</p>
+</div></header>
+
+<main class="wrap">
+<section id="update">
+<h2 class="sec">⚠️ 먼저: 현재 기준, 영상과 달라진 것</h2>
+<table><tr><th>항목</th><th>영상 내용</th><th>현재</th></tr>
+<tr><td>파리 빵집 및 시장 정보</td><td>2024년 1월 기준 에센셜 정보 안내</td><td>(출발 전 재확인 필요)</td></tr></table>
+</section>
+
+<section id="basics">
+<h2 class="sec">기본 원칙</h2>
+<div class="card">
+<ul style="margin-left:18px">
+<li><b>블랑제리(Boulangerie):</b> 탄수화물이 가득 들어간 식사용 빵 중심 전문점이다.</li>
+<li><b>파티스리(Pâtisserie):</b> 설탕이 가득 들어가고 달달한 디저트류 중심 전문점이다.</li>
+<li><b>동네 명칭 혼용:</b> 간판이 한쪽으로 치우쳐 있어도 서로의 주력 메뉴(크로아상, 마카롱 등)를 대부분 취급하므로 가장 자신 있는 분야를 이름으로 쓴 것으로 판단하면 된다.</li>
+</ul>
+</div>
+<table>
+<tr><th>노선</th><th>구간</th><th>활용법</th></tr>
+<tr><td>파리 메트로 주요 노선</td><td>시내 중심가 연계</td><td>라뒤레 생제르망 데프레 지점 및 상제리제 거리 지점 이동 시 활용한다.</td></tr>
+</table>
+</section>
+
+<section id="r1" class="r1sec">
+<div class="rhead" style="background:var(--r1)">
+<div class="no">ROUTE 1 · 파리 로컬 미식 동선</div>
+<h2>파리 에센셜 베이커리 & 디저트 투어</h2>
+<p>숙소 앞 블랑제리 → 오픈에어 마켓 → 동네 바게트 맛집 → 라뒤레 생제르망 데프레/상제리제 지점 → 피에르 에르메</p>
+</div>
+<div class="sumline" style="background:var(--r1bg);border-color:var(--r1)"><b>이동 원칙:</b> 아침 일찍 갓 나온 식사 빵을 구매하고, 오후에는 전문 살롱과 디저트 숍 위주로 동선을 구성한다.</div>
+
+<div class="mapcard">
+<div class="mtitle" style="background:var(--r1)">🗺 파리 베이커리 순례 지도 — 에센셜 코스</div>
+<iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?saddr=Paris&daddr=Saint-Germain-des-Pres+Paris+to:Champs-Elysees+Paris&dirflg=w&hl=ko&output=embed"></iframe>
+<div class="mfoot"><span>매장 간 이동 및 대중교통 구간은 실제 버스나 지하철 경로를 확인해야 한다.</span><a class="btn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Paris&destination=Champs-Elysees+Paris&waypoints=Saint-Germain-des-Pres+Paris&travelmode=walking">구글맵에서 전체 동선 열기 →</a></div>
+</div>
+
+<div class="tl">
+<div class="stop" data-n="1">
+<h3>숙소 근처 블랑제리 <small>가장 맛있는 식사 빵의 기준</small></h3>
+<ul>
+<li>파리에서 가장 맛있는 식사 빵을 파는 곳은 <b>내 숙소와 가장 가까운 블랑제리</b>다. 어떤 맛있는 빵집도 <b>갓 나온 빵</b>을 이길 수 없다.</li>
+<li>대부분의 로컬 빵집은 앉아서 먹는 공간 없이 <b>테이크 아웃만 가능</b>하므로 아침에 일찍 일어나 바로 사 오는 것을 권장한다.</li>
+<li><b>크로아상:</b> 밀가루 반죽 위에 버터를 바르고 겹겹이 쌓아 버터향이 가득하며 폭신하고 쫄깃한 식감이다.</li>
+<li><b>빵 오 쇼콜라:</b> 크로아상 반죽에 초콜릿 두 줄을 넣은 빵이다.</li>
+<li><b>빵 오 레쟁:</b> 반죽 속에 건포도가 들어간 빵이다. 프랑스인들이 아침 조식으로 가장 많이 즐기는 3대장 메뉴다.</li>
+</ul>
+<div class="tip">💡 <b>쇼숑 오 폼므(Chausson aux pommes) 강력 추천:</b> '소매 주머니'라는 뜻으로 크로아상 반죽 주머니 속에 사과 필링을 넣은 빵이다. 너무 물렁하지도 아삭하지도 않은 적정선의 사과 식감과 달고 느끼할 때쯤 중심을 잡아주는 시나몬 향이 일품이다. 한국에서 맛을 제대로 구현하는 곳이 드무니 파리에서 반드시 많이 먹어두어야 한다.</div>
+</div>
+
+<div class="leg">도보 약 5분 · 동네 로컬 마켓으로 이동 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Paris&destination=Open+Air+Market+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="2">
+<h3>파머스 마켓 / 오픈에어 마켓 <small>동네 전통 시장 문화 체험</small></h3>
+<ul>
+<li>프랑스 현지 문화를 깊게 체험하고 싶다면 아침 일찍 서서 12시~1시쯤 마감하는 <b>주 1~2회 동네 장터</b>를 방문해야 한다.</li>
+<li>에어비앤비 호스트, 호텔 컨시어지에게 물어보거나 구글맵에 <b>'Farmers Market'</b> 혹은 <b>'Open air market'</b>으로 검색하면 정보를 얻을 수 있다.</li>
+<li>마트보다 가격은 살짝 비싸지만 월등하게 신선하고 뛰어난 맛의 과일, 치즈, 버터를 장만할 수 있다.</li>
+</ul>
+<div class="tip">💡 시장에서 산 신선한 과일, 치즈, 버터를 동네 빵집에서 사 온 갓 나온 빵과 함께 숙소에서 차려 먹는 것이 최고의 프랑스 미식 체험이다.</div>
+</div>
+
+<div class="leg">도보 약 10분 · 오후 시간대 바게트 맛집으로 이동 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Open+Air+Market+Paris&destination=Boulangerie+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="3">
+<h3>동네 바게트 맛집 <small>오후 5시~6시의 로컬 줄서기</small></h3>
+<ul>
+<li>프랑스인들은 바게트를 주로 저녁 식사와 곁들여 먹는다. 오후 5시에서 6시 사이에 사람들이 길게 줄을 서 있는 빵집이 있다면 그곳이 바로 <b>검증된 바게트 맛집</b>이다.</li>
+<li>여러 개를 쟁여두면 맛이 떨어지므로 <b>반개씩만 자주 사는 것</b>을 추천한다. 종이봉투에 반만 담아주는데, 길거리에 노출된 채 들고 다니면 공기가 좋지 않고 오염 우려가 있어 한국인 정서상 찝찝할 수 있으니 바로 먹거나 가방에 잘 보관해야 한다.</li>
+</ul>
+<div class="tip">💡 <b>주문 팁:</b> 바게트 반 개는 프랑스어로 <b>"드미 바게트 실부플레(Demi baguette s'il vous plaît)"</b>라고 한다. 숫자 2(Deux)와 반(Demi)의 발음이 꼬이거나, 숫자 8(Huit)과 드미 위트가 헷갈려 8개를 받는 배달 사고가 날 수 있으니 불안하면 파파고 번역 화면을 직접 보여주는 것이 안전하다.</div>
+</div>
+
+<div class="leg">대중교통(Transit) 활용 · 명품 디저트 매장으로 이동 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Boulangerie+Paris&destination=Laduree+Paris&travelmode=transit">길찾기</a></div>
+
+<div class="stop" data-n="4">
+<h3>라뒤레 (Laduree) <small>마카롱과 이스파한의 원조 살롱</small><span class="tg tg-eat">🍽 먹거리</span><span class="tg tg-photo">📸</span></h3>
+<ul>
+<li>디저트류 제과는 시각적 즐거움과 섬세함이 중요하므로 블랑제리보다는 <b>전문점 방문</b>을 추천한다.</li>
+<li><b>마카롱 역사:</b> 1533년 이탈리아 메디치 가문의 카트린 메디시스가 프랑스 왕가로 혼인할 때 파티쉐가 가져온 것이 시초다. 동그란 과자 꼬끄 사이에 커스터드 크림을 넣으며 지금의 파리식 마카롱을 정립한 원조 매장이 바로 <b>라뒤레(Laduree)</b>다.</li>
+<li>테이크아웃보다 살짝 비싸지만 예쁜 식기와 인테리어를 온전히 즐기려면 공간이 넓고 살롱처럼 잘 꾸며진 <b>생제르망 데프레 지점</b> 또는 <b>샹제리제 거리 지점</b>에서 자리를 잡고 먹는 것을 강력 권장한다.</li>
+</ul>
+<div class="tip">💡 <b>이스파한(Ispahan) 시식 팁:</b> 라뒤레 출신의 전설적인 파티쉐 피에르 에르메가 고안한 메뉴로, 손바닥만 한 장미 맛 마카롱 꼬끄 사이에 커스터드 크림, 리치, 산딸기를 조합한 화려한 디저트다. 꽤 달고 크기가 크므로 여러 명이 하나를 시켜 나눠 먹는 것이 좋으며, 허브 고수 향에 민감한 사람의 경우 특유의 장미 향에서 샴푸 향 같은 이질감을 느낄 수 있으니 주의해야 한다.</div>
+</div>
+
+<div class="leg">도보 약 3분 · 인근 피에르 에르메 매장 연계 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Laduree+Paris&destination=Pierre+Herme+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="5">
+<h3>피에르 에르메 (Pierre Hermé) & 슈 전문점 <small>프랑스 고전 디저트의 진수</small><span class="tg tg-eat">🍽 먹거리</span></h3>
+<ul>
+<li>라뒤레와 함께 이스파한의 원조 격인 브랜드 매장이며 파리 디저트 기술의 정점을 보여주는 곳이다.</li>
+<li><b>슈(Choux)의 역사:</b> 프랑스인들이 세례식이나 결혼식 때 슈로 만든 케이크 '크로캉 부슈'를 먹기 때문에 행복한 기억을 상징하는 디저트다. 이 역시 카트린 메디치와 함께 넘어온 이탈리아 파티쉐의 슈 반죽에서 유래하여 프랑스 파티쉐들이 공 모양, 양배추 모양으로 발전시키고 크림을 넣으며 완성되었다.</li>
+<li>기다란 틀에 슈 반죽을 넣고 커스터드 크림과 초콜릿을 올리면 <b>에클레어</b>, 타르트 반죽 위에 크림과 슈를 올리면 <b>생토노레</b>, 슈 반죽을 도넛 모양으로 만들어 반을 가르고 모카 크림을 채우면 <b>파리 브레스트</b>가 된다. 이 유서 깊은 반죽 계열의 디저트들을 꼭 맛보아야 한다.</li>
+</ul>
+</div>
+
+<div class="leg">🚶 도보 이동 · 인근 정원 및 공원 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Pierre+Herme+Paris&destination=Square+Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="6">
+<h3>빵집 샌드위치 테이크 아웃 <small>작은 정원에서의 프렌치 시크 피크닉</small><span class="tg tg-eat">🍽 먹거리</span></h3>
+<ul>
+<li>화려한 카페나 샌드위치 전문점과 달리, 로컬 빵집에서 파는 샌드위치는 겉보기에 투박하지만 엄청난 내공을 자랑한다.</li>
+<li>위아래 기본 빵 자체가 압도적으로 맛있고 들어간 재료들이 월등히 신선하여 기본기가 훌륭하다. 가격 또한 일반 식당보다 훨씬 저렴하다.</li>
+<li>파리 곳곳에 숨겨진 작은 정원이나 공원 벤치에 앉아 투박한 샌드위치를 베어 물며 풍경을 감상하는 순간이 화려한 명소보다 훨씬 오래 기억에 남는 추억이 된다.</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section id="appendix">
+<h2 class="sec">부록</h2>
+<table>
+<tr><th>위치</th><th>먹을 것</th><th>포인트</th></tr>
+<tr><td>동네 블랑제리</td><td>쇼숑 오 폼므, 크로아상</td><td>아침 갓 나온 시간에 구매해야 최고의 맛을 느낄 수 있다.</td></tr>
+<tr><td>라뒤레/피에르 에르메</td><td>마카롱, 이스파한, 슈 디저트</td><td>고전 이탈리아 유래 기술을 파리식으로 극대화한 명품 디저트 라인이다.</td></tr>
+<tr><td>로컬 빵집 전역</td><td>바게트(반 개 주문), 빵집 샌드위치</td><td>바게트는 오후 5~6시 줄 서는 곳이 맛집이며, 샌드위치는 공원 피크닉용으로 제격이다.</td></tr>
+</table>
+<div class="warncard">
+<ul style="margin-left:18px">
+<li><b>치안 및 위생 주의:</b> 바게트를 포장 없이 손으로 들고 다니는 로컬 감성을 무작정 따라 하다가 매연이나 먼지, 지하철 내부 오염에 노출될 수 있으므로 봉투 내부 위생 관리에 유의해야 한다.</li>
+<li><b>길거리 소매치기:</b> 빵을 들고 정원이나 벤치에서 식사할 때 한눈을 파는 사이 가방이나 소지품을 노리는 소매치기가 많으므로 항상 소지품을 몸 전면에 밀착시켜야 한다.</li>
+</ul>
+</div>
+</section>
+</main>
+<footer>빵빵! 비키세요 파리 빵 소개 나갑니다 · 게으른 완벽주의자 · 2024</footer>
+</body>
+</html>
