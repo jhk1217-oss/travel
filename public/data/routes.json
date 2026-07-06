@@ -81,7 +81,18 @@
           "days": "4",
           "source": "게으른 완벽주의자 · [몰아보기] 부모님과의 파리여행 참 쉽다!(아이와의 여행일정으로도 좋음)",
           "updated": "2026-07"
-      }
+        },
+        {
+          "id": "fr-paris-restaurant-guide",
+          "file": "/routes/fr-paris-restaurant-guide.html",
+          "city": "파리",
+          "title": "파리 식당 종류별 완벽 가이드",
+          "subtitle": "카페부터 미슐랭 레스토랑까지 상황별 미식 가이드",
+          "tags": ["파리미식", "프랑스식당", "식당에티켓"],
+          "days": "1루트 = 식당 유형별 탐방",
+          "source": "게으른 완벽주의자 · 파리여행ㅣ어디에서 먹어야할까? 🤔",
+          "updated": "2023-10"
+        }
       ]
     },
     {

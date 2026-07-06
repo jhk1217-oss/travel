@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>파리 미식 가이드: 상황별 식당 완벽 선택법</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@600;800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F6EFE2; --paper:#FFFDF7; --ink:#242B3A; --navy:#1B2A4A; --gold:#C6A02B; --line:#E4D9C2; --mut:#8A7F68;
+  --r1:#2C6E9B; --r1bg:#EBF2F7; --r2:#BC5638; --r2bg:#F9EFEA; --r3:#7D4A75; --r3bg:#F5EDF4;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--cream);color:var(--ink);line-height:1.78;font-size:15.5px}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px}
+b,strong{font-weight:700}
+/* nav */
+nav{position:sticky;top:0;z-index:60;background:rgba(27,42,74,.97);backdrop-filter:blur(4px)}
+nav .wrap{display:flex;gap:2px;overflow-x:auto;white-space:nowrap}
+nav a{color:#EFE6D0;text-decoration:none;font-size:13.5px;font-weight:700;padding:12px 11px;display:inline-flex;align-items:center;gap:6px}
+nav a .dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+nav a:hover{background:rgba(255,255,255,.08)}
+/* hero */
+.hero{background:var(--navy);color:#F4EDDC;padding:58px 0 46px;text-align:center;position:relative;overflow:hidden}
+.hero .lines{display:flex;justify-content:center;gap:8px;margin-bottom:22px}
+.hero .lines span{width:64px;height:6px;border-radius:3px}
+.hero h1{font-family:'Hahmlet',serif;font-weight:800;font-size:40px;letter-spacing:-1px;line-height:1.25}
+.hero p.sub{margin-top:14px;color:#CBBE9E;font-size:15px}
+.hero .meta{margin-top:20px;font-size:12.5px;letter-spacing:2px;color:#9FB0CC;text-transform:uppercase}
+/* sections */
+section{padding:36px 0;scroll-margin-top:58px}
+h2.sec{font-family:'Hahmlet',serif;font-weight:800;font-size:27px;letter-spacing:-.5px;margin-bottom:6px}
+p.lead{color:var(--mut);font-size:14.5px;margin-bottom:16px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:14px 0}
+.warncard{background:#FBEFE7;border:1px solid #E8C9B6;border-left:6px solid var(--r2);border-radius:12px;padding:16px 18px;margin:14px 0}
+table{width:100%;border-collapse:collapse;background:var(--paper);font-size:14px;margin:12px 0;border-radius:10px;overflow:hidden}
+th{background:var(--navy);color:#F4EDDC;font-weight:700;text-align:left}
+th,td{padding:10px 12px;border:1px solid var(--line);vertical-align:top}
+tr:nth-child(even) td{background:#FBF7EC}
+/* route header */
+.rhead{border-radius:16px;padding:26px 24px;color:#fff;margin-bottom:4px}
+.rhead .no{font-size:12px;letter-spacing:3px;font-weight:900;opacity:.85}
+.rhead h2{font-family:'Hahmlet',serif;font-weight:800;font-size:29px;margin-top:4px;letter-spacing:-.5px}
+.rhead p{margin-top:8px;font-size:14px;opacity:.92}
+.sumline{border-radius:12px;padding:13px 16px;font-size:13.8px;margin:12px 0;border:1px dashed}
+/* map card */
+.mapcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:16px 0;box-shadow:0 8px 24px rgba(27,42,74,.08)}
+.mapcard .mtitle{padding:11px 16px;font-weight:900;font-size:14px;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.mapcard iframe{width:100%;height:390px;border:0;display:block}
+.mapcard .mfoot{padding:10px 16px;font-size:12.5px;color:var(--mut);display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.btn{display:inline-block;background:var(--navy);color:#F4EDDC;padding:9px 16px;border-radius:99px;text-decoration:none;font-weight:700;font-size:13px}
+.btn:hover{background:#2A3D66}
+/* metro timeline */
+.tl{position:relative;padding-left:40px;margin-top:14px}
+.tl::before{content:"";position:absolute;left:15px;top:10px;bottom:10px;width:6px;border-radius:3px;background:var(--ac,#2C6E9B)}
+.stop{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:13px;padding:16px 18px;margin:12px 0;box-shadow:0 2px 8px rgba(27,42,74,.04)}
+.stop::before{content:attr(data-n);position:absolute;left:-40px;top:14px;width:30px;height:30px;border-radius:50%;background:var(--ac,#2C6E9B);color:#fff;font-weight:900;font-size:13.5px;display:flex;align-items:center;justify-content:center;border:3px solid var(--cream)}
+.stop h3{font-size:18px;font-weight:900;letter-spacing:-.3px;line-height:1.4}
+.stop h3 small{font-weight:500;color:var(--mut);font-size:13px}
+.stop ul{margin:8px 0 0 18px}
+.stop li{margin:5px 0}
+.stop .tip{margin-top:10px;background:#FCF6E6;border-left:4px solid var(--gold);border-radius:8px;padding:9px 12px;font-size:13.8px}
+.leg{position:relative;display:flex;align-items:center;flex-wrap:wrap;gap:8px;color:var(--mut);font-size:13px;padding:3px 0 3px 8px}
+.leg::before{content:"▾";position:absolute;left:-30px;color:var(--ac,#2C6E9B);font-size:15px}
+.dir{background:var(--paper);border:1.5px solid var(--ac,#2C6E9B);color:var(--ac,#2C6E9B);border-radius:99px;padding:2px 12px;font-size:12px;font-weight:900;text-decoration:none}
+.dir:hover{background:var(--ac,#2C6E9B);color:#fff}
+/* tags */
+.tg{display:inline-block;font-size:11px;font-weight:900;padding:2px 9px;border-radius:99px;margin-left:5px;vertical-align:2px}
+.tg-eat{background:#F4E5CE;color:#8A5A18}
+.tg-photo{background:#E3EDF5;color:#2C6E9B}
+.tg-warn{background:#F7DDD4;color:#A5391D}
+.tg-book{background:#F2E8C8;color:#8A6D0E}
+.tg-view{background:#E8E0EF;color:#6B3E85}
+.r1sec{--ac:var(--r1)} .r2sec{--ac:var(--r2)} .r3sec{--ac:var(--r3)}
+footer{background:var(--navy);color:#B9AB8B;text-align:center;padding:34px 16px;font-size:13px;margin-top:40px}
+@media(max-width:640px){.hero h1{font-size:29px}.mapcard iframe{height:300px}body{font-size:15px}.stop{padding:14px 14px}.tl{padding-left:36px}.stop::before{left:-36px;width:27px;height:27px}}
+@media print{nav,.mapcard iframe{display:none}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+<a href="/" title="루트 목록">🏠 홈</a>
+<a href="#basics">기본 원칙</a>
+<a href="#r1"><span class="dot" style="background:var(--r1)"></span>식당 유형별 탐방</a>
+<a href="#appendix">부록</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+<div class="lines"><span style="background:var(--r1)"></span></div>
+<h1>파리 식당 종류별 완벽 가이드</h1>
+<p class="sub">게으른 완벽주의자 · 대중성 및 접근성 기준 식당 선택 전략</p>
+<p class="meta">FRANCE · 1 ROUTE · STOP BY STOP</p>
+</div></header>
+
+<main class="wrap">
+<section id="basics">
+<h2 class="sec">기본 원칙</h2>
+<div class="card">
+<ul style="margin-left:18px">
+<li>프랑스는 식당을 대중성과 접근성에 따라 철저히 분류한다.</li>
+<li>일행 간 배고픈 정도가 다를 때는 유연한 주문이 가능한 카페가 유리하다.</li>
+<li>식사 중심 식당(브라세리 이상)에서는 문화적 존중을 위해 최소 <b>1인 1본식</b>을 준수한다.</li>
+<li>고급 레스토랑의 규율(예약, 드레스 코드)은 현지인들의 식사 문화를 존중하는 방식이다.</li>
+</ul>
+</div>
+<table>
+<tr><th>구분</th><th>주요 특징</th><th>비고</th></tr>
+<tr><td><b>식음 혼합</b></td><td>카페 (Cafe), 브라세리 (Brasserie)</td><td>브레이크 타임 없음, 유연한 주문 가능</td></tr>
+<tr><td><b>식사 중심</b></td><td>비스트로 (Bistrot), 레스토랑 (Restaurant)</td><td>점심/저녁 분리 운영, 브레이크 타임 및 예약 필수</td></tr>
+</table>
+</section>
+
+<section id="r1" class="r1sec">
+<div class="rhead" style="background:var(--r1)">
+<div class="no">ROUTE 1 · 등급별 미식 탐방</div>
+<h2>상황별 파리 식당 이용 루트</h2>
+<p>카페 → 브라세리 → 비스트로 → 레스토랑 → 아시아 음식점</p>
+</div>
+<div class="sumline" style="background:var(--r1bg);border-color:var(--r1)"><b>이동 원칙:</b> 각 식당 형태는 파리 시내 전역에 분포하므로 이동 경로에 맞춰 최적의 유형을 선택한다.</div>
+
+<div class="mapcard">
+<div class="mtitle" style="background:var(--r1)">🗺 파리 미식 탐방 지도 — 대표 구역 예시</div>
+<iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?saddr=Paris&daddr=Louvre+Museum+Paris+to:Le+Marais+Paris&dirflg=w&hl=ko&output=embed"></iframe>
+<div class="mfoot"><span>파리 전역의 대표 관광지 주변에서 쉽게 발견할 수 있는 배치</span><a class="btn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Paris&destination=Le+Marais+Paris&waypoints=Louvre+Museum+Paris&travelmode=walking">구글맵에서 전체 동선 열기 →</a></div>
+</div>
+
+<div class="tl">
+<div class="stop" data-n="1">
+<h3>카페 <small>Café · 가장 대중적인 휴식 공간</small></h3>
+<ul>
+<li>아침부터 저녁 늦게까지 상시 운영한다.</li>
+<li>작은 카페는 음료와 간단한 빵만 판매하지만, 규모가 크면 <b>크로크무슈, 샐러드, 샌드위치, 스테이크, 햄버거</b>까지 다양한 요리를 제공한다.</li>
+<li>음료가 메인이므로 일행 전원이 식사 메뉴를 시킬 필요는 없으며, <b>1인 1음료</b> 기준만 충족하면 된다. 한 명은 음료만, 다른 한 명은 식사만 주문해도 무방하다.</li>
+<li>전식, 본식, 후식 코스로 먹어도 되고 본식이나 전식만 단품으로 시켜도 된다.</li>
+</ul>
+<div class="tip">💡 겨울철 파리 시내를 걷다 춥고 속이 허할 때는 아무 카페나 들어가 <b>뱅쇼(방슈와)</b> 한 잔과 <b>양파 스프</b>를 주문하면 속을 든든하게 채우고 몸을 녹일 수 있다.</div>
+</div>
+<div class="leg">도보 이동 · 인근 식사 전문 구역으로 이동 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Paris&destination=Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="2">
+<h3>브라세리 <small>Brasserie · 프랑스식 대중 백반집</small></h3>
+<ul>
+<li>아침부터 저녁까지 브레이크 타임 없이 상시 운영한다.</li>
+<li>프랑스인들이 평소 즐겨 먹는 대중적인 음식들을 적당한 가격에 판매하며, 가볍게 반주를 곁들이기 좋은 분위기다.</li>
+<li>코스 주문은 필수가 아니지만 식당이므로 <b>1인 1본식(메인 요리)</b>을 권장한다. 전식만 주문할 경우 직원이 의아해할 수 있으나 이는 인종차별이 아닌 문화적 생소함에서 오는 반응이다.</li>
+<li>음료나 술을 필수로 주문하지 않아도 된다.</li>
+</ul>
+<div class="tip">💡 비용을 아끼려면 비싼 병물 대신 <b>"탭 워터 플리즈(Carphe d'eau)"</b>라고 요청하여 무료 수돗물을 제공받을 수 있다. 석회질 물에 민감하지 않다면 유용한 팁이다.</div>
+</div>
+<div class="leg">도보 이동 · 주택가 내부 비스트로 구역 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Paris&destination=Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="3">
+<h3>비스트로 <small>Bistrot · 셰프의 개성이 담긴 소규모 식당</small><span class="tg tg-book">🎟 예약</span></h3>
+<ul>
+<li>대형 레스토랑 출신이나 요리학교 졸업생들이 자신만의 아이템으로 차린 <b>요리 스타트업</b> 개념의 식당이다. 주로 동네 주택가에 작게 위치한다.</li>
+<li>점심과 저녁 장사 사이에 <b>브레이크 타임</b>이 엄격히 존재한다.</li>
+<li>제철 신선한 재료를 주 단위 또는 계절 단위로 변경하여 오늘의 메뉴를 구성한다.</li>
+<li>테이블 수가 적고 프랑스인들의 식사 시간이 길어(2~3시간) 한 번 예약된 테이블은 다른 손님을 받지 않는다. 자리가 비어 있어도 거절당할 수 있으므로 <b>예약이 필수</b>다.</li>
+<li>셰프가 코스의 연결감과 와인 페어링을 정성껏 연구하므로 최소 <b>3코스(전식-본식-후식)와 와인</b>을 함께 즐기는 것을 추천한다.</li>
+</ul>
+<div class="tip">💡 만약 예약을 못 했는데 빈 테이블이 보인다면, <b>"1시간 반 만에 먹고 나갈 수 있는데 가능하냐"</b>고 정중히 제안해 볼 수 있다. 현지인들은 저녁을 길게 먹기 때문에 뒤 타임 예약 전까지 식사를 허용해 주기도 한다. 특히 <b>점심 시간</b>에 방문하면 메인 요리 가격에 2코스를 저렴하게 즐길 수 있는 오늘의 점심 메뉴가 있어 가성비가 높다.</div>
+</div>
+<div class="leg">도보 이동 · 중심가 고급 레스토랑 구역 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Paris&destination=Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="4">
+<h3>레스토랑 <small>Restaurant · 미슐랭급 초고급 레스토랑</small><span class="tg tg-book">🎟 예약</span><span class="tg tg-warn">⚠ 주의</span></h3>
+<ul>
+<li>프랑스에서 정식 '레스토랑'은 미슐랭 스타급의 <b>파인 다이닝 고급 식당</b>을 뜻한다. 간판에 카페, 브라세리 등이 혼용되어 적힌 곳은 일반 대중 식당이다.</li>
+<li>음식과 미식 문화 자체에 집중하는 공간이므로 모든 코스를 아주 천천히 음미해야 하며 식사 시간에 <b>보통 3시간 이상</b>이 소요된다.</li>
+<li>몇 달 전 사전 예약은 필수이며, 해당 식당의 <b>드레스 코드(Dress Code)</b>를 반드시 미리 확인해야 한다. 포멀 수트 착용 요구를 무시하고 린넨 셔츠나 면바지 등 비즈니스 캐주얼로 방문 시 <b>입장이 불가</b>하다.</li>
+<li>착장 규정이 엄격하여 식사 중 덥다고 자켓을 벗으면 웨이터가 제지하므로 퇴장 시까지 착용을 유지해야 한다.</li>
+</ul>
+<div class="tip">💡 3시간 동안 불편한 옷을 입고 격식을 차려야 하므로 피로도가 높고 비용 부담이 크다. 여행 내내 가기보다는 <b>여행 마지막 날 밤에 1회 정도 경험</b>하는 것이 가장 이상적이다. 프랑스 음식 문화의 정점이므로 그들의 규칙을 동화되어 즐겨보는 태도가 필요하다.</div>
+</div>
+<div class="leg">도보 이동 · 아시아 음식점 밀집 구역 <a class="dir" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Paris&destination=Paris&travelmode=walking">길찾기</a></div>
+
+<div class="stop" data-n="5">
+<h3>아시아 음식점 <small>일식·중식·한식·태국식·베트남식</small></h3>
+<ul>
+<li>전형적인 프랑스 식당 분류 체계(카페, 비스트로 등)를 벗어나는 예외적인 공간이다.</li>
+<li>가게마다 운영 스타일이 다르다. 분식집 같은 분위기여도 점심/저녁 브레이크 타임을 철저히 지키는 곳이 있는 반면, 아침부터 저녁까지 브레이크 타임 없이 영업하는 곳도 있으므로 <b>사전 영업시간 확인이 필수</b>다.</li>
+<li>복잡한 코스 문화나 격식 없이 <b>메인 메뉴 하나만 단품으로 주문</b>하여 자유롭게 식사할 수 있다.</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section id="appendix">
+<h2 class="sec">부록</h2>
+<table>
+<tr><th>위치 유형</th><th>추천 메뉴</th><th>주문 및 이용 포인트</th></tr>
+<tr><td><b>일반 카페</b></td><td>크로크무슈, 양파 스프, 뱅쇼</td><td>1인 1음료 필수, 식사 미주문자 동석 가능</td></tr>
+<tr><td><b>브라세리</b></td><td>프랑스 가정식 대중 요리</td><td>1인 1본식 권장, 무료 탭 워터 활용 가능</td></tr>
+<tr><td><b>비스트로</b></td><td>셰프 추천 오늘의 제철 코스</td><td>점심 특선 가성비 최고, 저녁은 무조건 사전 예약</td></tr>
+<tr><td><b>레스토랑</b></td><td>미슐랭 파인 다이닝 풀 코스</td><td>엄격한 정장(수트) 착용 필수, 최소 3시간 식사 시간 확보</td></tr>
+</table>
+<div class="warncard">
+<ul style="margin-left:18px">
+<li><b>식당 문화 주의사항:</b> 프랑스인들에게 식사는 단순히 음식을 먹는 행위를 넘어 함께하는 사람과의 시간을 즐기는 중요한 문화다. 서비스 속도가 느리거나 규율이 엄격하더라도 현지의 문화를 존중하고 그들의 속도에 맞춰 식사를 즐기는 자세가 필요하다.</li>
+</ul>
+</div>
+</section>
+</main>
+<footer>파리 식당 종류별 완벽 가이드 · 게으른 완벽주의자 · 2023</footer>
+</body>
+</html>
