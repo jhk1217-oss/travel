@@ -2,3 +2,8 @@ node_modules/
 .wrangler/
 .dev.vars
 .DS_Store
+
+# voice-cloning: 대용량/개인 파일은 커밋하지 않음
+voice-cloning/Real-Time-Voice-Cloning/
+voice-cloning/my-voice/
+voice-cloning/output/
